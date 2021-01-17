@@ -29,13 +29,13 @@ jobs:
         poetry install
         poetry env info
         poetry run inv -l
-        poetry inv deps
+        poetry run inv deps
     - name: Lint files
       run: |
-        poetry inv lint
+        poetry run inv lint
     - name: Run unit tests
       run: |
-        poetry inv utest
+        poetry run inv utest
     - name: Run acceptance tests
       run: |
         echo "Not yet here"
