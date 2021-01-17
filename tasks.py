@@ -10,6 +10,7 @@ from invoke import task, Exit
 ROOT_DIR = Path(".").parent.resolve()
 SRC_DIR = ROOT_DIR / "AssertionEngine"
 
+
 @task
 def deps(ctx):
     """Install dependencies to develop and test project.
