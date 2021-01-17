@@ -13,28 +13,35 @@ jobs:
       matrix:
         python-version: [3.7, 3.9]
         rf-version: [3.1.2, 3.2.2]
-
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python ${{ matrix.python-version }} with Robot Framework ${{ matrix.rf-version }}
       uses: actions/setup-python@v2
       with:
         python-version: ${{ matrix.python-version }}
+    - name: Install poetry
+      run: |
+        curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -
     - name: Install dependencies
       run: |
-        inv deps
-    - name: Install RF ${{ matrix.rf-version }}
+        source $HOME/.poetry/env
+        poetry env use ${{ matrix.python-version }}
+        poetry install
+        poetry env info
+        poetry run inv -l
+        poetry run inv deps
+    - name: Lint files
       run: |
-        inv deps
-    - name: Check types with mypy
-      run: |
-        mypy --config-file mypy.ini AssertionEngine
-    - name: Check with flake8
-      run: |
-        flake8 --config .flake8 AssertionEngine
+        source $HOME/.poetry/env
+        poetry env use ${{ matrix.python-version }}
+        poetry run inv lint
     - name: Run unit tests
       run: |
-        inv utest
+        source $HOME/.poetry/env
+        poetry env use ${{ matrix.python-version }}
+        poetry run inv utest
     - name: Run acceptance tests
       run: |
+        source $HOME/.poetry/env
+        poetry env use ${{ matrix.python-version }}
         echo "Not yet here"
