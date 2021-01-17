@@ -32,10 +32,16 @@ jobs:
         poetry run inv deps
     - name: Lint files
       run: |
+        source $HOME/.poetry/env
+        poetry env use ${{ matrix.python-version }}
         poetry run inv lint
     - name: Run unit tests
       run: |
+        source $HOME/.poetry/env
+        poetry env use ${{ matrix.python-version }}
         poetry run inv utest
     - name: Run acceptance tests
       run: |
+        source $HOME/.poetry/env
+        poetry env use ${{ matrix.python-version }}
         echo "Not yet here"
