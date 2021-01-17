@@ -26,6 +26,7 @@ jobs:
       run: |
         source $HOME/.poetry/env
         poetry env use ${{ matrix.python-version }}
+        python bootstarp.py
         inv deps
     - name: Lint files
       run: |
