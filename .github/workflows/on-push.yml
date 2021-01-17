@@ -17,6 +17,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - uses: actions/setup-python@v2
+    - uses: abatilo/actions-poetry@v2.0.0
     - name: Set up Python ${{ matrix.python-version }} with Robot Framework ${{ matrix.rf-version }}
       with:
         python-version: ${{ matrix.python-version }}
