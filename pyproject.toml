@@ -1,0 +1,55 @@
+[tool.poetry]
+name = "robotframework-assertion-engine"
+version = "0.1.0"
+description = "Tool for Robot Framework libraries to create assertion to library keywords"
+authors = ["Tatu Aalto <aalto.tatu@gmail.com>"]
+license = """Copyright 20121- Robot Framework Foundation
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License."""
+
+[tool.poetry.dependencies]
+python = "^3.7"
+
+[tool.poetry.dev-dependencies]
+pytest = "^6.2.1"
+approvaltests = "^0.3.post2"
+black = "^20.8b1"
+mypy = "^0.790"
+flake8 = "^3.8.4"
+isort = "^5.7.0"
+pytest-approvaltests = "0.1.0"
+robotframework = "^3.2.2"
+wrapt = "^1.12.1"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+target-version = ['py38']
+exclude = '''
+/(
+    \.eggs
+  | \.git
+  | \.mypy_cache
+  | \.venv
+  | _build
+  | buck-out
+  | build
+  | dist
+)/
+'''
+
+[tool.isort]
+profile = "black"
+src_paths="./AssertionEngine"

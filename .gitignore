@@ -1,0 +1,16 @@
+.idea
+.pabotsuitenames
+.mypy_cache
+__pycache__
+.venv
+
+# Robot Framework outputs
+log.html
+output.xml
+report.html
+atest/output
+lsp
+
+dist
+build
+tmp
