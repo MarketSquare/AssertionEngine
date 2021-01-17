@@ -28,13 +28,14 @@ jobs:
         poetry env use ${{ matrix.python-version }}
         poetry install
         poetry env info
-        inv deps
+        poetry run inv -l
+        poetry inv deps
     - name: Lint files
       run: |
-        inv lint
+        poetry inv lint
     - name: Run unit tests
       run: |
-        inv utest
+        poetry inv utest
     - name: Run acceptance tests
       run: |
         echo "Not yet here"
