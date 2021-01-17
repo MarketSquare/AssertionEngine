@@ -26,12 +26,9 @@ jobs:
       run: |
         source $HOME/.poetry/env
         poetry install
-    - name: Check types with mypy
+    - name: Lint files
       run: |
-        mypy --config-file mypy.ini AssertionEngine
-    - name: Check with flake8
-      run: |
-        flake8 --config .flake8 AssertionEngine
+        inv lint
     - name: Run unit tests
       run: |
         inv utest
