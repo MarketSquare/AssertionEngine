@@ -25,7 +25,7 @@ jobs:
     - name: Install dependencies
       run: |
         source $HOME/.poetry/env
-        poetry use ${{ matrix.python-version }}
+        poetry env use ${{ matrix.python-version }}
         inv deps
     - name: Lint files
       run: |
