@@ -1,6 +1,9 @@
 from pathlib import Path
 
-import pytest
+try:
+    import pytest
+except ModuleNotFoundError:
+    print("Assuming that this in setup phase and ignoring ModuleNotFoundError")
 from invoke import task, Exit
 
 
