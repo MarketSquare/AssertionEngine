@@ -12,7 +12,7 @@ jobs:
     strategy:
       matrix:
         python-version: [3.7, 3.9]
-        rf-version: [3.1.2, 3.2.2]
+        rf-version: [3.2.2, 4.0b3]
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python ${{ matrix.python-version }} with Robot Framework ${{ matrix.rf-version }}
@@ -30,6 +30,12 @@ jobs:
         poetry env info
         poetry run inv -l
         poetry run inv deps
+    - name: Install RF 4.0
+      if: matrix.rf-version == '4.0b3'
+      run: |
+        source $HOME/.poetry/env
+        poetry env use ${{ matrix.python-version }}
+        poetry add robotframework==${{ matrix.rf-version }}
     - name: Lint files
       run: |
         source $HOME/.poetry/env
@@ -44,4 +50,3 @@ jobs:
       run: |
         source $HOME/.poetry/env
         poetry env use ${{ matrix.python-version }}
-        echo "Not yet here"
