@@ -1,9 +1,10 @@
 import os
 import shutil
-import sys
 from pathlib import Path
 
 try:
+    import robotstatuschecker
+    from robot import rebot_cli
     import pytest
 except ModuleNotFoundError:
     print("Assuming that this in setup phase and ignoring ModuleNotFoundError")
@@ -80,10 +81,25 @@ def atest(ctx):
     """Runs Robot Framework acceptance tests."""
     args = [
         "robot",
+        "--exitonerror",
+        "--nostatusrc",
         "--pythonpath",
         ".",
+        "--loglevel",
+        "TRACE",
+        "--report",
+        "NONE",
+        "--log",
+        "NONE",
         "--outputdir",
         str(ATEST_OUTPUT),
         str(ATEST)
     ]
     ctx.run(" ".join(args))
+    output_xml = str(ATEST_OUTPUT / "output.xml")
+    print(f"Check: {output_xml}")
+    robotstatuschecker.process_output(output_xml, verbose=False)
+    print("Generate report and log files.")
+    rc = rebot_cli(["--outputdir", str(ATEST_OUTPUT), output_xml], exit=True)
+    print("DONE")
+    raise Exit(rc)

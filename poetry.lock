@@ -293,6 +293,17 @@ optional = false
 python-versions = "*"
 
 [[package]]
+name = "robotstatuschecker"
+version = "1.4"
+description = "A tool for checking that Robot Framework test cases have expected statuses and log messages."
+category = "dev"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+robotframework = "*"
+
+[[package]]
 name = "toml"
 version = "0.10.2"
 description = "Python Library for Tom's Obvious, Minimal Language"
@@ -339,7 +350,7 @@ testing = ["pytest (>=3.5,!=3.7.3)", "pytest-checkdocs (>=1.2.3)", "pytest-flake
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7"
-content-hash = "d5ccc2015c111d396b8fe32f59be3eb4c145cee50e7ea5b51410114fe14b225b"
+content-hash = "64c9a545420eca78e5b0f9a314f9402b24f1188a98f3c9d6d851c7d3a3edc7ae"
 
 [metadata.files]
 appdirs = [
@@ -500,6 +511,9 @@ regex = [
 robotframework = [
     {file = "robotframework-3.2.2-py2.py3-none-any.whl", hash = "sha256:a0c325e79dc6dcdaba0398db8c3afefc337799b7b36b336f04b07be4fe4a9dd2"},
     {file = "robotframework-3.2.2.zip", hash = "sha256:a0786a916d0572bd9d6afe26e95c6021e3df5dcafa0ece6b302e36366e58c24e"},
+]
+robotstatuschecker = [
+    {file = "robotstatuschecker-1.4.tar.gz", hash = "sha256:c606eebdf2f28063dcb483e43fd6bc511e84e99a9f7d004163a180be558e58f6"},
 ]
 toml = [
     {file = "toml-0.10.2-py2.py3-none-any.whl", hash = "sha256:806143ae5bfb6a3c6e736a764057db0e6a0e05e338b5630894a5f779cabb4f9b"},

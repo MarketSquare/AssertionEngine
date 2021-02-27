@@ -12,5 +12,5 @@ class TestLibrary:
         message: str = None,
     ):
         return verify_assertion(
-            value, assertion_operator, assertion_expected, "URL", message
+            value, assertion_operator, assertion_expected, "Prefix message", message
         )
