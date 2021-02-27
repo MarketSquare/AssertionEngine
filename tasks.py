@@ -1,5 +1,6 @@
 import os
 import shutil
+import sys
 from pathlib import Path
 
 try:
@@ -51,11 +52,19 @@ def utest(ctx, reporter=None, suite=None):
 
 
 @task
+def lint_robot(ctx):
+    """Lint robot tests with tidy"""
+    result = ctx.run("python -m robot.tidy --recursive atest/")
+    raise Exit(result.exited)
+
+
+@task(lint_robot)
 def lint(ctx):
     ctx.run("mypy --config-file ./mypy.ini AssertionEngine/ utest/")
     ctx.run("black --config ./pyproject.toml AssertionEngine/")
     ctx.run("isort AssertionEngine/")
     ctx.run("flake8 --config ./.flake8 AssertionEngine/ utest/")
+
 
 @task
 def clean_atest(ctc):
