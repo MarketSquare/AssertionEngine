@@ -1,10 +1,14 @@
 import os
+import platform
 import shutil
-from pathlib import Path
+import sys
+import zipfile
+from pathlib import Path, PurePath
 
 try:
     import robotstatuschecker
     from robot import rebot_cli
+    from robot import __version__ as robot_version
     import pytest
 except ModuleNotFoundError:
     print("Assuming that this in setup phase and ignoring ModuleNotFoundError")
@@ -29,6 +33,7 @@ def deps(ctx):
     - https://python-poetry.org/docs/#installation
     """
     ctx.run("poetry install")
+
 
 @task
 def utest(ctx, reporter=None, suite=None):
@@ -77,7 +82,7 @@ def clean_atest(ctc):
 
 
 @task(clean_atest)
-def atest(ctx):
+def atest(ctx, zip=None):
     """Runs Robot Framework acceptance tests."""
     args = [
         "robot",
@@ -100,6 +105,25 @@ def atest(ctx):
     print(f"Check: {output_xml}")
     robotstatuschecker.process_output(output_xml, verbose=False)
     print("Generate report and log files.")
-    rc = rebot_cli(["--outputdir", str(ATEST_OUTPUT), output_xml], exit=True)
+    rebot_exit = False if zip else True
+    rc = rebot_cli(["--outputdir", str(ATEST_OUTPUT), output_xml], exit=False)
+    if zip:
+        print(f"Zip file created to: {_create_zip()}")
     print("DONE")
     raise Exit(rc)
+
+
+def _create_zip():
+    zip_dir = ZIP_DIR / "output"
+    zip_dir.mkdir(parents=True)
+    python_version = platform.python_version()
+    zip_name = f"{sys.platform}-rf-{robot_version}-python-{python_version}.zip"
+    zip_path = zip_dir / zip_name
+    print(f"Creating zip  in: {zip_path}")
+    zip_file = zipfile.ZipFile(zip_path, "w")
+    for file in ATEST_OUTPUT.glob("**/*.*"):
+        file = PurePath(file)
+        arc_name = file.relative_to(str(ATEST_OUTPUT))
+        zip_file.write(file, arc_name)
+    zip_file.close()
+    return zip_path
