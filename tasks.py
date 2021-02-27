@@ -1,3 +1,5 @@
+import os
+import shutil
 from pathlib import Path
 
 try:
@@ -9,6 +11,11 @@ from invoke import task, Exit
 
 ROOT_DIR = Path(".").parent.resolve()
 SRC_DIR = ROOT_DIR / "AssertionEngine"
+
+ROOT_DIR = Path(os.path.dirname(__file__))
+ATEST = ROOT_DIR / "atest"
+ATEST_OUTPUT = ATEST / "output"
+ZIP_DIR = ROOT_DIR / "zip_results"
 
 
 @task
@@ -49,3 +56,25 @@ def lint(ctx):
     ctx.run("black --config ./pyproject.toml AssertionEngine/")
     ctx.run("isort AssertionEngine/")
     ctx.run("flake8 --config ./.flake8 AssertionEngine/ utest/")
+
+@task
+def clean_atest(ctc):
+    """Cleans atest folder outputs."""
+    if ATEST_OUTPUT.exists():
+        shutil.rmtree(ATEST_OUTPUT)
+    if ZIP_DIR.exists():
+        shutil.rmtree(ZIP_DIR)
+
+
+@task(clean_atest)
+def atest(ctx):
+    """Runs Robot Framework acceptance tests."""
+    args = [
+        "robot",
+        "--pythonpath",
+        ".",
+        "--outputdir",
+        str(ATEST_OUTPUT),
+        str(ATEST)
+    ]
+    ctx.run(" ".join(args))
