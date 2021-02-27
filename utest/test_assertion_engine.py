@@ -6,7 +6,6 @@ from approvaltests import verify_all  # type: ignore
 from AssertionEngine import (
     verify_assertion,
     AssertionOperator,
-    with_assertion_polling,
 )
 from robot.libraries.BuiltIn import EXECUTION_CONTEXTS  # type: ignore
 
@@ -68,43 +67,6 @@ def test_contains():
         _validate_operator(AssertionOperator["*="], "actual", "nope"),
     ]
     verify_all("Contains", results)
-
-
-class FakeBrowser:
-    timeout = 100
-    counter = 1
-    retry_assertions_for = 30
-
-    @with_assertion_polling
-    def is_three(self, value):
-        return verify_assertion(value, AssertionOperator["=="], 3)
-
-    @with_assertion_polling
-    def second_run_success(self):
-        current = self.counter
-        self.counter += 1
-        return verify_assertion(current, AssertionOperator["=="], 2)
-
-
-def test_with_assertions_polling():
-    fb = FakeBrowser()
-    results = [
-        fb.is_three(3),
-        _method_validator(fb.is_three, 2),
-        fb.second_run_success(),
-    ]
-    verify_all("Assertion polling", results)
-
-
-def test_without_assertions_polling():
-    fb = FakeBrowser()
-    fb.retry_assertions_for = 0
-    results = [
-        fb.is_three(3),
-        _method_validator(fb.is_three, 2),
-        _method_validator(fb.second_run_success),
-    ]
-    verify_all("No polling", results)
 
 
 def test_greater():
