@@ -62,23 +62,6 @@ AssertionOperator.__doc__ = """
     | ``validate``        |                                   | Checks if given Python expression evaluates to ``True``.             |                                      |
     | ``evaluate``        |  ``then``                         | When using this operator, the keyword does return the evaluated Python expression. |                        |
 
-
-    The assertion keywords will provide an error message if the assertion fails.
-    Assertions will retry until ``timeout`` has expired if they do not pass.
-
-    The assertion ``assertion_expected`` value is not converted by the library and
-    is used as is. Therefore when assertion is made, the ``assertion_expected``
-    argument value and value returned the keyword must have same type. If types
-    are not same, assertion will fail. Example `Get Text` always returns a string
-    and has to be compared with a string, even the returnd value might look like
-    a number.
-
-    Other Keywords have other specific types they return.
-    `Get Element Count` always returns an integer.
-    `Get Bounding Box` and `Get Viewport Size` can be filtered.
-    They return a dictionary without filter and a number when filtered.
-    These Keywords do autoconvert the expected value if a number is returned.
-
     * < less or greater > With Strings*
     Compairisons of strings with ``greater than`` or ``less than`` compares each character,
     starting from 0 reagarding where it stands in the code page.
@@ -91,13 +74,6 @@ AssertionOperator.__doc__ = """
     On keywords that return numbers, the given expected value is automatically
     converted to a number before comparison.
 
-
-    The getters `Get Page State` and `Get Browser Catalog` return a dictionary. Values of the dictionary can directly asserted.
-    Pay attention of possible types because they are evaluated in Python. For example:
-
-    | Get Page State    validate    2020 >= value['year']                     # Compairsion of numbers
-    | Get Page State    validate    "IMPORTANT MESSAGE!" == value['message']  # Compairsion of strings
-
     == The 'then' or 'evaluate' closure ==
 
     Keywords that accept arguments ``assertion_operator`` and ``assertion_expected``
@@ -109,14 +85,4 @@ AssertionOperator.__doc__ = """
     [https://robotframework.org/robotframework/latest/libraries/BuiltIn.html#Evaluating%20expressions|
     Builtin Evaluating expressions]
     for more info on the syntax.
-
-    == Examples ==
-
-    | # *Keyword*    *Selector*                    *Key*        *Assertion Operator*    *Assertion Expected*
-    | Get Title                                           equal                 Page Title
-    | Get Title                                           ^=                    Page
-    | Get Style    //*[@id="div-element"]      width      >                     100
-    | Get Title                                           matches               \\\\w+\\\\s\\\\w+
-    | Get Title                                           validate              value == "Login Page"
-    | Get Title                                           evaluate              value if value == "some value" else "something else"
     """
