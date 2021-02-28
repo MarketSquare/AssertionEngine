@@ -5,6 +5,9 @@ Generic way to create meaningful and easy to use assertions for the `Robot Frame
 libraries. This tools is spin off from `Browser library`_ project, where the Assertion
 Engine was developed as part of the of library.
 
+.. image:: https://github.com/MarketSquare/AssertionEngine/actions/workflows/on-push.yml/badge.svg
+   :target: https://github.com/MarketSquare/AssertionEngine
+
 Supported Assertions
 --------------------
 
