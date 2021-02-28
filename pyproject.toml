@@ -29,7 +29,6 @@ flake8 = "^3.8.4"
 isort = "^5.7.0"
 pytest-approvaltests = "0.1.0"
 robotframework = "^3.2.2"
-wrapt = "^1.12.1"
 invoke = "^1.5.0"
 robotstatuschecker = "^1.4"
 
