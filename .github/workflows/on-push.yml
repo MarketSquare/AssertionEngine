@@ -12,7 +12,7 @@ jobs:
     strategy:
       matrix:
         python-version: [3.7, 3.9]
-        rf-version: [3.2.2, 4.0b3]
+        rf-version: [3.2.2, 4.0rc1]
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python ${{ matrix.python-version }} with Robot Framework ${{ matrix.rf-version }}
