@@ -31,7 +31,7 @@ jobs:
         poetry run inv -l
         poetry run inv deps
     - name: Install RF 4.0
-      if: matrix.rf-version == '4.0b3'
+      if: matrix.rf-version == '4.0rc1'
       run: |
         source $HOME/.poetry/env
         poetry env use ${{ matrix.python-version }}
