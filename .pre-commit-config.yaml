@@ -7,9 +7,16 @@ repos:
         language: system
         stages: [commit, merge-commit]
         pass_filenames: false
+      - id: utest
+        alias: utest
+        name: Run unit tests on push.
+        entry: inv utest
+        language: system
+        pass_filenames: false
+        stages: [push]
       - id: atest
         alias: atest
-        name: Run unit and acceptance tests on push.
+        name: Run acceptance tests on push.
         entry: inv atest -z True
         language: system
         pass_filenames: false
