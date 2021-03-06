@@ -1,7 +1,7 @@
 *** Settings ***
 Library           TestLibrary.py
 
-*** Test Case ***
+*** Test Cases ***
 Values Are Equal
     Is Equal    1    ==    1
 

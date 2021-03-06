@@ -74,8 +74,8 @@ def verify_assertion(
     value: T,
     operator: Optional[AssertionOperator],
     expected: Any,
-    message="",
-    custom_message="",
+    message: str = "",
+    custom_message: str = "",
 ) -> Any:
     if operator is None:
         return value
