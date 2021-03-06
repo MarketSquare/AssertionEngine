@@ -40,7 +40,7 @@ jobs:
       run: |
         source $HOME/.poetry/env
         poetry env use ${{ matrix.python-version }}
-        poetry run inv lint
+        poetry run inv lint -e
     - name: Run unit tests
       run: |
         source $HOME/.poetry/env
