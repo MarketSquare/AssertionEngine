@@ -6,5 +6,11 @@ repos:
         entry: inv lint
         language: system
         stages: [commit, merge-commit]
-        always_run: true
         pass_filenames: false
+      - id: atest
+        alias: atest
+        name: Run unit and acceptance tests on push.
+        entry: inv atest -z True
+        language: system
+        pass_filenames: false
+        stages: [push]
