@@ -32,6 +32,8 @@ Currently supported assertion operators are:
 +----------+---------------------------+------------------------------------------------------------------------------------+----------------------------------+
 | \*=      | contains                  | Checks if returned value contains expected value as substring.                     | expected in value                |
 +----------+---------------------------+------------------------------------------------------------------------------------+----------------------------------+
+|          | not contains              | Checks if returned value does not contain expected value as substring.             | expected not in value            |
++----------+---------------------------+------------------------------------------------------------------------------------+----------------------------------+
 | ^=       | should start with, starts | Checks if returned value starts with expected value.                               | re.search(f"^{expected}", value) |
 +----------+---------------------------+------------------------------------------------------------------------------------+----------------------------------+
 | $=       | should end with, ends     | Checks if returned value ends with expected value.                                 | re.search(f"{expected}$", value) |
