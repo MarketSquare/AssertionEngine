@@ -31,6 +31,7 @@ pytest-approvaltests = "0.1.0"
 robotframework = "^3.2.2"
 invoke = "^1.5.0"
 robotstatuschecker = "^1.4"
+pre-commit = "^2.10.1"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
