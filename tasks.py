@@ -33,6 +33,7 @@ def deps(ctx):
     - https://python-poetry.org/docs/#installation
     """
     ctx.run("poetry install")
+    ctx.run("pre-commit install")
 
 
 @task
@@ -60,20 +61,27 @@ def utest(ctx, reporter=None, suite=None):
 @task
 def lint_robot(ctx):
     """Lint robot tests with tidy"""
-    result = ctx.run("python -m robot.tidy --recursive atest/")
-    raise Exit(result.exited)
+    print("lint robot")
+    ctx.run("python -m robot.tidy --recursive atest/")
 
 
 @task(lint_robot)
-def lint(ctx):
+def lint(ctx, error=False):
+    """Lint Robot Framework test data and Python code."""
+    print("Lint python")
+    black_command = "black --config ./pyproject.toml AssertionEngine/"
+    isort_command = "isort AssertionEngine/"
+    if error:
+        black_command = f"{black_command} --check"
+        isort_command = f"{isort_command} --check-only"
     ctx.run("mypy --config-file ./mypy.ini AssertionEngine/ utest/")
-    ctx.run("black --config ./pyproject.toml AssertionEngine/")
-    ctx.run("isort AssertionEngine/")
+    ctx.run(black_command)
+    ctx.run(isort_command)
     ctx.run("flake8 --config ./.flake8 AssertionEngine/ utest/")
 
 
 @task
-def clean_atest(ctc):
+def clean_atest(ctx):
     """Cleans atest folder outputs."""
     if ATEST_OUTPUT.exists():
         shutil.rmtree(ATEST_OUTPUT)
