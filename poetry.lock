@@ -356,7 +356,7 @@ python-versions = "*"
 name = "robotframework"
 version = "3.2.2"
 description = "Generic automation framework for acceptance testing and robotic process automation (RPA)"
-category = "dev"
+category = "main"
 optional = false
 python-versions = "*"
 
@@ -437,7 +437,7 @@ testing = ["pytest (>=3.5,!=3.7.3)", "pytest-checkdocs (>=1.2.3)", "pytest-flake
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7"
-content-hash = "c150cbe2b11748a80aaf20cf455ea6dc2a7c3632329320819471c3e61a4e7134"
+content-hash = "d19fcea1649ae43f437260bdd03b52f4c574c0d960656fc2a23efa38a92b0d5b"
 
 [metadata.files]
 appdirs = [
