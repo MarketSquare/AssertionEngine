@@ -33,7 +33,9 @@ def deps(ctx):
     - https://python-poetry.org/docs/#installation
     """
     ctx.run("poetry install")
-    ctx.run("pre-commit install")
+    ctx.run("pre-commit install -f -t pre-commit")
+    ctx.run("pre-commit install -f -t pre-push")
+    ctx.run("pre-commit install -f -t pre-merge-commit")
 
 
 @task
