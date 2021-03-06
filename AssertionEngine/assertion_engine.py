@@ -51,6 +51,7 @@ handlers: Dict[AssertionOperator, Tuple[Callable, str]] = {
     AssertionOperator["<="]: (lambda a, b: a <= b, "should be less than or equal"),
     AssertionOperator[">="]: (lambda a, b: a >= b, "should be greater than or equal"),
     AssertionOperator["*="]: (lambda a, b: b in a, "should contain"),
+    AssertionOperator["not contains"]: (lambda a, b: b not in a, "should not contain"),
     AssertionOperator["matches"]: (lambda a, b: re.search(b, a), "should match"),
     AssertionOperator["^="]: (
         lambda a, b: re.search(f"^{re.escape(b)}", a),

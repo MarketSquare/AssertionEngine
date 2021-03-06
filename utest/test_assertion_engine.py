@@ -69,6 +69,14 @@ def test_contains():
     verify_all("Contains", results)
 
 
+def test_not_contains():
+    results = [
+        _validate_operator(AssertionOperator["not contains"], "actual", "xxx"),
+        _validate_operator(AssertionOperator["not contains"], "actual", "t", "custom"),
+    ]
+    verify_all("Not contains", results)
+
+
 def test_greater():
     results = [
         _validate_operator(AssertionOperator["<"], 1, 2),
