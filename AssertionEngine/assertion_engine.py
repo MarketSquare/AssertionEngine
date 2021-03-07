@@ -21,7 +21,7 @@ from robot.libraries.BuiltIn import BuiltIn  # type: ignore
 from .data_types import AssertionOperator
 from .type_converter import is_truthy, type_converter
 
-__version__ = "0.0.1"
+__version__ = "0.0.2"
 
 NumericalOperators = [
     AssertionOperator["=="],
