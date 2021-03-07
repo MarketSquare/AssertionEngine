@@ -1,5 +1,6 @@
 import os
 import platform
+import re
 import shutil
 import sys
 import zipfile
@@ -22,6 +23,7 @@ ROOT_DIR = Path(os.path.dirname(__file__))
 ATEST = ROOT_DIR / "atest"
 ATEST_OUTPUT = ATEST / "output"
 ZIP_DIR = ROOT_DIR / "zip_results"
+ASSERTION_ENGINE = ROOT_DIR / "AssertionEngine" / "assertion_engine.py"
 
 
 @task
@@ -137,3 +139,17 @@ def _create_zip():
         zip_file.write(file, arc_name)
     zip_file.close()
     return zip_path
+
+
+@task
+def version(ctx, version):
+    text = re.sub(
+        r'__version__ = \"\d+\.\d+\.\d+\"', f'__version__ = "{version}"', ASSERTION_ENGINE.read_text()
+    )
+    ASSERTION_ENGINE.write_text(text, encoding="utf-8")
+    pyproject_toml = Path("pyproject.toml")
+    text = re.sub(
+        r'version = \"\d+\.\d+\.\d+\"', f'version = "{version}"', pyproject_toml.read_text()
+    )
+    pyproject_toml.write_text(text, encoding="utf-8")
+
