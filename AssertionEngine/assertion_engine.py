@@ -1,4 +1,4 @@
-# Copyright 2020-     Robot Framework Foundation
+# Copyright 2021-     Robot Framework Foundation
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -20,6 +20,8 @@ from robot.libraries.BuiltIn import BuiltIn  # type: ignore
 
 from .data_types import AssertionOperator
 from .type_converter import is_truthy, type_converter
+
+__version__ = "0.0.1"
 
 NumericalOperators = [
     AssertionOperator["=="],
