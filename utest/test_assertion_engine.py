@@ -3,7 +3,7 @@ import sys
 import pytest
 from approvaltests import verify_all  # type: ignore
 
-from AssertionEngine import (
+from assertionengine import (
     verify_assertion,
     AssertionOperator,
 )

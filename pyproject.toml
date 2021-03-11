@@ -19,8 +19,9 @@ classifiers = [
     "Framework :: Robot Framework :: Tool",
 ]
 packages = [
-    { include = "AssertionEngine", from="."}
+    { include = "assertionengine", from="."}
 ]
+include = ["assertionengine/py.typed"]
 
 
 [tool.poetry.dependencies]
@@ -60,4 +61,4 @@ exclude = '''
 
 [tool.isort]
 profile = "black"
-src_paths="./AssertionEngine"
+src_paths="./assertionengine"
