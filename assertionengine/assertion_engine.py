@@ -153,7 +153,7 @@ def verify_assertion(
     operator: Optional[AssertionOperator],
     expected: Any,
     message: str = "",
-    custom_message: str = "",
+    custom_message: Optional[str] = None,
 ) -> Any:
     if operator is None:
         return value
