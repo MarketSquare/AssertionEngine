@@ -12,6 +12,22 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from .assertion_engine import AssertionOperator, verify_assertion
+from .assertion_engine import (
+    AssertionOperator,
+    bool_verify_assertion,
+    dict_verify_assertion,
+    float_str_verify_assertion,
+    int_dict_verify_assertion,
+    list_verify_assertion,
+    verify_assertion,
+)
 
-__all__ = ["AssertionOperator", "verify_assertion"]
+__all__ = [
+    "AssertionOperator",
+    "bool_verify_assertion",
+    "dict_verify_assertion",
+    "float_str_verify_assertion",
+    "int_dict_verify_assertion",
+    "list_verify_assertion",
+    "verify_assertion",
+]
