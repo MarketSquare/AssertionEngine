@@ -23,6 +23,7 @@ ROOT_DIR = Path(os.path.dirname(__file__))
 ATEST = ROOT_DIR / "atest"
 ATEST_OUTPUT = ATEST / "output"
 ZIP_DIR = ROOT_DIR / "zip_results"
+DIST = ROOT_DIR / "dist"
 ASSERTION_ENGINE = ROOT_DIR / "AssertionEngine" / "assertion_engine.py"
 
 
@@ -91,6 +92,15 @@ def clean_atest(ctx):
         shutil.rmtree(ATEST_OUTPUT)
     if ZIP_DIR.exists():
         shutil.rmtree(ZIP_DIR)
+
+
+@task(clean_atest)
+def clean(ctx):
+    """Cleans temporary files.
+
+    Test results, package files and so on.."""
+    if DIST.exists():
+        shutil.rmtree(DIST)
 
 
 @task(clean_atest)
