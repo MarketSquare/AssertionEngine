@@ -1,6 +1,6 @@
 from typing import Optional, Any
 
-from AssertionEngine import verify_assertion, AssertionOperator
+from assertionengine import verify_assertion, AssertionOperator
 
 
 class TestLibrary:

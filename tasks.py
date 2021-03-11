@@ -17,14 +17,14 @@ from invoke import task, Exit
 
 
 ROOT_DIR = Path(".").parent.resolve()
-SRC_DIR = ROOT_DIR / "AssertionEngine"
+SRC_DIR = ROOT_DIR / "assertionengine"
 
 ROOT_DIR = Path(os.path.dirname(__file__))
 ATEST = ROOT_DIR / "atest"
 ATEST_OUTPUT = ATEST / "output"
 ZIP_DIR = ROOT_DIR / "zip_results"
 DIST = ROOT_DIR / "dist"
-ASSERTION_ENGINE = ROOT_DIR / "AssertionEngine" / "assertion_engine.py"
+ASSERTION_ENGINE = ROOT_DIR / "assertionengine" / "assertion_engine.py"
 
 
 @task
@@ -74,15 +74,15 @@ def lint_robot(ctx):
 def lint(ctx, error=False):
     """Lint Robot Framework test data and Python code."""
     print("Lint python")
-    black_command = "black --config ./pyproject.toml AssertionEngine/"
-    isort_command = "isort AssertionEngine/"
+    black_command = "black --config ./pyproject.toml assertionengine/"
+    isort_command = "isort assertionengine/"
     if error:
         black_command = f"{black_command} --check"
         isort_command = f"{isort_command} --check-only"
-    ctx.run("mypy --config-file ./mypy.ini AssertionEngine/ utest/")
+    ctx.run("mypy --config-file ./mypy.ini assertionengine/ utest/")
     ctx.run(black_command)
     ctx.run(isort_command)
-    ctx.run("flake8 --config ./.flake8 AssertionEngine/ utest/")
+    ctx.run("flake8 --config ./.flake8 assertionengine/ utest/")
 
 
 @task
