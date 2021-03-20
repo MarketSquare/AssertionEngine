@@ -55,8 +55,6 @@ AssertionOperator = Enum(
     },
 )
 AssertionOperator.__doc__ = """
-    Enum that defines the ``assertion_operator`` <`AssertionOperator`>.
-
     Currently supported assertion operators are:
 
     |      = Operator =   |   = Alternative Operators =       |              = Description =                                                       | = Validate Equivalent =              |
@@ -73,30 +71,6 @@ AssertionOperator.__doc__ = """
     | ``matches``         |                                   | Checks if given RegEx matches minimum once in returned value.                      | ``re.search(expected, value)``       |
     | ``validate``        |                                   | Checks if given Python expression evaluates to ``True``.                           |                                      |
     | ``evaluate``        |  ``then``                         | When using this operator, the keyword does return the evaluated Python expression. |                        |
-
-    * < less or greater > With Strings*
-    Compairisons of strings with ``greater than`` or ``less than`` compares each character,
-    starting from 0 reagarding where it stands in the code page.
-    Example: ``A < Z``, ``Z < a``, ``ac < dc`
-    It does never compare the length of elements. Neither lists nor strings.
-    The comparison stops at the first character that is different.
-    Examples: ``'abcde' < 'abd'``, ``'100.000' < '2'``
-    In Python 3 and therefore also in Browser it is not possible to compare numbers
-    with strings with a greater or less operator.
-    On keywords that return numbers, the given expected value is automatically
-    converted to a number before comparison.
-
-    == The 'then' or 'evaluate' closure ==
-
-    Keywords that accept arguments ``assertion_operator`` and ``assertion_expected``
-    can optionally also use ``then`` or ``evaluate`` closure to modify the returned value with
-    BuiltIn Evaluate. Actual value can be accessed with ``value``.
-
-    For example ``Get Title  then  'TITLE: '+value``.
-    See
-    [https://robotframework.org/robotframework/latest/libraries/BuiltIn.html#Evaluating%20expressions|
-    Builtin Evaluating expressions]
-    for more info on the syntax.
     """
 
 NumericalOperators = [
