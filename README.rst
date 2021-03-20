@@ -9,6 +9,8 @@ Engine was developed as part of the of library.
    :target: https://github.com/MarketSquare/AssertionEngine
 .. image:: https://img.shields.io/badge/License-Apache%202.0-blue.svg
    :target: https://opensource.org/licenses/Apache-2.0
+.. image:: https://github.com/MarketSquare/AssertionEngine/actions/workflows/on-push.yml/badge.svg
+   :target: https://github.com/MarketSquare/AssertionEngine/actions/workflows/on-push.yml
 
 Supported Assertions
 --------------------
