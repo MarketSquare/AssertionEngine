@@ -81,22 +81,17 @@ AssertionOperator.__doc__ = """
     It does never compare the length of elements. Neither lists nor strings.
     The comparison stops at the first character that is different.
     Examples: ``'abcde' < 'abd'``, ``'100.000' < '2'``
-    In Python 3 and therefore also in Browser it is not possible to compare numbers
-    with strings with a greater or less operator.
-    On keywords that return numbers, the given expected value is automatically
-    converted to a number before comparison.
+    In Python 3 and therefore also in Robot Framework it is not possible to compare numbers
+    with strings with a greater or less operator. On keywords that return numbers, the given
+    expected value is automatically converted to a number before comparison.
 
     == The 'then' or 'evaluate' closure ==
 
     Keywords that accept arguments ``assertion_operator`` and ``assertion_expected``
     can optionally also use ``then`` or ``evaluate`` closure to modify the returned value with
-    BuiltIn Evaluate. Actual value can be accessed with ``value``.
-
-    For example ``Get Title  then  'TITLE: '+value``.
-    See
+    BuiltIn Evaluate. Actual value can be accessed with ``value``. See
     [https://robotframework.org/robotframework/latest/libraries/BuiltIn.html#Evaluating%20expressions|
-    Builtin Evaluating expressions]
-    for more info on the syntax.
+    Builtin Evaluating expressions] for more info on the syntax.
     """
 
 NumericalOperators = [
