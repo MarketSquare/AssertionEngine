@@ -129,6 +129,10 @@ def verify_assertion(
     message: str = "",
     custom_message: Optional[str] = None,
 ) -> Any:
+    if operator is None and expected:
+        raise ValueError(
+            f"It is not possible perform assertion when operator is {operator} type({type_converter(operator)})"
+        )
     if operator is None:
         return value
     if operator is AssertionOperator["then"]:
