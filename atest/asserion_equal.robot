@@ -11,7 +11,7 @@ Values Are Equal Fails
 
 Values Are Equal Fails When No assertion_operator
     Run Keyword And Expect Error
-    ...    ValueError: It is not possible perform assertion when operator is None type(nonetype)
+    ...    ValueError: Invalid validation parameters. Assertion operator is mandatory when specifying expected value.
     ...    Is Equal    1    assertion_expected=2
 
 Values Are Equal Fails When No assertion_expected
