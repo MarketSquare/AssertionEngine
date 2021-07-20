@@ -131,7 +131,7 @@ def verify_assertion(
 ) -> Any:
     if operator is None and expected:
         raise ValueError(
-            f"It is not possible perform assertion when operator is {operator} type({type_converter(operator)})"
+            "Invalid validation parameters. Assertion operator is mandatory when specifying expected value."
         )
     if operator is None:
         return value
