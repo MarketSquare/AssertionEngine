@@ -205,8 +205,9 @@ def _validate_operator(
     collapse_spaces=False
 ):
     try:
-        return verify_assertion(actual, operator, expected, message, custom_message,
-        collapse_spaces)
+        return verify_assertion(
+            actual, operator, expected, message, custom_message, collapse_spaces
+        )
     except Exception as error:
         return error
 
