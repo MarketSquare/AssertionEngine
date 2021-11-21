@@ -45,6 +45,9 @@ def test_equals():
             AssertionOperator["=="], "actual", "unexpected", "partial error"
         ),
         _validate_operator(AssertionOperator["=="], 1, "1"),
+        _validate_operator(
+            AssertionOperator["=="], "collapse\xa0spaces\xa0\x20test", "collapse spaces test", collapse_spaces=True
+        ),
     ]
     verify_all("Test equals", results)
 
@@ -198,10 +201,12 @@ def test_invalid_operator():
 
 
 def _validate_operator(
-    operator: AssertionOperator, actual, expected, message="", custom_message=""
+    operator: AssertionOperator, actual, expected, message="", custom_message="",
+    collapse_spaces=False
 ):
     try:
-        return verify_assertion(actual, operator, expected, message, custom_message)
+        return verify_assertion(actual, operator, expected, message, custom_message,
+        collapse_spaces)
     except Exception as error:
         return error
 

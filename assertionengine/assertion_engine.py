@@ -128,11 +128,15 @@ def verify_assertion(
     expected: Any,
     message: str = "",
     custom_message: Optional[str] = None,
+    collapse_spaces: bool = False,
 ) -> Any:
     if operator is None and expected:
         raise ValueError(
             "Invalid validation parameters. Assertion operator is mandatory when specifying expected value."
         )
+    if collapse_spaces:
+        value = _collapse_spaces(value)
+        expected = _collapse_spaces(expected)
     if operator is None:
         return value
     if operator is AssertionOperator["then"]:
@@ -159,6 +163,13 @@ def verify_assertion(
             )
         raise AssertionError(error_msg)
     return value
+
+
+def _collapse_spaces(value: Any) -> Any:
+    if isinstance(value, str):
+        return re.sub(r"\s+", " ", value)
+    else:
+        return value
 
 
 def float_str_verify_assertion(
