@@ -30,6 +30,8 @@ AssertionOperator = Enum(
         "equal": "==",
         "==": "==",
         "should be": "==",
+        "equal;normalize spaces": "equal;normalize spaces",
+        "should be;normalize spaces": "equal;normalize spaces",
         "inequal": "!=",
         "!=": "!=",
         "should not be": "!=",
@@ -57,20 +59,21 @@ AssertionOperator = Enum(
 AssertionOperator.__doc__ = """
     Currently supported assertion operators are:
 
-    |      = Operator =   |   = Alternative Operators =       |              = Description =                                                       | = Validate Equivalent =              |
-    | ``==``              | ``equal``, ``should be``          | Checks if returned value is equal to expected value.                               | ``value == expected``                |
-    | ``!=``              | ``inequal``, ``should not be``    | Checks if returned value is not equal to expected value.                           | ``value != expected``                |
-    | ``>``               | ``greater than``                  | Checks if returned value is greater than expected value.                           | ``value > expected``                 |
-    | ``>=``              |                                   | Checks if returned value is greater than or equal to expected value.               | ``value >= expected``                |
-    | ``<``               | ``less than``                     | Checks if returned value is less than expected value.                              | ``value < expected``                 |
-    | ``<=``              |                                   | Checks if returned value is less than or equal to expected value.                  | ``value <= expected``                |
-    | ``*=``              | ``contains``                      | Checks if returned value contains expected value as substring.                     | ``expected in value``                |
-    |                     | ``not contains``                  | Checks if returned value does not contain expected value as substring.             | ``expected in value``                |
-    | ``^=``              | ``should start with``, ``starts`` | Checks if returned value starts with expected value.                               | ``re.search(f"^{expected}", value)`` |
-    | ``$=``              | ``should end with``, ``ends``     | Checks if returned value ends with expected value.                                 | ``re.search(f"{expected}$", value)`` |
-    | ``matches``         |                                   | Checks if given RegEx matches minimum once in returned value.                      | ``re.search(expected, value)``       |
-    | ``validate``        |                                   | Checks if given Python expression evaluates to ``True``.                           |                                      |
-    | ``evaluate``        |  ``then``                         | When using this operator, the keyword does return the evaluated Python expression. |                        |
+    |      = Operator =        |   = Alternative Operators =       |              = Description =                                                       | = Validate Equivalent =              |
+    | ``==``                   | ``equal``, ``should be``          | Checks if returned value is equal to expected value.                               | ``value == expected``                |
+    | ``equal;normalize spaces | ``should be;normalize spaces      | Checks if returned value is equal to expected value with normalized whitespaces    |                                      |
+    | ``!=``                   | ``inequal``, ``should not be``    | Checks if returned value is not equal to expected value.                           | ``value != expected``                |
+    | ``>``                    | ``greater than``                  | Checks if returned value is greater than expected value.                           | ``value > expected``                 |
+    | ``>=``                   |                                   | Checks if returned value is greater than or equal to expected value.               | ``value >= expected``                |
+    | ``<``                    | ``less than``                     | Checks if returned value is less than expected value.                              | ``value < expected``                 |
+    | ``<=``                   |                                   | Checks if returned value is less than or equal to expected value.                  | ``value <= expected``                |
+    | ``*=``                   | ``contains``                      | Checks if returned value contains expected value as substring.                     | ``expected in value``                |
+    |                          | ``not contains``                  | Checks if returned value does not contain expected value as substring.             | ``expected in value``                |
+    | ``^=``                   | ``should start with``, ``starts`` | Checks if returned value starts with expected value.                               | ``re.search(f"^{expected}", value)`` |
+    | ``$=``                   | ``should end with``, ``ends``     | Checks if returned value ends with expected value.                                 | ``re.search(f"{expected}$", value)`` |
+    | ``matches``              |                                   | Checks if given RegEx matches minimum once in returned value.                      | ``re.search(expected, value)``       |
+    | ``validate``             |                                   | Checks if given Python expression evaluates to ``True``.                           |                                      |
+    | ``evaluate``             |  ``then``                         | When using this operator, the keyword does return the evaluated Python expression. |                                      |
     """
 
 NumericalOperators = [
@@ -117,7 +120,19 @@ handlers: Dict[AssertionOperator, Tuple[Callable, str]] = {
         lambda a, b: BuiltIn().evaluate(b, namespace={"value": a}),
         "should validate to true with",
     ),
+    AssertionOperator["equal;normalize spaces"]: (
+        lambda a, b: _normalize_spaces(a) == _normalize_spaces(b),
+        "should be;normalize spaces",
+    ),
 }
+
+
+def _normalize_spaces(value: Any) -> Any:
+    if isinstance(value, str):
+        return re.sub(r"\s+", " ", value)
+    else:
+        return value
+
 
 T = TypeVar("T")
 
@@ -128,15 +143,11 @@ def verify_assertion(
     expected: Any,
     message: str = "",
     custom_message: Optional[str] = None,
-    collapse_spaces: bool = False,
 ) -> Any:
     if operator is None and expected:
         raise ValueError(
             "Invalid validation parameters. Assertion operator is mandatory when specifying expected value."
         )
-    if collapse_spaces:
-        value = _collapse_spaces(value)
-        expected = _collapse_spaces(expected)
     if operator is None:
         return value
     if operator is AssertionOperator["then"]:
@@ -163,13 +174,6 @@ def verify_assertion(
             )
         raise AssertionError(error_msg)
     return value
-
-
-def _collapse_spaces(value: Any) -> Any:
-    if isinstance(value, str):
-        return re.sub(r"\s+", " ", value)
-    else:
-        return value
 
 
 def float_str_verify_assertion(

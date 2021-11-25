@@ -4,6 +4,7 @@ Library           TestLibrary.py
 *** Test Cases ***
 Values Are Equal
     Is Equal    1    ==    1
+    Is Equal    normalize${SPACE*4}spaces    should be;normalize spaces    normalize${SPACE}spaces
 
 Values Are Equal Fails
     [Documentation]    FAIL Prefix message '1' (str) should be '2' (str)
