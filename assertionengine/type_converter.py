@@ -27,3 +27,7 @@ def is_truthy(item: Any) -> bool:
     if isinstance(item, str):
         return item.upper() not in FALSE_STRINGS
     return bool(item)
+
+
+def is_string(item: Any) -> bool:
+    return isinstance(item, str)

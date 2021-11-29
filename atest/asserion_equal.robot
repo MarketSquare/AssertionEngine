@@ -4,7 +4,11 @@ Library           TestLibrary.py
 *** Test Cases ***
 Values Are Equal
     Is Equal    1    ==    1
-    Is Equal    normalize${SPACE*4}spaces    should be;normalize spaces    normalize${SPACE}spaces
+
+Operator With Rules
+    Is Equal    normalize${SPACE*4}spaces    equal:normalize spaces    normalize${SPACE}spaces
+    Is Equal    IGNORE CASE    should be:ignore case    ignore case
+    Is Equal    NORMALIZE${SPACE*4}SPACE AND CASE    ==:normalize spaces:ignore case    normalize space and case
 
 Values Are Equal Fails
     [Documentation]    FAIL Prefix message '1' (str) should be '2' (str)
@@ -22,5 +26,5 @@ Values Are Equal Fails When No assertion_expected
 
 Values Are Equal Fails When Invalid assertion_operator
     Run Keyword And Expect Error
-    ...    ValueError: Argument 'assertion_operator' got value 'This is wrong' that cannot be converted to AssertionOperator or None.
+    ...    Prefix message `This is wrong` is not a valid assertion operator
     ...    Is Equal    1    assertion_operator=This is wrong    assertion_expected=1

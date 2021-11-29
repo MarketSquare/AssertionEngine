@@ -2,3 +2,6 @@ Not contains
 
 0) actual
 1) custom 'actual' (str) should not contain 't' (str)
+2) actual
+3) ACTUAL
+4) 'actual' (str) should not contain 't' (str)

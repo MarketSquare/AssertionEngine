@@ -3,4 +3,7 @@ Test equals
 0) actual
 1) partial error 'actual' (str) should be 'unexpected' (str)
 2) '1' (int) should be '1' (str)
-3) normalize  spaces  test
+3) actual
+4) normalize spaces
+5) ignore case
+6) ignore case and space

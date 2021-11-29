@@ -45,11 +45,23 @@ def test_equals():
             AssertionOperator["=="], "actual", "unexpected", "partial error"
         ),
         _validate_operator(AssertionOperator["=="], 1, "1"),
+        _validate_operator("==", "actual", "actual"),
         _validate_operator(
-            AssertionOperator["equal;normalize spaces"],
-            "normalize\x20\x20spaces\x20\x20test",
-            "normalize\xa0\xa0spaces\x20\x20test",
+            "equal:normalize spaces",
+            "normalize\x20\x20spaces",
+            "normalize\xa0\x20spaces",
         ),
+        _validate_operator(
+            "should be:ignore case",
+            "IGNORE CASE",
+            "ignore case"
+        ),
+        _validate_operator(
+            "should be:ignore case:normalize spaces",
+            "igNOre Case   and    Space",
+            "ignore case and space",
+        )
+
     ]
     verify_all("Test equals", results)
 
@@ -60,6 +72,8 @@ def test_not_equals():
         _validate_operator(
             AssertionOperator["!="], "actual", "actual", "partial error message"
         ),
+        _validate_operator("!=:ignore case", "acTUal", "expEcted"),
+        _validate_operator("inequal:normalize spaces", "not  equal", "equal"),
     ]
     verify_all("Not equal", results)
 
@@ -70,6 +84,8 @@ def test_contains():
         _validate_operator(AssertionOperator["contains"], "actual", "nope", "custom"),
         _validate_operator(AssertionOperator["*="], "actual", "tual"),
         _validate_operator(AssertionOperator["*="], "actual", "nope"),
+        _validate_operator("contains", "actual", "ctua"),
+        _validate_operator("contains:normalize spaces", "normalize\xa0\x20spaces", "ize\x20\x20spa")
     ]
     verify_all("Contains", results)
 
@@ -78,6 +94,9 @@ def test_not_contains():
     results = [
         _validate_operator(AssertionOperator["not contains"], "actual", "xxx"),
         _validate_operator(AssertionOperator["not contains"], "actual", "t", "custom"),
+        _validate_operator("not contains", "actual", "xxx"),
+        _validate_operator("not contains", "ACTUAL", "t"),
+        _validate_operator("not contains:ignore case", "ACTUAL", "t"),
     ]
     verify_all("Not contains", results)
 

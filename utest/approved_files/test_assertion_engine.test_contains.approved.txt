@@ -4,3 +4,5 @@ Contains
 1) custom 'actual' (str) should contain 'nope' (str)
 2) actual
 3) 'actual' (str) should contain 'nope' (str)
+4) actual
+5) normalize spaces
