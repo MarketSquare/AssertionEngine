@@ -27,7 +27,6 @@ jobs:
         poetry env use ${{ matrix.python-version }}
         poetry install
         poetry env info
-        poetry run inv -l
         poetry run inv deps
     - name: Install RF
       run: |
