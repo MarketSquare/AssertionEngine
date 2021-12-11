@@ -24,9 +24,7 @@ from .type_converter import is_truthy, type_converter
 
 __version__ = "0.2.0"
 
-_rules_string = [
-    "substitute space"
-]
+_rules_string = ["substitute space"]
 _operators_string_base = {
     "equal": "==",
     "==": "==",
@@ -65,7 +63,7 @@ _operators_numbers = {
     "<=": "<=",
     ">=": ">=",
 }
-AssertionOperator = Enum(
+AssertionOperator = Enum(  # type: ignore
     "AssertionOperator",
     {**_operators_numbers, **_operators_string, **_operators_evaluations},
 )
