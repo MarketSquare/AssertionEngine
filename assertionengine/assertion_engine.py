@@ -138,7 +138,7 @@ T = TypeVar("T")
 
 @dataclass
 class Assertion:
-    assertion: Optional[str]
+    assertion: Union[AssertionOperator, str, None]
     rule: Optional[str]
 
 
@@ -159,22 +159,20 @@ def verify_assertion(
     message: str = "",
     custom_message: Optional[str] = None,
 ) -> Any:
-    operator = split_operator(operator)
-    print(operator)
-    print(type(operator))
-    if operator.assertion is None and expected:
+    assertion = split_operator(operator)
+    if assertion.assertion is None and expected:
         raise ValueError(
             "Invalid validation parameters. Assertion operator is mandatory when specifying expected value."
         )
-    if operator.assertion is None:
+    if assertion.assertion is None:
         return value
-    if operator.assertion is AssertionOperator["then"]:
+    if assertion.assertion is AssertionOperator["then"]:
         return cast(T, BuiltIn().evaluate(expected, namespace={"value": value}))
-    handler = handlers.get(operator.assertion)
+    handler = handlers.get(assertion.assertion)  # type: ignore
     filler = " " if message else ""
     if handler is None:
         raise RuntimeError(
-            f"{message}{filler}`{operator.assertion}` is not a valid assertion operator"
+            f"{message}{filler}`{assertion.assertion}` is not a valid assertion operator"
         )
     validator, text = handler
     if not validator(value, expected):
