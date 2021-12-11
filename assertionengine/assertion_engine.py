@@ -15,6 +15,7 @@
 import ast
 import logging
 import re
+from dataclasses import dataclass
 from enum import Enum
 from typing import Any, Callable, Dict, List, Optional, Tuple, TypeVar, cast
 
@@ -133,6 +134,19 @@ handlers: Dict[AssertionOperator, Tuple[Callable, str]] = {
 }
 
 T = TypeVar("T")
+
+
+@dataclass
+class Assertion:
+    assertion: str
+    rule: Optional[str]
+
+
+def split_operator(operator: str) -> Assertion:
+    if "::" not in operator:
+        return Assertion(operator, None)
+    assertion, rule = operator.split("::")
+    return Assertion(assertion, rule)
 
 
 def verify_assertion(
