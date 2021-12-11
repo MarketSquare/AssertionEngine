@@ -1,0 +1,14 @@
+<enum 'AssertionOperator'>
+equal::==
+inequal::!=
+less than::<
+greater than::>
+<=::<=
+>=::>=
+contains::*=
+not contains::not contains
+starts::^=
+ends::$=
+matches::$
+validate::validate
+then::then
