@@ -1,5 +1,4 @@
 from approvaltests import verify  # type: ignore
-from approvaltests.reporters.generic_diff_reporter_factory import GenericDiffReporterFactory  # type: ignore
 
 from assertionengine import AssertionOperator
 from assertionengine.assertion_engine import NumericalOperators, SequenceOperators, EvaluationOperators, handlers
