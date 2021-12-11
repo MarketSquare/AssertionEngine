@@ -54,7 +54,12 @@ def utest(ctx, reporter=None, suite=None):
         suite:    Defines which test suite file to run. Same as: pytest path/to/test.py
                   Must be path to the test suite file
     """
-    args = ["--showlocals"]
+    args = [
+        "--showlocals",
+        "--log-format=%(asctime)s %(levelname)s %(message)s",
+        "--log-date-format=%Y-%m-%d %H:%M:%S",
+        "--log-level=INFO",
+    ]
     if reporter:
         args.append(f"--approvaltests-add-reporter={reporter}")
     if suite:
@@ -89,7 +94,7 @@ def lint_robot(ctx):
 def lint(ctx, error=False):
     """Lint Robot Framework test data and Python code."""
     print("Lint python")
-    black_command = "black --config ./pyproject.toml assertionengine/"
+    black_command = "black --config ./pyproject.toml assertionengine/ tasks.py"
     isort_command = "isort assertionengine/"
     if error:
         black_command = f"{black_command} --check"
@@ -135,7 +140,7 @@ def atest(ctx, zip=None):
         "NONE",
         "--outputdir",
         str(ATEST_OUTPUT),
-        str(ATEST)
+        str(ATEST),
     ]
     ctx.run(" ".join(args))
     output_xml = str(ATEST_OUTPUT / "output.xml")
@@ -169,12 +174,15 @@ def _create_zip():
 @task
 def version(ctx, version):
     text = re.sub(
-        r'__version__ = \"\d+\.\d+\.\d+\"', f'__version__ = "{version}"', ASSERTION_ENGINE.read_text()
+        r"__version__ = \"\d+\.\d+\.\d+\"",
+        f'__version__ = "{version}"',
+        ASSERTION_ENGINE.read_text(),
     )
     ASSERTION_ENGINE.write_text(text, encoding="utf-8")
     pyproject_toml = Path("pyproject.toml")
     text = re.sub(
-        r'version = \"\d+\.\d+\.\d+\"', f'version = "{version}"', pyproject_toml.read_text()
+        r"version = \"\d+\.\d+\.\d+\"",
+        f'version = "{version}"',
+        pyproject_toml.read_text(),
     )
     pyproject_toml.write_text(text, encoding="utf-8")
-
