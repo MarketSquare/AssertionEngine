@@ -1,5 +1,5 @@
 *** Settings ***
-Library           TestLibrary.py
+Library     TestLibrary.py
 
 *** Test Cases ***
 Values Are Equal

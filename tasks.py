@@ -66,8 +66,23 @@ def utest(ctx, reporter=None, suite=None):
 @task
 def lint_robot(ctx):
     """Lint robot tests with tidy"""
-    print("lint robot")
-    ctx.run("python -m robot.tidy --recursive atest/")
+    in_ci = os.getenv("GITHUB_WORKFLOW")
+    print(f"Lint Robot files {'in ci' if in_ci else ''}")
+    atest_folder = Path(__file__).parent.joinpath("atest/")
+    command = [
+        "robotidy",
+        "--lineseparator",
+        "unix",
+        "--configure",
+        "NormalizeAssignments:equal_sign_type=space_and_equal_sign",
+        "--configure",
+        "NormalizeAssignments:equal_sign_type_variables=space_and_equal_sign",
+        str(atest_folder),
+    ]
+    if in_ci:
+        command.insert(1, "--check")
+        command.insert(1, "--diff")
+    ctx.run(" ".join(command))
 
 
 @task(lint_robot)
