@@ -1,0 +1,6 @@
+AssertionOperator.equal
+AssertionOperator.inequal
+AssertionOperator.>=
+AssertionOperator.greater than
+AssertionOperator.<=
+AssertionOperator.less than
