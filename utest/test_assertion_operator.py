@@ -5,7 +5,7 @@ from assertionengine.assertion_engine import NumericalOperators, SequenceOperato
 
 
 def test_assertion_operator():
-    results = [f"{item.name}::{item.value}" for item in AssertionOperator]
+    results = [f"{name}::::{member}" for name, member in AssertionOperator.__members__.items()]
     results.insert(0, str(AssertionOperator))
     verify("\n".join(results))
 

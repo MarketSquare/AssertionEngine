@@ -1,14 +1,42 @@
 <enum 'AssertionOperator'>
-equal::==
-inequal::!=
-less than::<
-greater than::>
-<=::<=
->=::>=
-contains::*=
-not contains::not contains
-starts::^=
-ends::$=
-matches::$
-validate::validate
-then::then
+less than::::AssertionOperator.less than
+<::::AssertionOperator.less than
+greater than::::AssertionOperator.greater than
+>::::AssertionOperator.greater than
+<=::::AssertionOperator.<=
+>=::::AssertionOperator.>=
+equal::::AssertionOperator.equal
+equal::substitute space::::AssertionOperator.equal
+==::::AssertionOperator.equal
+==::substitute space::::AssertionOperator.equal
+should be::::AssertionOperator.equal
+should be::substitute space::::AssertionOperator.equal
+inequal::::AssertionOperator.inequal
+inequal::substitute space::::AssertionOperator.inequal
+!=::::AssertionOperator.inequal
+!=::substitute space::::AssertionOperator.inequal
+should not be::::AssertionOperator.inequal
+should not be::substitute space::::AssertionOperator.inequal
+contains::::AssertionOperator.contains
+contains::substitute space::::AssertionOperator.contains
+not contains::::AssertionOperator.not contains
+not contains::substitute space::::AssertionOperator.not contains
+*=::::AssertionOperator.contains
+*=::substitute space::::AssertionOperator.contains
+starts::::AssertionOperator.starts
+starts::substitute space::::AssertionOperator.starts
+^=::::AssertionOperator.starts
+^=::substitute space::::AssertionOperator.starts
+should start with::::AssertionOperator.starts
+should start with::substitute space::::AssertionOperator.starts
+ends::::AssertionOperator.ends
+ends::substitute space::::AssertionOperator.ends
+should end with::::AssertionOperator.ends
+should end with::substitute space::::AssertionOperator.ends
+$=::::AssertionOperator.ends
+$=::substitute space::::AssertionOperator.ends
+matches::::AssertionOperator.matches
+matches::substitute space::::AssertionOperator.matches
+validate::::AssertionOperator.validate
+then::::AssertionOperator.then
+evaluate::::AssertionOperator.then
