@@ -475,6 +475,21 @@ optional = false
 python-versions = "*"
 
 [[package]]
+name = "robotframework-tidy"
+version = "1.6.2"
+description = "Code autoformatter for Robot Framework"
+category = "dev"
+optional = false
+python-versions = ">=3.7"
+
+[package.dependencies]
+Click = ">=7.0"
+colorama = ">=0.4.3"
+pathspec = "0.9.0"
+robotframework = ">=4.0"
+toml = ">=0.10.2"
+
+[[package]]
 name = "robotstatuschecker"
 version = "2.2.0"
 description = "A tool for checking that Robot Framework test cases have expected statuses and log messages."
@@ -581,7 +596,7 @@ testing = ["pytest (>=4.6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytes
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7"
-content-hash = "deadbeffc6658d8db27df27d1d1cd4b8006d0a5f00ae134c4f1ca7606a38e4a1"
+content-hash = "34c0509c288b7bd36f1b13f945ceb6a418d676b22a4b106d5362f63c9fa33c17"
 
 [metadata.files]
 approvaltests = [
@@ -798,6 +813,10 @@ requests = [
 robotframework = [
     {file = "robotframework-4.1.2-py2.py3-none-any.whl", hash = "sha256:6441c774f274ae022a184165287d967a7c1bb0c5f96ff0005f0468f4c979fb2b"},
     {file = "robotframework-4.1.2.zip", hash = "sha256:7ea2454b847cfcb211e2906743c5c4a868ab096ab4ce1547ab102d91fb224443"},
+]
+robotframework-tidy = [
+    {file = "robotframework-tidy-1.6.2.tar.gz", hash = "sha256:f851c7e0e473820a2e82bdfd322b0d72c7e25043e5a58af48da636af9d23f2db"},
+    {file = "robotframework_tidy-1.6.2-py3-none-any.whl", hash = "sha256:61b82ff7cc4ada4a5a69f560326b194917c7e6a31ab1929210b5ad01c0014a82"},
 ]
 robotstatuschecker = [
     {file = "robotstatuschecker-2.2.0-py2.py3-none-any.whl", hash = "sha256:a1474c1bc3d412d1c22015df8f0b49701ea0c7b917c39bb1a6077211d332e217"},
