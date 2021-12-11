@@ -13,6 +13,7 @@
 # limitations under the License.
 
 import ast
+import logging
 import re
 from enum import Enum
 from typing import Any, Callable, Dict, List, Optional, Tuple, TypeVar, cast
@@ -23,36 +24,50 @@ from .type_converter import is_truthy, type_converter
 
 __version__ = "0.2.0"
 
-
+_rules_string = [
+    "substitute space"
+]
+_operators_string_base = {
+    "equal": "==",
+    "==": "==",
+    "should be": "==",
+    "inequal": "!=",
+    "!=": "!=",
+    "should not be": "!=",
+    "contains": "*=",
+    "not contains": "not contains",
+    "*=": "*=",
+    "starts": "^=",
+    "^=": "^=",
+    "should start with": "^=",
+    "ends": "$=",
+    "should end with": "$=",
+    "$=": "$=",
+    "matches": "$",
+}
+_operators_string = {}
+for operator_string, operator_method in _operators_string_base.items():
+    _operators_string[operator_string] = operator_method
+    for rule in _rules_string:
+        _operators_string[f"{operator_string}::{rule}"] = operator_method
+log = logging.getLogger(__name__)
+log.info(_operators_string)
+_operators_evaluations = {
+    "validate": "validate",
+    "then": "then",
+    "evaluate": "then",
+}
+_operators_numbers = {
+    "less than": "<",
+    "<": "<",
+    "greater than": ">",
+    ">": ">",
+    "<=": "<=",
+    ">=": ">=",
+}
 AssertionOperator = Enum(
     "AssertionOperator",
-    {
-        "equal": "==",
-        "==": "==",
-        "should be": "==",
-        "inequal": "!=",
-        "!=": "!=",
-        "should not be": "!=",
-        "less than": "<",
-        "<": "<",
-        "greater than": ">",
-        ">": ">",
-        "<=": "<=",
-        ">=": ">=",
-        "contains": "*=",
-        "not contains": "not contains",
-        "*=": "*=",
-        "starts": "^=",
-        "^=": "^=",
-        "should start with": "^=",
-        "ends": "$=",
-        "should end with": "$=",
-        "$=": "$=",
-        "matches": "$",
-        "validate": "validate",
-        "then": "then",
-        "evaluate": "then",
-    },
+    {**_operators_numbers, **_operators_string, **_operators_evaluations},
 )
 AssertionOperator.__doc__ = """
     Currently supported assertion operators are:
