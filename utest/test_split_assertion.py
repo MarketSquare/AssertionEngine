@@ -1,16 +1,13 @@
 from approvaltests import verify_all  # type: ignore
 
-from assertionengine.assertion_engine import split_operator, Assertion
+from assertionengine.assertion_engine import split_operator, Assertion, AssertionOperator
 
 
 def test_split_assertion():
     results = []
-    results.append(split_operator("=="))
-    results.append(split_operator("==::substitute space"))
-    try:
-        split_operator("==::substitute::space")
-    except Exception as error:
-        results.append(str(error))
+    results.append(split_operator(AssertionOperator.equal))
+    results.append(split_operator(AssertionOperator["should be::substitute space"]))
+    results.append(split_operator(None))
     verify_all("Test split_operator", results)
 
 

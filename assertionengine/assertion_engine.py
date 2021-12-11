@@ -17,7 +17,7 @@ import logging
 import re
 from dataclasses import dataclass
 from enum import Enum
-from typing import Any, Callable, Dict, List, Optional, Tuple, TypeVar, cast
+from typing import Any, Callable, Dict, List, Optional, Tuple, TypeVar, Union, cast
 
 from robot.libraries.BuiltIn import BuiltIn  # type: ignore
 
@@ -138,15 +138,18 @@ T = TypeVar("T")
 
 @dataclass
 class Assertion:
-    assertion: str
+    assertion: Optional[str]
     rule: Optional[str]
 
 
-def split_operator(operator: str) -> Assertion:
-    if "::" not in operator:
+def split_operator(operator: Union[AssertionOperator, str, None]) -> Assertion:
+    if operator is None:
+        return Assertion(None, None)
+    if isinstance(operator, str):
         return Assertion(operator, None)
-    assertion, rule = operator.split("::")
-    return Assertion(assertion, rule)
+    if "::" not in operator.name:
+        return Assertion(operator, None)
+    return Assertion(operator, operator.name.split("::")[1])
 
 
 def verify_assertion(
@@ -156,19 +159,22 @@ def verify_assertion(
     message: str = "",
     custom_message: Optional[str] = None,
 ) -> Any:
-    if operator is None and expected:
+    operator = split_operator(operator)
+    print(operator)
+    print(type(operator))
+    if operator.assertion is None and expected:
         raise ValueError(
             "Invalid validation parameters. Assertion operator is mandatory when specifying expected value."
         )
-    if operator is None:
+    if operator.assertion is None:
         return value
-    if operator is AssertionOperator["then"]:
+    if operator.assertion is AssertionOperator["then"]:
         return cast(T, BuiltIn().evaluate(expected, namespace={"value": value}))
-    handler = handlers.get(operator)
+    handler = handlers.get(operator.assertion)
     filler = " " if message else ""
     if handler is None:
         raise RuntimeError(
-            f"{message}{filler}`{operator}` is not a valid assertion operator"
+            f"{message}{filler}`{operator.assertion}` is not a valid assertion operator"
         )
     validator, text = handler
     if not validator(value, expected):

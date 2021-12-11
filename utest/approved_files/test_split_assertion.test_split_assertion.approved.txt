@@ -1,5 +1,5 @@
 Test split_operator
 
-0) Assertion(assertion='==', rule=None)
-1) Assertion(assertion='==', rule='substitute space')
-2) too many values to unpack (expected 2)
+0) Assertion(assertion=<AssertionOperator.equal: '=='>, rule=None)
+1) Assertion(assertion=<AssertionOperator.equal: '=='>, rule=None)
+2) Assertion(assertion=None, rule=None)
