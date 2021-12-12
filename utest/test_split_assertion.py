@@ -4,10 +4,8 @@ from assertionengine.assertion_engine import split_operator, Assertion, Assertio
 
 
 def test_split_assertion():
-    results = []
-    results.append(split_operator(AssertionOperator.equal))
-    results.append(split_operator(AssertionOperator["should be::substitute space"]))
-    results.append(split_operator(None))
+    results = [split_operator(AssertionOperator.equal),
+               split_operator(AssertionOperator["should be::substitute space"]), split_operator(None)]
     verify_all("Test split_operator", results)
 
 
