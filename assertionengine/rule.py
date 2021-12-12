@@ -1,11 +1,8 @@
 import re
-from typing import Union, TypeVar
+from typing import Any, Union
 
 
-T = TypeVar("T")
-
-
-def _normalize_spaces(value: T) -> T:
+def _normalize_spaces(value: Any) -> Any:
     value = re.sub(r"\s+", " ", value)
     return value.strip()
 
@@ -14,7 +11,7 @@ _STRINGS = {"normalize spaces": _normalize_spaces}
 _ALL_RULES = {**_STRINGS}
 
 
-def apply(rule: Union[str, None], value: T) -> T:
+def apply(rule: Union[str, None], value: Any) -> Any:
     if rule is None:
         return value
     rule_function = _ALL_RULES.get(rule)
