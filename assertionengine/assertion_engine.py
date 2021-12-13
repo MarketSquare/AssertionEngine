@@ -20,8 +20,8 @@ from typing import Any, Callable, Dict, List, Optional, Tuple, TypeVar, Union, c
 
 from robot.libraries.BuiltIn import BuiltIn  # type: ignore
 
-from .type_converter import is_truthy, type_converter
 from .rule import _STRINGS
+from .type_converter import is_truthy, type_converter
 
 __version__ = "0.2.0"
 
