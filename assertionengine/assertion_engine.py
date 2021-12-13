@@ -13,7 +13,6 @@
 # limitations under the License.
 
 import ast
-import logging
 import re
 from dataclasses import dataclass
 from enum import Enum
@@ -22,10 +21,10 @@ from typing import Any, Callable, Dict, List, Optional, Tuple, TypeVar, Union, c
 from robot.libraries.BuiltIn import BuiltIn  # type: ignore
 
 from .type_converter import is_truthy, type_converter
+from .rule import _STRINGS
 
 __version__ = "0.2.0"
 
-_rules_string = ["substitute space"]
 _operators_string_base = {
     "equal": "==",
     "==": "==",
@@ -47,10 +46,9 @@ _operators_string_base = {
 _operators_string = {}
 for operator_string, operator_method in _operators_string_base.items():
     _operators_string[operator_string] = operator_method
-    for rule in _rules_string:
-        _operators_string[f"{operator_string}::{rule}"] = operator_method
-log = logging.getLogger(__name__)
-log.info(_operators_string)
+    for rule in _STRINGS:
+        _operators_string[f"{operator_string}::{rule}"] = f"{operator_method}::{rule}"
+
 _operators_evaluations = {
     "validate": "validate",
     "then": "then",
@@ -149,7 +147,8 @@ def split_operator(operator: Union[AssertionOperator, str, None]) -> Assertion:
         return Assertion(operator, None)
     if "::" not in operator.name:
         return Assertion(operator, None)
-    return Assertion(operator, operator.name.split("::")[1])
+    operator_str, rule = operator.name.split("::", maxsplit=1)
+    return Assertion(AssertionOperator[operator_str], rule)
 
 
 def verify_assertion(

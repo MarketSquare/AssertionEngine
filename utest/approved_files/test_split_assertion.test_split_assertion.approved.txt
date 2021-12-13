@@ -1,5 +1,5 @@
 Test split_operator
 
 0) Assertion(assertion=<AssertionOperator.equal: '=='>, rule=None)
-1) Assertion(assertion=<AssertionOperator.equal: '=='>, rule=None)
+1) Assertion(assertion=<AssertionOperator.equal: '=='>, rule='normalize spaces')
 2) Assertion(assertion=None, rule=None)
