@@ -5,9 +5,17 @@ Library     TestLibrary.py
 Values Are Equal
     Is Equal    1    ==    1
 
+Values Are Equal With Rule
+    Is Equal    ${SPACE}${SPACE}1${SPACE}${SPACE}1${SPACE}1${SPACE}${SPACE}    equal::normalize spaces
+    ...    1${SPACE}1${SPACE}1
+
 Values Are Equal Fails
     [Documentation]    FAIL Prefix message '1' (str) should be '2' (str)
     Is Equal    1    ==    2
+
+Values Are Equal Fails With Rule
+    [Documentation]    FAIL Prefix message ' 1 1' (str) should be ' 1 2' (str)
+    Is Equal    ${SPACE}1${SPACE}1    ==    ${SPACE}1${SPACE}2
 
 Values Are Equal Fails When No assertion_operator
     Run Keyword And Expect Error

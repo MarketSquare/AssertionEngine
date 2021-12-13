@@ -1,15 +1,15 @@
 from approvaltests import verify_all  # type: ignore
 
-from assertionengine.rule import apply
+from assertionengine.rule import apply_rule
 
 
 def test_rule():
     results = [
-        formatting(apply(None, "tidii")),
-        formatting(apply("normalize spaces", "   tidii kala   ")),
+        formatting(apply_rule(None, "tidii")),
+        formatting(apply_rule("normalize spaces", "   tidii kala   ")),
     ]
     try:
-        apply("not valid rule", "tidii")
+        apply_rule("not valid rule", "tidii")
     except Exception as error:
         results.append(str(error))
     verify_all("Apply rules", results)

@@ -45,6 +45,8 @@ def test_equals():
             AssertionOperator["=="], "actual", "unexpected", "partial error"
         ),
         _validate_operator(AssertionOperator["=="], 1, "1"),
+        _validate_operator(AssertionOperator["equal::normalize spaces"], "\x20normalize\x20\x20spaces\x20", "normalize spaces"),
+        _validate_operator(AssertionOperator["equal::normalize spaces"], "\x20normalize\x20\x20spaces\x20", "wrong"),
     ]
     verify_all("Test equals", results)
 
