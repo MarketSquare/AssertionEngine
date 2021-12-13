@@ -82,7 +82,13 @@ AssertionOperator.__doc__ = """
     | ``$=``              | ``should end with``, ``ends``     | Checks if returned value ends with expected value.                                 | ``re.search(f"{expected}$", value)`` |
     | ``matches``         |                                   | Checks if given RegEx matches minimum once in returned value.                      | ``re.search(expected, value)``       |
     | ``validate``        |                                   | Checks if given Python expression evaluates to ``True``.                           |                                      |
-    | ``evaluate``        |  ``then``                         | When using this operator, the keyword does return the evaluated Python expression. |                        |
+    | ``evaluate``        |  ``then``                         | When using this operator, the keyword does return the evaluated Python expression. |                                      |
+
+    Currently supported rules for assertions are:
+    |       = Rule =       |                         = Valid Operator =                         |                                        = Description =                                        |
+    | ``normalize spaces`` | `==`` , ``!=``, ``*=``, ``not contains``, ``^=``, ``$=`` and ``$`` | Substitutes multiple spaces to single space and strips leading and trailing spaces from value |
+
+    Rules are applied to the value before assertion is performed and keywords returns value where rule is applied.
     """
 
 NumericalOperators = [
