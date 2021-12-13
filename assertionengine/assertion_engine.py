@@ -20,7 +20,7 @@ from typing import Any, Callable, Dict, List, Optional, Tuple, TypeVar, Union, c
 
 from robot.libraries.BuiltIn import BuiltIn  # type: ignore
 
-from .rule import _STRINGS
+from .rule import _STRINGS, apply_rule
 from .type_converter import is_truthy, type_converter
 
 __version__ = "0.2.0"
@@ -165,6 +165,7 @@ def verify_assertion(
         )
     if assertion.assertion is None:
         return value
+    value = apply_rule(assertion.rule, value)
     if assertion.assertion is AssertionOperator["then"]:
         return cast(T, BuiltIn().evaluate(expected, namespace={"value": value}))
     handler = handlers.get(assertion.assertion)  # type: ignore

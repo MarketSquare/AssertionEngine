@@ -11,7 +11,7 @@ _STRINGS = {"normalize spaces": _normalize_spaces}
 _ALL_RULES = {**_STRINGS}
 
 
-def apply(rule: Union[str, None], value: Any) -> Any:
+def apply_rule(rule: Union[str, None], value: Any) -> Any:
     if rule is None:
         return value
     rule_function = _ALL_RULES.get(rule)
