@@ -88,7 +88,11 @@ AssertionOperator.__doc__ = """
     |       = Rule =       |                         = Valid Operator =                         |                                        = Description =                                        |
     | ``normalize spaces`` | `==`` , ``!=``, ``*=``, ``not contains``, ``^=``, ``$=`` and ``$`` | Substitutes multiple spaces to single space and strips leading and trailing spaces from value |
 
-    Rules are applied to the value before assertion is performed and keywords returns value where rule is applied.
+    Rules are applied to the value before assertion is performed and keywords returns a value where rule is applied.
+    Rule is only applied to the which keyword returns and not all rules are valid for all assertion operators. Syntax
+    for using rule is operator, followed by two colons and then the rule: ``operator::rule``. Example:
+    ``equal::normalize spaces`` or ``==::normalize spaces``. Also rule may work only with certain date types, example
+    ``normalize spaces`` works only with strings and not with other data types.
     """
 
 NumericalOperators = [
