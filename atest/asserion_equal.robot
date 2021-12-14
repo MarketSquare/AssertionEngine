@@ -4,10 +4,15 @@ Library     TestLibrary.py
 *** Test Cases ***
 Values Are Equal
     Is Equal    1    ==    1
+    Is Equa As Number    1    ==    ${1}
 
 Values Are Equal With Rule
     Is Equal    ${SPACE}${SPACE}1${SPACE}${SPACE}1${SPACE}1${SPACE}${SPACE}    equal::normalize spaces
     ...    1${SPACE}1${SPACE}1
+
+Rule Fails When Value Is Not Corrent Type
+    [Documentation]    FAIL TypeError: expected string or bytes-like object
+    Is Equa As Number    ${SPACE}1${SPACE}    ==::normalize spaces    ${1}
 
 Values Are Equal Fails
     [Documentation]    FAIL Prefix message '1' (str) should be '2' (str)

@@ -94,7 +94,7 @@ def lint_robot(ctx):
 def lint(ctx, error=False):
     """Lint Robot Framework test data and Python code."""
     print("Lint python")
-    black_command = "black --config ./pyproject.toml assertionengine/ tasks.py"
+    black_command = "black --config ./pyproject.toml assertionengine/ tasks.py atest/"
     isort_command = "isort assertionengine/"
     if error:
         black_command = f"{black_command} --check"
