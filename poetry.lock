@@ -475,6 +475,14 @@ optional = false
 python-versions = "*"
 
 [[package]]
+name = "robotframework-pythonlibcore"
+version = "3.0.0"
+description = "Tools to ease creating larger test libraries for Robot Framework using Python."
+category = "main"
+optional = false
+python-versions = ">=3.6, <4"
+
+[[package]]
 name = "robotframework-tidy"
 version = "1.6.2"
 description = "Code autoformatter for Robot Framework"
@@ -596,7 +604,7 @@ testing = ["pytest (>=4.6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytes
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7"
-content-hash = "34c0509c288b7bd36f1b13f945ceb6a418d676b22a4b106d5362f63c9fa33c17"
+content-hash = "550fe508a0f1a7c9c038cf168a8c8d02ccf977638848468e5ffcca103f2a37d7"
 
 [metadata.files]
 approvaltests = [
@@ -813,6 +821,10 @@ requests = [
 robotframework = [
     {file = "robotframework-4.1.2-py2.py3-none-any.whl", hash = "sha256:6441c774f274ae022a184165287d967a7c1bb0c5f96ff0005f0468f4c979fb2b"},
     {file = "robotframework-4.1.2.zip", hash = "sha256:7ea2454b847cfcb211e2906743c5c4a868ab096ab4ce1547ab102d91fb224443"},
+]
+robotframework-pythonlibcore = [
+    {file = "robotframework-pythonlibcore-3.0.0.tar.gz", hash = "sha256:1bce3b8dfcb7519789ee3a89320f6402e126f6d0a02794184a1ab8cee0e46b5d"},
+    {file = "robotframework_pythonlibcore-3.0.0-py2.py3-none-any.whl", hash = "sha256:af10c2403cd38834988c4ce68ffb6ec6f9b14bd2cd39ecf836d443377c59b7c4"},
 ]
 robotframework-tidy = [
     {file = "robotframework-tidy-1.6.2.tar.gz", hash = "sha256:f851c7e0e473820a2e82bdfd322b0d72c7e25043e5a58af48da636af9d23f2db"},
