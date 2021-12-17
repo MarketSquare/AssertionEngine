@@ -21,7 +21,12 @@ class TestLibrary(DynamicCore):
     ):
         formatter = self._keyword_formatters.get(self.is_equal)
         return verify_assertion(
-            value, assertion_operator, assertion_expected, "Prefix message", message, formatter
+            value,
+            assertion_operator,
+            assertion_expected,
+            "Prefix message",
+            message,
+            formatter,
         )
 
     @keyword
@@ -35,7 +40,12 @@ class TestLibrary(DynamicCore):
         print(f"integer: '{integer}' and type: {type(integer)}")
         formatter = self._keyword_formatters.get(self.is_equal_as_number)
         return verify_assertion(
-            integer, assertion_operator, assertion_expected, "Prefix message", message, formatter
+            integer,
+            assertion_operator,
+            assertion_expected,
+            "Prefix message",
+            message,
+            formatter,
         )
 
     @keyword
