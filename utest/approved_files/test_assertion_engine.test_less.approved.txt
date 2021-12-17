@@ -1,4 +1,5 @@
 Less
 
 0) 2
-1) custom '2' (int) should be greater than '3' (int)
+1) 'int' object has no attribute 'strip'
+2) custom '2' (int) should be greater than '3' (int)

@@ -6,3 +6,4 @@ start with
 3) 'Hello Robots' (str) should start with 'Robots' (str)
 4) Hel[4,5]?[1-9]+ Robots
 5) 'Hel[4,5]?[1-9]+ Robots' (str) should start with '.*' (str)
+6) Hello Robots

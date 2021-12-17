@@ -9,3 +9,4 @@ match
 multiline
 6) 'Actual
 multiline' (str) should match '/(\d)+/' (str)
+7) Actual

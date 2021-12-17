@@ -1,4 +1,5 @@
 Not contains
 
 0) actual
-1) custom 'actual' (str) should not contain 't' (str)
+1) actual
+2) custom 'actual' (str) should not contain 't' (str)

@@ -21,9 +21,11 @@ from .assertion_engine import (
     list_verify_assertion,
     verify_assertion,
 )
+from .formatter import Formatter
 
 __all__ = [
     "AssertionOperator",
+    "Formatter",
     "bool_verify_assertion",
     "dict_verify_assertion",
     "float_str_verify_assertion",
