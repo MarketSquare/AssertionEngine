@@ -1,42 +1,26 @@
 <enum 'AssertionOperator'>
+equal::::AssertionOperator.equal
+==::::AssertionOperator.equal
+should be::::AssertionOperator.equal
+inequal::::AssertionOperator.inequal
+!=::::AssertionOperator.inequal
+should not be::::AssertionOperator.inequal
 less than::::AssertionOperator.less than
 <::::AssertionOperator.less than
 greater than::::AssertionOperator.greater than
 >::::AssertionOperator.greater than
 <=::::AssertionOperator.<=
 >=::::AssertionOperator.>=
-equal::::AssertionOperator.equal
-equal::normalize spaces::::AssertionOperator.equal::normalize spaces
-==::::AssertionOperator.equal
-==::normalize spaces::::AssertionOperator.equal::normalize spaces
-should be::::AssertionOperator.equal
-should be::normalize spaces::::AssertionOperator.equal::normalize spaces
-inequal::::AssertionOperator.inequal
-inequal::normalize spaces::::AssertionOperator.inequal::normalize spaces
-!=::::AssertionOperator.inequal
-!=::normalize spaces::::AssertionOperator.inequal::normalize spaces
-should not be::::AssertionOperator.inequal
-should not be::normalize spaces::::AssertionOperator.inequal::normalize spaces
 contains::::AssertionOperator.contains
-contains::normalize spaces::::AssertionOperator.contains::normalize spaces
 not contains::::AssertionOperator.not contains
-not contains::normalize spaces::::AssertionOperator.not contains::normalize spaces
 *=::::AssertionOperator.contains
-*=::normalize spaces::::AssertionOperator.contains::normalize spaces
 starts::::AssertionOperator.starts
-starts::normalize spaces::::AssertionOperator.starts::normalize spaces
 ^=::::AssertionOperator.starts
-^=::normalize spaces::::AssertionOperator.starts::normalize spaces
 should start with::::AssertionOperator.starts
-should start with::normalize spaces::::AssertionOperator.starts::normalize spaces
 ends::::AssertionOperator.ends
-ends::normalize spaces::::AssertionOperator.ends::normalize spaces
 should end with::::AssertionOperator.ends
-should end with::normalize spaces::::AssertionOperator.ends::normalize spaces
 $=::::AssertionOperator.ends
-$=::normalize spaces::::AssertionOperator.ends::normalize spaces
 matches::::AssertionOperator.matches
-matches::normalize spaces::::AssertionOperator.matches::normalize spaces
 validate::::AssertionOperator.validate
 then::::AssertionOperator.then
 evaluate::::AssertionOperator.then

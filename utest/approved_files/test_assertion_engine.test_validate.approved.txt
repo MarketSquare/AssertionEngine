@@ -2,3 +2,4 @@ validate
 
 0) 1
 1) '1' (int) should validate to true with 'value == 'hello'' (str)
+2) 'int' object has no attribute 'strip'

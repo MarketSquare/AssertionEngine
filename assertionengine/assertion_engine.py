@@ -14,57 +14,44 @@
 
 import ast
 import re
-from dataclasses import dataclass
 from enum import Enum
-from typing import Any, Callable, Dict, List, Optional, Tuple, TypeVar, Union, cast
+from typing import Any, Callable, Dict, List, Optional, Tuple, TypeVar, cast
 
 from robot.libraries.BuiltIn import BuiltIn  # type: ignore
 
-from .rule import _STRINGS, apply_rule
 from .type_converter import is_truthy, type_converter
 
 __version__ = "0.2.0"
 
-_operators_string_base = {
-    "equal": "==",
-    "==": "==",
-    "should be": "==",
-    "inequal": "!=",
-    "!=": "!=",
-    "should not be": "!=",
-    "contains": "*=",
-    "not contains": "not contains",
-    "*=": "*=",
-    "starts": "^=",
-    "^=": "^=",
-    "should start with": "^=",
-    "ends": "$=",
-    "should end with": "$=",
-    "$=": "$=",
-    "matches": "$",
-}
-_operators_string = {}
-for operator_string, operator_method in _operators_string_base.items():
-    _operators_string[operator_string] = operator_method
-    for rule in _STRINGS:
-        _operators_string[f"{operator_string}::{rule}"] = f"{operator_method}::{rule}"
-
-_operators_evaluations = {
-    "validate": "validate",
-    "then": "then",
-    "evaluate": "then",
-}
-_operators_numbers = {
-    "less than": "<",
-    "<": "<",
-    "greater than": ">",
-    ">": ">",
-    "<=": "<=",
-    ">=": ">=",
-}
-AssertionOperator = Enum(  # type: ignore
+AssertionOperator = Enum(
     "AssertionOperator",
-    {**_operators_numbers, **_operators_string, **_operators_evaluations},
+    {
+        "equal": "==",
+        "==": "==",
+        "should be": "==",
+        "inequal": "!=",
+        "!=": "!=",
+        "should not be": "!=",
+        "less than": "<",
+        "<": "<",
+        "greater than": ">",
+        ">": ">",
+        "<=": "<=",
+        ">=": ">=",
+        "contains": "*=",
+        "not contains": "not contains",
+        "*=": "*=",
+        "starts": "^=",
+        "^=": "^=",
+        "should start with": "^=",
+        "ends": "$=",
+        "should end with": "$=",
+        "$=": "$=",
+        "matches": "$",
+        "validate": "validate",
+        "then": "then",
+        "evaluate": "then",
+    },
 )
 AssertionOperator.__doc__ = """
     Currently supported assertion operators are:
@@ -144,21 +131,21 @@ handlers: Dict[AssertionOperator, Tuple[Callable, str]] = {
 T = TypeVar("T")
 
 
-@dataclass
-class Assertion:
-    assertion: Union[AssertionOperator, str, None]
-    rule: Optional[str]
+def apply_formatters(value: T, formatters: list) -> Any:
+    if not formatters:
+        return value
+    for formatter in formatters:
+        value = formatter(value)
+    return value
 
 
-def split_operator(operator: Union[AssertionOperator, str, None]) -> Assertion:
-    if operator is None:
-        return Assertion(None, None)
-    if isinstance(operator, str):
-        return Assertion(operator, None)
-    if "::" not in operator.name:
-        return Assertion(operator, None)
-    operator_str, rule = operator.name.split("::", maxsplit=1)
-    return Assertion(AssertionOperator[operator_str], rule)
+def apply_to_expected(expected: Any, formatters: list) -> Any:
+    if not formatters:
+        return expected
+    for formatter in formatters:
+        if formatter.__name__ == "_apply_to_expected":
+            return apply_formatters(expected, formatters)
+    return expected
 
 
 def verify_assertion(
@@ -167,22 +154,24 @@ def verify_assertion(
     expected: Any,
     message: str = "",
     custom_message: Optional[str] = None,
+    formatters: Optional[list] = None,
 ) -> Any:
-    assertion = split_operator(operator)
-    if assertion.assertion is None and expected:
+
+    if operator is None and expected:
         raise ValueError(
             "Invalid validation parameters. Assertion operator is mandatory when specifying expected value."
         )
-    if assertion.assertion is None:
+    if operator is None:
         return value
-    value = apply_rule(assertion.rule, value)
-    if assertion.assertion is AssertionOperator["then"]:
+    expected = apply_to_expected(expected, formatters)
+    value = apply_formatters(value, formatters)
+    if operator is AssertionOperator["then"]:
         return cast(T, BuiltIn().evaluate(expected, namespace={"value": value}))
-    handler = handlers.get(assertion.assertion)  # type: ignore
+    handler = handlers.get(operator)
     filler = " " if message else ""
     if handler is None:
         raise RuntimeError(
-            f"{message}{filler}`{assertion.assertion}` is not a valid assertion operator"
+            f"{message}{filler}`{operator}` is not a valid assertion operator"
         )
     validator, text = handler
     if not validator(value, expected):
