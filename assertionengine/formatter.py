@@ -1,7 +1,7 @@
 import re
-from typing import Dict, List, Any
+from typing import Any, Dict, List
 
-from robot.api.deco import keyword
+from robot.api.deco import keyword  # type: ignore
 
 
 def _strip(value: str) -> str:
@@ -27,7 +27,6 @@ FormatterTypes = Dict[str, List[str]]
 
 
 class Formatter:
-
     def __init__(self, ctx):
         self.ctx = ctx
 
@@ -49,7 +48,9 @@ class Formatter:
             raise AssertionError("Could not find keyword from library.")
         formatters_with_methods = {}
         for formatter in formatters:
-            formatters_with_methods[self._get_library_keyword(formatter)] = self._get_formatterts(formatters[formatter])
+            formatters_with_methods[
+                self._get_library_keyword(formatter)
+            ] = self._get_formatterts(formatters[formatter])
         self.keyword_formatters = formatters_with_methods
 
     def _are_library_keywords(self, formatters: dict) -> bool:

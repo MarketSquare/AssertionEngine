@@ -5,10 +5,11 @@ Library     TestLibrary.py
 Set Assertion Formatters
     ${formatters} =    Get Keyword Formatters
     Should Be Empty    ${formatters}
-    Set Assertion Formatters    {"Is Equal": ["strip", "apply to expected"], "get Keyword formatters": ["strip", "normalize spaces"]}
+    Set Assertion Formatters
+    ...    {"Is Equal": ["strip", "apply to expected"], "get Keyword formatters": ["strip", "normalize spaces"]}
     ${formatters} =    Get Keyword Formatters
     Length Should Be    ${formatters}    2
-    FOR   ${formatter}    IN    @{formatters}
+    FOR    ${formatter}    IN    @{formatters}
         Length Should Be    ${formatters}[${formatter}]    2
     END
 
@@ -25,7 +26,6 @@ Values Are Equal With Formatter For Expected
     Set Assertion Formatters    {"Is Equal": ["strip", "apply to expected"]}
     Is Equal    1${SPACE}1${SPACE}1    equal
     ...    ${SPACE * 2}1${SPACE}1${SPACE}1${SPACE * 2}
-
 
 Formatter Fails When Value Is Not Corrent Type
     [Documentation]    FAIL AttributeError: 'int' object has no attribute 'strip'

@@ -131,7 +131,7 @@ handlers: Dict[AssertionOperator, Tuple[Callable, str]] = {
 T = TypeVar("T")
 
 
-def apply_formatters(value: T, formatters: list) -> Any:
+def apply_formatters(value: T, formatters: Optional[List[Any]]) -> Any:
     if not formatters:
         return value
     for formatter in formatters:
@@ -139,7 +139,7 @@ def apply_formatters(value: T, formatters: list) -> Any:
     return value
 
 
-def apply_to_expected(expected: Any, formatters: list) -> Any:
+def apply_to_expected(expected: Any, formatters: Optional[List[Any]]) -> Any:
     if not formatters:
         return expected
     for formatter in formatters:
