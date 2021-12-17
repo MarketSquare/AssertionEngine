@@ -1,9 +1,16 @@
 from typing import Optional, Any
 
+from robot.api.deco import keyword
+from robotlibcore import DynamicCore
+
 from assertionengine import verify_assertion, AssertionOperator
 
 
-class TestLibrary:
+class TestLibrary(DynamicCore):
+    def __init__(self):
+        DynamicCore.__init__(self, [])
+
+    @keyword
     def is_equal(
         self,
         value: str,
@@ -15,7 +22,8 @@ class TestLibrary:
             value, assertion_operator, assertion_expected, "Prefix message", message
         )
 
-    def is_equa_as_number(
+    @keyword
+    def is_equal_as_number(
         self,
         integer: int,
         assertion_operator: Optional[AssertionOperator] = None,
