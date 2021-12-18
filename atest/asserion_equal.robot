@@ -17,6 +17,10 @@ Setting Assertion Formatters For Not Existing Keyword Should Fail
     [Documentation]    FAIL Could not find keyword from library.
     Set Assertion Formatters    {"Not Here": ["strip", "apply to expected"]}
 
+Setting Assertion Formatters For Not Existing Formatter Should Fail
+    [Documentation]    FAIL KeyError: 'not here'
+    Set Assertion Formatters    {"Is Equal": ["strip", "not here"]}
+
 Values Are Equal
     Is Equal    1    ==    1
     Is Equal As Number    1    ==    ${1}
