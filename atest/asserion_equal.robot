@@ -13,6 +13,10 @@ Set Assertion Formatters
         Length Should Be    ${formatters}[${formatter}]    2
     END
 
+Setting Assertion Formatters For Not Existing Keyword Should Fail
+    [Documentation]    FAIL Could not find keyword from library.
+    Set Assertion Formatters    {"Not Here": ["strip", "apply to expected"]}
+
 Values Are Equal
     Is Equal    1    ==    1
     Is Equal As Number    1    ==    ${1}
