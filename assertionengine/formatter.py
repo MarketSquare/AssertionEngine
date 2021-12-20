@@ -44,6 +44,19 @@ class Formatter:
 
     @keyword
     def set_assertion_formatters(self, formatters: FormatterTypes):
+        """Set keywords formatters for assertions
+
+        ```formatters`` is dictionary, where key is the keyword name
+        where formatters are applied. Dictionary value is a list of
+        formatter which are applied. Using keywords always replaces
+        existing formatters for keywords.
+
+        Supported formatter are: `normalize space`, `strip` and
+        `apply to expected`
+
+        Example:
+        | `Set Assertion Formatters`    {"Keyword Name": ["strip", "normalize spaces"]}
+        """
         if not self._are_library_keywords(formatters):
             raise AssertionError("Could not find keyword from library.")
         formatters_with_methods = {}
