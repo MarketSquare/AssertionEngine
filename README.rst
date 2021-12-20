@@ -47,7 +47,8 @@ Currently supported assertion operators are:
 | evaluate |  then                     | When using this operator, the keyword does return the evaluated Python expression. |                                  |
 +----------+---------------------------+------------------------------------------------------------------------------------+----------------------------------+
 
-Supported formatters
+Supported formatters:
+
 +-------------------+------------------------------------------------------------+
 | Formatter         | Description                                                |
 +===================+============================================================+
