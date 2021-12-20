@@ -71,15 +71,16 @@ AssertionOperator.__doc__ = """
     | ``validate``        |                                   | Checks if given Python expression evaluates to ``True``.                           |                                      |
     | ``evaluate``        |  ``then``                         | When using this operator, the keyword does return the evaluated Python expression. |                                      |
 
-    Currently supported rules for assertions are:
-    |       = Rule =       |                         = Valid Operator =                         |                                        = Description =                                        |
-    | ``normalize spaces`` | `==`` , ``!=``, ``*=``, ``not contains``, ``^=``, ``$=`` and ``$`` | Substitutes multiple spaces to single space and strips leading and trailing spaces from value |
+    Currently supported formatters for assertions are:
+    |     = Formatter =     |                      = Description =                       |
+    |  ``normalize spaces`` | Substitutes multiple spaces to single space from the value |
+    |       ``strip``       | Removes spaces from the beginning and end of the value     |
+    | ``apply to expected`` | Applies rules also for the expected value                  |
 
-    Rules are applied to the value before assertion is performed and keywords returns a value where rule is applied.
-    Rule is only applied to the which keyword returns and not all rules are valid for all assertion operators. Syntax
-    for using rule is operator, followed by two colons and then the rule: ``operator::rule``. Example:
-    ``equal::normalize spaces`` or ``==::normalize spaces``. Also rule may work only with certain date types, example
-    ``normalize spaces`` works only with strings and not with other data types.
+    Formatters are applied to the value before assertion is performed and keywords returns a value where rule is
+    applied. Formatter is only applied to the value which keyword returns and not all rules are valid for all assertion
+    operators. If ``apply to expected`` formatter is defined, then formatters are then formatter are also applied to
+    expected value.
     """
 
 NumericalOperators = [
