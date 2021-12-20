@@ -47,6 +47,17 @@ Currently supported assertion operators are:
 | evaluate |  then                     | When using this operator, the keyword does return the evaluated Python expression. |                                  |
 +----------+---------------------------+------------------------------------------------------------------------------------+----------------------------------+
 
+Supported formatters
++-------------------+------------------------------------------------------------+
+| Formatter         | Description                                                |
++===================+============================================================+
+| normalize spaces  | Substitutes multiple spaces to single space from the value |
++-------------------+------------------------------------------------------------+
+| strip             | Removes spaces from the beginning and end of the value     |
++-------------------+------------------------------------------------------------+
+| apply to expected | Applies rules also for the expected value                  |
++-------------------+------------------------------------------------------------+
+
 Usage
 -----
 When keywords needs to do an assertion
