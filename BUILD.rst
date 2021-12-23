@@ -5,7 +5,7 @@ Release is done with poetry and invoke::
 
    set VERSION 0.3.0
    poetry run inv version $VERSION
-   git add -u
+   git add assertionengine/assertion_engine.py pyproject.toml
    git commit -m "Set version $VESION"
    git tag -a v$VERSION -m "Release $VERSION"
    git push --tags
