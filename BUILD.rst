@@ -9,6 +9,7 @@ Release is done with poetry and invoke::
    git commit -m "Set version $VESION"
    git tag -a v$VERSION -m "Release $VERSION"
    git push --tags
+   poetry build
    poetry publish
 
 Then check that Pypi looks good: https://pypi.org/project/robotframework-assertion-engine/
