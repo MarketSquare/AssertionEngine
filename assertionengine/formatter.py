@@ -12,8 +12,8 @@ def _normalize_spaces(value: str) -> str:
     return re.sub(r"\s+", " ", value)
 
 
-def _apply_to_expected(value: Any) -> bool:
-    return True
+def _apply_to_expected(value: Any) -> str:
+    return value
 
 
 FormatRules = {

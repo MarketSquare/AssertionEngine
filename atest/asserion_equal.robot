@@ -13,6 +13,17 @@ Set Assertion Formatters
         Length Should Be    ${formatters}[${formatter}]    2
     END
 
+Test With Assertion Formatter Apply To Expected
+    Set Assertion Formatters
+    ...    {"Is Equal": ["normalize spaces", "apply to expected"]}
+    Is Equal    A${SPACE*2}B    equal    A${SPACE*4}B
+
+Test Fail With Assertion Formatter Apply To Expected
+    [Documentation]    FAIL Prefix message 'A B' (str) should be 'A C' (str)
+    Set Assertion Formatters
+    ...    {"Is Equal": ["normalize spaces", "apply to expected"]}
+    Is Equal    A${SPACE*2}B    equal    A${SPACE*4}C
+
 Setting Assertion Formatters For Not Existing Keyword Should Fail
     [Documentation]    FAIL Could not find keyword from library.
     Set Assertion Formatters    {"Not Here": ["strip", "apply to expected"]}
