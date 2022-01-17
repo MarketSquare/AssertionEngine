@@ -1,5 +1,5 @@
 import re
-from typing import Any, Dict, List
+from typing import Dict, List
 
 from robot.api.deco import keyword  # type: ignore
 
@@ -12,7 +12,7 @@ def _normalize_spaces(value: str) -> str:
     return re.sub(r"\s+", " ", value)
 
 
-def _apply_to_expected(value: Any) -> str:
+def _apply_to_expected(value: str) -> str:
     return value
 
 
@@ -44,7 +44,7 @@ class Formatter:
 
     @keyword
     def set_assertion_formatters(self, formatters: FormatterTypes):
-        """Set keywords formatters for assertions
+        """Set keywords formatters for assertions.
 
         ``formatters`` is dictionary, where key is the keyword name
         where formatters are applied. Dictionary value is a list of
@@ -52,7 +52,7 @@ class Formatter:
         existing formatters for keywords.
 
         Supported formatter are: `normalize space`, `strip` and
-        `apply to expected`
+        `apply to expected`.
 
         Example:
         | `Set Assertion Formatters`    {"Keyword Name": ["strip", "normalize spaces"]}
@@ -63,27 +63,27 @@ class Formatter:
         for formatter in formatters:
             formatters_with_methods[
                 self._get_library_keyword(formatter)
-            ] = self._get_formatterts(formatters[formatter])
+            ] = self._get_formatters(formatters[formatter])
         self.keyword_formatters = formatters_with_methods
 
     def _are_library_keywords(self, formatters: dict) -> bool:
         return all([self._library_keyword(item) for item in formatters])
 
     def _library_keyword(self, name: str) -> bool:
-        name = self._normalise_keyword(name)
+        name = self._normalized_keyword(name)
         if self._get_library_keyword(name):
             return True
         return False
 
     def _get_library_keyword(self, name: str):
-        name = self._normalise_keyword(name)
+        name = self._normalized_keyword(name)
         for kw in self.keywords:
-            kw_normalised = self._normalise_keyword(kw)
-            if kw_normalised == name:
+            kw_normalized = self._normalized_keyword(kw)
+            if kw_normalized == name:
                 return self.keywords[kw]
 
-    def _normalise_keyword(self, name: str):
+    def _normalized_keyword(self, name: str):
         return name.lower().replace(" ", "_")
 
-    def _get_formatterts(self, kw_formatter: List) -> List:
+    def _get_formatters(self, kw_formatter: List) -> List:
         return [FormatRules[formatter] for formatter in kw_formatter]
