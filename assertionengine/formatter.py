@@ -70,19 +70,19 @@ class Formatter:
         return all([self._library_keyword(item) for item in formatters])
 
     def _library_keyword(self, name: str) -> bool:
-        name = self._normalized_keyword(name)
+        name = self._normalize_keyword(name)
         if self._get_library_keyword(name):
             return True
         return False
 
     def _get_library_keyword(self, name: str):
-        name = self._normalized_keyword(name)
+        name = self._normalize_keyword(name)
         for kw in self.keywords:
-            kw_normalized = self._normalized_keyword(kw)
+            kw_normalized = self._normalize_keyword(kw)
             if kw_normalized == name:
                 return self.keywords[kw]
 
-    def _normalized_keyword(self, name: str):
+    def _normalize_keyword(self, name: str):
         return name.lower().replace(" ", "_")
 
     def _get_formatters(self, kw_formatter: List) -> List:
