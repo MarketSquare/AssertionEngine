@@ -14,8 +14,8 @@
 
 import ast
 import re
-from enum import Enum
-from typing import Any, Callable, Dict, List, Optional, Tuple, TypeVar, cast
+from enum import Enum, Flag, IntFlag
+from typing import Any, Callable, Dict, List, Optional, Tuple, TypeVar, Union, cast
 
 from robot.libraries.BuiltIn import BuiltIn  # type: ignore
 
@@ -129,6 +129,17 @@ handlers: Dict[AssertionOperator, Tuple[Callable, str]] = {
     ),
 }
 
+
+set_handlers: Dict[AssertionOperator, Tuple[Callable, str]] = {
+    AssertionOperator["=="]: (lambda a, b: a == b, "should be"),
+    AssertionOperator["!="]: (lambda a, b: a != b, "should not be"),
+    AssertionOperator["*="]: (lambda a, b: b.issubset(a), "should contain"),
+    AssertionOperator["not contains"]: (
+        lambda a, b: not b.issubset(a),
+        "should not contain",
+    ),
+}
+
 T = TypeVar("T")
 
 
@@ -176,20 +187,72 @@ def verify_assertion(
         )
     validator, text = handler
     if not validator(value, expected):
-        if not custom_message:
-            error_msg = (
-                f"{message}{filler}'{value}' ({type_converter(value)}) "
-                f"{text} '{expected}' ({type_converter(expected)})"
-            )
-        else:
-            error_msg = custom_message.format(
-                value=value,
-                value_type=type_converter(value),
-                expected=expected,
-                expected_type=type_converter(expected),
-            )
-        raise AssertionError(error_msg)
+        raise_error(custom_message, expected, filler, message, text, value)
     return value
+
+
+def flag_verify_assertion(
+    value: Union[IntFlag, Flag],
+    operator: Optional[AssertionOperator],
+    expected: Any,
+    message: str = "",
+    custom_message: Optional[str] = None,
+) -> Any:
+    if not isinstance(value, Flag):
+        raise TypeError(f"Verified value was not of type Flag. It was {type(value)}")
+    if (operator is None and expected) or (operator and not expected):
+        raise ValueError(
+            "Invalid validation parameters. Assertion operator and expected value can only be used together."
+        )
+    if operator is None:
+        return value
+    if operator is AssertionOperator["then"]:
+        return eval_flag(expected[0], value)
+    filler = " " if message else ""
+    if operator is AssertionOperator["validate"]:
+        if not eval_flag(expected[0], value):
+            raise_error(
+                custom_message,
+                expected,
+                filler,
+                message,
+                "should validate to true with",
+                value,
+            )
+    else:
+        value_set = set([flag.name for flag in type(value) if flag in value])
+        expected_set = set(expected)
+        handler = set_handlers.get(operator)
+        if handler is None:
+            raise RuntimeError(
+                f"{message}{filler}`{operator}` is not a valid assertion operator"
+            )
+        validator, text = handler
+        if not validator(value_set, expected_set):
+            raise_error(custom_message, expected_set, filler, message, text, value_set)
+    return value
+
+
+def eval_flag(expected, value) -> Any:
+    return BuiltIn().evaluate(
+        expected, namespace={"value": value, **value._member_map_}
+    )
+
+
+def raise_error(custom_message, expected, filler, message, text, value):
+    if not custom_message:
+        error_msg = (
+            f"{message}{filler}'{value}' ({type_converter(value)}) "
+            f"{text} '{expected}' ({type_converter(expected)})"
+        )
+    else:
+        error_msg = custom_message.format(
+            value=value,
+            value_type=type_converter(value),
+            expected=expected,
+            expected_type=type_converter(expected),
+        )
+    raise AssertionError(error_msg)
 
 
 def float_str_verify_assertion(
