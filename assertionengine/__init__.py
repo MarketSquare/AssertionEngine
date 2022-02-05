@@ -29,6 +29,7 @@ __all__ = [
     "bool_verify_assertion",
     "dict_verify_assertion",
     "float_str_verify_assertion",
+    "flag_verify_assertion",
     "int_dict_verify_assertion",
     "list_verify_assertion",
     "verify_assertion",
