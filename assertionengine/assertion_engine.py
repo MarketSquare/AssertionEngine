@@ -213,7 +213,7 @@ def flag_verify_assertion(
         if not eval_flag(expected[0], value):
             raise_error(
                 custom_message,
-                expected,
+                expected[0],
                 filler,
                 message,
                 "should validate to true with",
@@ -229,7 +229,14 @@ def flag_verify_assertion(
             )
         validator, text = handler
         if not validator(value_set, expected_set):
-            raise_error(custom_message, expected_set, filler, message, text, value_set)
+            raise_error(
+                custom_message,
+                sorted(expected_set),
+                filler,
+                message,
+                text,
+                sorted(value_set),
+            )
     return value
 
 
