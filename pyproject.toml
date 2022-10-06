@@ -32,18 +32,18 @@ robotframework = "^5.0.1 || ^6.0.0"
 robotframework-pythonlibcore = "^3.0.0"
 
 [tool.poetry.dev-dependencies]
-pytest = "^6.2.5"
-approvaltests = "3.1.0"
+pytest = "^7.1.3"
+approvaltests = "^7.0.1"
 black = "^22.8.0"
-mypy = "^0.910"
-flake8 = "^4.0.1"
+mypy = "^0.982"
+flake8 = "^5.0.4"
 isort = "^5.10.1"
 pytest-approvaltests = "^0.2.3"
 invoke = "^1.6.0"
 robotstatuschecker = "^2.2.0"
 pre-commit = "^2.15.0"
 empty-files = "^0.0.3"
-robotframework-tidy = "^1.6.2"
+robotframework-tidy = "^3.2.0"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
