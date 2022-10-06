@@ -1,6 +1,7 @@
 *** Settings ***
 Library     TestLibrary.py
 
+
 *** Test Cases ***
 Set Assertion Formatters
     ${formatters} =    Get Keyword Formatters
@@ -73,4 +74,7 @@ Values Are Equal Fails When No assertion_expected
 Values Are Equal Fails When Invalid assertion_operator
     Run Keyword And Expect Error
     ...    ValueError: Argument 'assertion_operator' got value 'This is wrong' that cannot be converted to AssertionOperator or None.
-    ...    Is Equal    1    assertion_operator=This is wrong    assertion_expected=1
+    ...    Is Equal
+    ...    1
+    ...    assertion_operator=This is wrong
+    ...    assertion_expected=1
