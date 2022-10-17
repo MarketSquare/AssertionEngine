@@ -16,7 +16,7 @@ test = ["pytest"]
 
 [[package]]
 name = "approval-utilities"
-version = "7.1.0"
+version = "7.2.0"
 description = "Utilities for your production code that work well with approvaltests"
 category = "dev"
 optional = false
@@ -24,7 +24,7 @@ python-versions = ">=3.6.1"
 
 [[package]]
 name = "approvaltests"
-version = "7.1.0"
+version = "7.2.0"
 description = "Assertion/verification library to aid testing"
 category = "dev"
 optional = false
@@ -32,7 +32,7 @@ python-versions = ">=3.6.1"
 
 [package.dependencies]
 allpairspy = ">=2.1.0"
-approval-utilities = "7.1.0"
+approval-utilities = "7.2.0"
 beautifulsoup4 = ">=4.4.0"
 empty-files = ">=0.0.3"
 mrjob = ">=0.7.4"
@@ -51,7 +51,7 @@ python-versions = ">=3.5"
 dev = ["cloudpickle", "coverage[toml] (>=5.0.2)", "furo", "hypothesis", "mypy (>=0.900,!=0.940)", "pre-commit", "pympler", "pytest (>=4.3.0)", "pytest-mypy-plugins", "sphinx", "sphinx-notfound-page", "zope.interface"]
 docs = ["furo", "sphinx", "sphinx-notfound-page", "zope.interface"]
 tests = ["cloudpickle", "coverage[toml] (>=5.0.2)", "hypothesis", "mypy (>=0.900,!=0.940)", "pympler", "pytest (>=4.3.0)", "pytest-mypy-plugins", "zope.interface"]
-tests_no_zope = ["cloudpickle", "coverage[toml] (>=5.0.2)", "hypothesis", "mypy (>=0.900,!=0.940)", "pympler", "pytest (>=4.3.0)", "pytest-mypy-plugins"]
+tests-no-zope = ["cloudpickle", "coverage[toml] (>=5.0.2)", "hypothesis", "mypy (>=0.900,!=0.940)", "pympler", "pytest (>=4.3.0)", "pytest-mypy-plugins"]
 
 [[package]]
 name = "beautifulsoup4"
@@ -116,7 +116,7 @@ optional = false
 python-versions = ">=3.6.0"
 
 [package.extras]
-unicode_backport = ["unicodedata2"]
+unicode-backport = ["unicodedata2"]
 
 [[package]]
 name = "click"
@@ -255,9 +255,9 @@ python-versions = ">=3.6.1,<4.0"
 
 [package.extras]
 colors = ["colorama (>=0.4.3,<0.5.0)"]
-pipfile_deprecated_finder = ["pipreqs", "requirementslib"]
+pipfile-deprecated-finder = ["pipreqs", "requirementslib"]
 plugins = ["setuptools"]
-requirements_deprecated_finder = ["pip-api", "pipreqs"]
+requirements-deprecated-finder = ["pip-api", "pipreqs"]
 
 [[package]]
 name = "mccabe"
@@ -497,7 +497,7 @@ urllib3 = ">=1.21.1,<1.27"
 
 [package.extras]
 socks = ["PySocks (>=1.5.6,!=1.5.7)"]
-use_chardet_on_py3 = ["chardet (>=3.0.2,<6)"]
+use-chardet-on-py3 = ["chardet (>=3.0.2,<6)"]
 
 [[package]]
 name = "rich"
@@ -687,7 +687,7 @@ testing = ["func-timeout", "jaraco.itertools", "pytest (>=6)", "pytest-black (>=
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7"
-content-hash = "d5ee362e66543893d094e953cafc38c875a556a6a46a64f592ff7bff55a45966"
+content-hash = "fc9110fbf28ce20c0a5727d6dbed9b27b0d78c6610a1dd32fdbac6452226cc94"
 
 [metadata.files]
 allpairspy = [
@@ -695,12 +695,12 @@ allpairspy = [
     {file = "allpairspy-2.5.0.tar.gz", hash = "sha256:9358484c91abe74ba18daf9d6d6904c5be7cc8818397d05248c9d336023c28b1"},
 ]
 approval-utilities = [
-    {file = "approval_utilities-7.1.0-py3-none-any.whl", hash = "sha256:e6c3a1704faf41c6e7971f36a5636c775e82fb89550860ba86cb713c8d827542"},
-    {file = "approval_utilities-7.1.0.tar.gz", hash = "sha256:6f3e086beceaac18714cb771fabb2b17f65acfb9e8f3387f8c0f64cfa097d664"},
+    {file = "approval_utilities-7.2.0-py3-none-any.whl", hash = "sha256:7757083f37dfbeae092fe2abfe5b23eeb212f903978c5ccc793e9a58ecb175d5"},
+    {file = "approval_utilities-7.2.0.tar.gz", hash = "sha256:1d9ec0b4b90b72d8801d501c82a064e26d266b55b21625e8fe055711144a0730"},
 ]
 approvaltests = [
-    {file = "approvaltests-7.1.0-py3-none-any.whl", hash = "sha256:e8ff9c6586755464f8d41fd01e61303c6507b8b21d6f5379c6b481b6f930c70d"},
-    {file = "approvaltests-7.1.0.tar.gz", hash = "sha256:d452c39b7f99bad3c27ca230393814134e844c379a835c0d8002ce542d68b869"},
+    {file = "approvaltests-7.2.0-py3-none-any.whl", hash = "sha256:4b3355267c9e571b7e1b8d8432b79714c8d32874926726e6f20d0aa9034aaab1"},
+    {file = "approvaltests-7.2.0.tar.gz", hash = "sha256:8501830c13b4745b47c738786cf27ee62ff9b0aedad61fd35e457b68a8b5871d"},
 ]
 attrs = [
     {file = "attrs-22.1.0-py2.py3-none-any.whl", hash = "sha256:86efa402f67bf2df34f51a335487cf46b1ec130d02b8d39fd248abfd30da551c"},
