@@ -550,7 +550,7 @@ python-versions = ">=3.6, <4"
 
 [[package]]
 name = "robotframework-tidy"
-version = "3.2"
+version = "3.3.1"
 description = "Code autoformatter for Robot Framework"
 category = "dev"
 optional = false
@@ -559,14 +559,13 @@ python-versions = ">=3.7"
 [package.dependencies]
 click = ">=7.1.2"
 colorama = ">=0.4.3"
-packaging = ">=21.0"
 pathspec = ">=0.9.0,<0.10.0"
 rich-click = "1.4"
 robotframework = ">=4.0"
 tomli = ">=2.0.0"
 
 [package.extras]
-dev = ["coverage", "invoke", "jinja2", "pre-commit", "pyflakes (>=2.4.0,<2.5.0)", "pylama", "pytest"]
+dev = ["coverage", "invoke", "jinja2", "packaging (>=21.0)", "pre-commit", "pyflakes (>=2.4.0,<2.5.0)", "pylama", "pytest"]
 doc = ["furo", "sphinx", "sphinx-copybutton (==0.3.3)", "sphinx-design"]
 
 [[package]]
@@ -687,7 +686,7 @@ testing = ["func-timeout", "jaraco.itertools", "pytest (>=6)", "pytest-black (>=
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7"
-content-hash = "fc9110fbf28ce20c0a5727d6dbed9b27b0d78c6610a1dd32fdbac6452226cc94"
+content-hash = "b94aa6ab34deadd5aca25d7da9990b8341d15f54f73967f44af718a53605fc88"
 
 [metadata.files]
 allpairspy = [
@@ -953,8 +952,8 @@ robotframework-pythonlibcore = [
     {file = "robotframework_pythonlibcore-3.0.0-py2.py3-none-any.whl", hash = "sha256:af10c2403cd38834988c4ce68ffb6ec6f9b14bd2cd39ecf836d443377c59b7c4"},
 ]
 robotframework-tidy = [
-    {file = "robotframework-tidy-3.2.tar.gz", hash = "sha256:7a1366e74ecaa935b4db3fd4a1260bba682055a478bf31e9b2af83f90e180671"},
-    {file = "robotframework_tidy-3.2-py3-none-any.whl", hash = "sha256:6226429fcbc0f95b60c6f147a98154c27929c52285a01faa9a23e336e1b0a14c"},
+    {file = "robotframework-tidy-3.3.1.tar.gz", hash = "sha256:3f97563a6e01a335905f9ac724ce4c2bb4aac739a39407c2b226f5451a7e95e3"},
+    {file = "robotframework_tidy-3.3.1-py3-none-any.whl", hash = "sha256:d5a20640ff43b9b318b4998e1a68536a36665cbf152e5d7a682b1c26218b82f8"},
 ]
 robotstatuschecker = [
     {file = "robotstatuschecker-2.2.0-py2.py3-none-any.whl", hash = "sha256:a1474c1bc3d412d1c22015df8f0b49701ea0c7b917c39bb1a6077211d332e217"},
