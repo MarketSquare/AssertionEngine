@@ -550,7 +550,7 @@ python-versions = ">=3.6, <4"
 
 [[package]]
 name = "robotframework-tidy"
-version = "3.3.1"
+version = "3.3.2"
 description = "Code autoformatter for Robot Framework"
 category = "dev"
 optional = false
@@ -686,7 +686,7 @@ testing = ["func-timeout", "jaraco.itertools", "pytest (>=6)", "pytest-black (>=
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7"
-content-hash = "b94aa6ab34deadd5aca25d7da9990b8341d15f54f73967f44af718a53605fc88"
+content-hash = "020d5cb25b9e23645c0bfb0eca793cf2cef28dd46f447b612085980bf8434104"
 
 [metadata.files]
 allpairspy = [
@@ -952,8 +952,8 @@ robotframework-pythonlibcore = [
     {file = "robotframework_pythonlibcore-3.0.0-py2.py3-none-any.whl", hash = "sha256:af10c2403cd38834988c4ce68ffb6ec6f9b14bd2cd39ecf836d443377c59b7c4"},
 ]
 robotframework-tidy = [
-    {file = "robotframework-tidy-3.3.1.tar.gz", hash = "sha256:3f97563a6e01a335905f9ac724ce4c2bb4aac739a39407c2b226f5451a7e95e3"},
-    {file = "robotframework_tidy-3.3.1-py3-none-any.whl", hash = "sha256:d5a20640ff43b9b318b4998e1a68536a36665cbf152e5d7a682b1c26218b82f8"},
+    {file = "robotframework-tidy-3.3.2.tar.gz", hash = "sha256:822c74a867150b82bfeaff51d2009411a2382dba9c795eba78b4beb60445f03c"},
+    {file = "robotframework_tidy-3.3.2-py3-none-any.whl", hash = "sha256:2e46cc32d08fae820e4fe8213bf59e2f108d1bdb6e90a5a770d9bf1798342aa1"},
 ]
 robotstatuschecker = [
     {file = "robotstatuschecker-2.2.0-py2.py3-none-any.whl", hash = "sha256:a1474c1bc3d412d1c22015df8f0b49701ea0c7b917c39bb1a6077211d332e217"},
