@@ -316,6 +316,8 @@ def list_verify_assertion(
     message="",
     custom_message="",
 ):
+    if operator is None:
+        return value
     if operator:
         if operator not in SequenceOperators:
             raise AttributeError(
@@ -328,9 +330,26 @@ def list_verify_assertion(
         ]:
             expected.sort()
             value.sort()
-    return verify_assertion(
-        map_list(value), operator, map_list(expected), message, custom_message
-    )
+        elif operator == AssertionOperator["contains"]:
+            if not BuiltIn().evaluate(
+                "all(item in value for item in expected)",
+                namespace={"value": value, "expected": expected},
+            ):
+                raise_error(
+                    custom_message,
+                    expected,
+                    " " if message else "",
+                    message,
+                    "should contain",
+                    value,
+                )
+            return value
+        elif operator in [
+            AssertionOperator["then"],
+            AssertionOperator["validate"],
+        ]:
+            expected = expected[0]
+    return verify_assertion(value, operator, expected, message, custom_message)
 
 
 def dict_verify_assertion(
