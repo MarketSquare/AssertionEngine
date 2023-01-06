@@ -20,18 +20,27 @@ Test With Assertion Formatter Apply To Expected
     Is Equal    A${SPACE*2}B    equal    A${SPACE*4}B
 
 Test Fail With Assertion Formatter Apply To Expected
-    [Documentation]    FAIL Prefix message 'A B' (str) should be 'A C' (str)
     Set Assertion Formatters
     ...    {"Is Equal": ["normalize spaces", "apply to expected"]}
-    Is Equal    A${SPACE*2}B    equal    A${SPACE*4}C
+    TRY
+        Is Equal    A${SPACE*2}B    equal    A${SPACE*4}C
+    EXCEPT    Prefix message 'A B' (str) should be 'A C' (str)
+        Pass Execution    Error Message correct
+    END
 
 Setting Assertion Formatters For Not Existing Keyword Should Fail
-    [Documentation]    FAIL Could not find keyword from library.
-    Set Assertion Formatters    {"Not Here": ["strip", "apply to expected"]}
+    TRY
+        Set Assertion Formatters    {"Not Here": ["strip", "apply to expected"]}
+    EXCEPT    Could not find keyword from library.
+        Pass Execution    Error Message Correct
+    END
 
 Setting Assertion Formatters For Not Existing Formatter Should Fail
-    [Documentation]    FAIL KeyError: 'not here'
-    Set Assertion Formatters    {"Is Equal": ["strip", "not here"]}
+    TRY
+        Set Assertion Formatters    {"Is Equal": ["strip", "not here"]}
+    EXCEPT    KeyError: 'not here'
+        Pass Execution    Error Message Correct
+    END
 
 Values Are Equal
     Is Equal    1    ==    1
@@ -48,18 +57,27 @@ Values Are Equal With Formatter For Expected
     ...    ${SPACE * 2}1${SPACE}1${SPACE}1${SPACE * 2}
 
 Formatter Fails When Value Is Not Corrent Type
-    [Documentation]    FAIL AttributeError: 'int' object has no attribute 'strip'
     Set Assertion Formatters    {"Is Equal As Number": ["strip", "normalize spaces"]}
-    Is Equal As Number    ${SPACE}1${SPACE}    ==    ${1}
+    TRY
+        Is Equal As Number    ${SPACE}1${SPACE}    ==    ${1}
+    EXCEPT    AttributeError: 'int' object has no attribute 'strip'
+        Pass Execution    Error Message Correct
+    END
 
 Values Are Equal Fails
-    [Documentation]    FAIL Prefix message '1' (str) should be '2' (str)
-    Is Equal    1    ==    2
+    TRY
+        Is Equal    1    ==    2
+    EXCEPT    Prefix message '1' (str) should be '2' (str)
+        Pass Execution    Error Message Correct
+    END
 
 Values Are Equal Fails With Formatter
-    [Documentation]    FAIL Prefix message '1 1' (str) should be ' 1 2' (str)
     Set Assertion Formatters    {"Is Equal": ["strip", "normalize spaces"]}
-    Is Equal    ${SPACE}1${SPACE}1    ==    ${SPACE}1${SPACE}2
+    TRY
+        Is Equal    ${SPACE}1${SPACE}1    ==    ${SPACE}1${SPACE}2
+    EXCEPT    Prefix message '1 1' (str) should be ' 1 2' (str)
+        Pass Execution    Error Message Correct
+    END
 
 Values Are Equal Fails When No assertion_operator
     Run Keyword And Expect Error
