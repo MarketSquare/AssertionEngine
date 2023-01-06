@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "robotframework-assertion-engine"
-version = "0.6.1"
+version = "1.0.0"
 description = "Generic way to create meaningful and easy to use assertions for the Robot Framework libraries."
 authors = ["Tatu Aalto <aalto.tatu@gmail.com>"]
 license = "Apache License 2.0"
