@@ -25,21 +25,21 @@ Test Fail With Assertion Formatter Apply To Expected
     TRY
         Is Equal    A${SPACE*2}B    equal    A${SPACE*4}C
     EXCEPT    Prefix message 'A B' (str) should be 'A C' (str)
-        Pass Execution    Error Message correct
+        Log    Error Message correct
     END
 
 Setting Assertion Formatters For Not Existing Keyword Should Fail
     TRY
         Set Assertion Formatters    {"Not Here": ["strip", "apply to expected"]}
     EXCEPT    Could not find keyword from library.
-        Pass Execution    Error Message Correct
+        Log    Error Message Correct
     END
 
 Setting Assertion Formatters For Not Existing Formatter Should Fail
     TRY
         Set Assertion Formatters    {"Is Equal": ["strip", "not here"]}
     EXCEPT    KeyError: 'not here'
-        Pass Execution    Error Message Correct
+        Log    Error Message Correct
     END
 
 Values Are Equal
@@ -61,14 +61,14 @@ Formatter Fails When Value Is Not Corrent Type
     TRY
         Is Equal As Number    ${SPACE}1${SPACE}    ==    ${1}
     EXCEPT    AttributeError: 'int' object has no attribute 'strip'
-        Pass Execution    Error Message Correct
+        Log    Error Message Correct
     END
 
 Values Are Equal Fails
     TRY
         Is Equal    1    ==    2
     EXCEPT    Prefix message '1' (str) should be '2' (str)
-        Pass Execution    Error Message Correct
+        Log    Error Message Correct
     END
 
 Values Are Equal Fails With Formatter
@@ -76,7 +76,7 @@ Values Are Equal Fails With Formatter
     TRY
         Is Equal    ${SPACE}1${SPACE}1    ==    ${SPACE}1${SPACE}2
     EXCEPT    Prefix message '1 1' (str) should be ' 1 2' (str)
-        Pass Execution    Error Message Correct
+        Log    Error Message Correct
     END
 
 Values Are Equal Fails When No assertion_operator
