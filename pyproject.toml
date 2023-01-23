@@ -43,7 +43,7 @@ invoke = "^2.0.0"
 robotstatuschecker = "^2.2.0"
 pre-commit = "^2.21.0"
 empty-files = "^0.0.3"
-robotframework-tidy = "^3.3.2"
+robotframework-tidy = "^3.3.3"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
