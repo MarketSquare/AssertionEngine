@@ -803,14 +803,14 @@ files = [
 
 [[package]]
 name = "robotframework-pythonlibcore"
-version = "4.0.0"
+version = "4.1.0"
 description = "Tools to ease creating larger test libraries for Robot Framework using Python."
 category = "main"
 optional = false
 python-versions = ">=3.7, <4"
 files = [
-    {file = "robotframework-pythonlibcore-4.0.0.tar.gz", hash = "sha256:6028f4323b2ba30e1521f978e2e959107adb8590b5d3f2923af3c712315d494c"},
-    {file = "robotframework_pythonlibcore-4.0.0-py2.py3-none-any.whl", hash = "sha256:0bea30b41241f155f95f61a52ed622ad1638e06aee58a96f046ddf0f16106689"},
+    {file = "robotframework-pythonlibcore-4.1.0.tar.gz", hash = "sha256:b677313e2015d28a8bb2bbeb1d98d46e8e850b213113523a7cc9a7ca85016187"},
+    {file = "robotframework_pythonlibcore-4.1.0-py2.py3-none-any.whl", hash = "sha256:d67390fc9ab82ee03ff7af9a0347c2c3759933a796920703d9447493650f9ca9"},
 ]
 
 [[package]]
