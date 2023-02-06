@@ -839,14 +839,14 @@ doc = ["furo", "sphinx", "sphinx-copybutton (==0.3.3)", "sphinx-design"]
 
 [[package]]
 name = "robotstatuschecker"
-version = "2.2.0"
+version = "3.0.0"
 description = "A tool for checking that Robot Framework test cases have expected statuses and log messages."
 category = "dev"
 optional = false
 python-versions = ">=3.6,<4.0"
 files = [
-    {file = "robotstatuschecker-2.2.0-py2.py3-none-any.whl", hash = "sha256:a1474c1bc3d412d1c22015df8f0b49701ea0c7b917c39bb1a6077211d332e217"},
-    {file = "robotstatuschecker-2.2.0.tar.gz", hash = "sha256:46e0092cf52712d03d217aa0135a17a3a15c637ce5220de4044da1f939300421"},
+    {file = "robotstatuschecker-3.0.0-py2.py3-none-any.whl", hash = "sha256:192d785940192c2bc28759b141f31fa3d41726a9fc5f23c2b52ef37f701a1966"},
+    {file = "robotstatuschecker-3.0.0.tar.gz", hash = "sha256:e39b6f76770922c95ac950b84bf21d5bc8cb0500e6636a057a8671d7a5152a38"},
 ]
 
 [package.dependencies]
@@ -1009,4 +1009,4 @@ testing = ["flake8 (<5)", "func-timeout", "jaraco.functools", "jaraco.itertools"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.7"
-content-hash = "61a74c8b418ea94c45f6127f600060185c113c17574406a6026eea5851c5961b"
+content-hash = "3dd2d8f4b1a7045bd4d2d739232167b030b63c9bedad35a6fc01373574eb950c"
