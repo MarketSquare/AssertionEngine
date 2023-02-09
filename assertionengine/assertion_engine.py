@@ -168,7 +168,6 @@ def verify_assertion(
     custom_message: Optional[str] = None,
     formatters: Optional[list] = None,
 ) -> Any:
-
     if operator is None and expected:
         raise ValueError(
             "Invalid validation parameters. Assertion operator is mandatory when specifying expected value."
