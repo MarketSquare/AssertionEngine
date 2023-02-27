@@ -921,20 +921,20 @@ files = [
 
 [[package]]
 name = "robotframework-tidy"
-version = "3.3.3"
+version = "3.4.0"
 description = "Code autoformatter for Robot Framework"
 category = "dev"
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "robotframework-tidy-3.3.3.tar.gz", hash = "sha256:adb552c66d4be7d49d083f74a63557a08069f0ca201ba969a3b54d53640fd365"},
-    {file = "robotframework_tidy-3.3.3-py3-none-any.whl", hash = "sha256:5b87462c13200c7f1c07519dc99ef73c874dd817e83b1b8a6b1017ce14ad977d"},
+    {file = "robotframework-tidy-3.4.0.tar.gz", hash = "sha256:1f18e41f24d84a0621ecbe74284237ac15bbe56b5d111f4e5e9f316b0429efcc"},
+    {file = "robotframework_tidy-3.4.0-py3-none-any.whl", hash = "sha256:336fb135ecf377d413347d64f307f6f632312d72df8dd438a9132efcb38863c1"},
 ]
 
 [package.dependencies]
-click = ">=7.1.2"
+click = ">=8.1.3"
 colorama = ">=0.4.3"
-pathspec = ">=0.9.0,<0.10.0"
+pathspec = ">=0.9.0,<0.12.0"
 rich-click = "1.4"
 robotframework = ">=4.0"
 tomli = ">=2.0.0"
