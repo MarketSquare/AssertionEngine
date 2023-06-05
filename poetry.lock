@@ -975,14 +975,14 @@ files = [
 
 [[package]]
 name = "robotframework-tidy"
-version = "4.2.1"
+version = "4.3.0"
 description = "Code autoformatter for Robot Framework"
 category = "dev"
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "robotframework-tidy-4.2.1.tar.gz", hash = "sha256:8da3f97b196ef1dfcfac9fdfac76b61052fb6efa4f05f83d1c0cc69f13397188"},
-    {file = "robotframework_tidy-4.2.1-py3-none-any.whl", hash = "sha256:5f297e9b50fb678659139f7aa54106fbb11b71ad31981bb5c3001587b3cf8a8b"},
+    {file = "robotframework-tidy-4.3.0.tar.gz", hash = "sha256:abbc9bf84cdc04bf0d48b6d336eda5050543c85ac89939518f82a344e340202e"},
+    {file = "robotframework_tidy-4.3.0-py3-none-any.whl", hash = "sha256:532cda9b454fc66aac8defb9eee3522213c5d617184b934f5fe488dc3b62f186"},
 ]
 
 [package.dependencies]
