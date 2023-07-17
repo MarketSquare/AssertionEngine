@@ -21,34 +21,36 @@ test = ["pytest"]
 
 [[package]]
 name = "approval-utilities"
-version = "8.3.1"
+version = "8.4.1"
 description = "Utilities for your production code that work well with approvaltests"
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "approval_utilities-8.3.1-py3-none-any.whl", hash = "sha256:d3390e1bb9ecdb0b72633bed3089a7fcae95042cac4d7f3fcc211e90037b8bd7"},
-    {file = "approval_utilities-8.3.1.tar.gz", hash = "sha256:eb2027c99590d795d616ff86f3aeca87ca400990868b5385e9a45581e9520198"},
+    {file = "approval_utilities-8.4.1-py3-none-any.whl", hash = "sha256:981449edc9e16d178ee11d8dc4df430b4ac93af9932747d4e3d1408d625d83cd"},
+    {file = "approval_utilities-8.4.1.tar.gz", hash = "sha256:b26fde41b6de2b87c169a1df8def14ccf4509f9e1fa117ef5725a8e10dd7557f"},
 ]
 
 [[package]]
 name = "approvaltests"
-version = "8.3.1"
+version = "8.4.1"
 description = "Assertion/verification library to aid testing"
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "approvaltests-8.3.1-py3-none-any.whl", hash = "sha256:3c408ddcc4cd4cd730ebf2923807ec04b655053af86128e6e5301e7538902f2b"},
-    {file = "approvaltests-8.3.1.tar.gz", hash = "sha256:46d298314c70713e2cfd5a4dc106a78b9def00f81610c5362a56684f8bad360e"},
+    {file = "approvaltests-8.4.1-py3-none-any.whl", hash = "sha256:2a0080ce13906ab51e60caf7036ee229282214d73e38cbbfa31ac300e1da89bc"},
+    {file = "approvaltests-8.4.1.tar.gz", hash = "sha256:8884948a5a989b54faedf95ec91f89f52b2cec6e93a3d2e4b5195c5a28d92e60"},
 ]
 
 [package.dependencies]
 allpairspy = ">=2.1.0"
-approval-utilities = "8.3.1"
+approval-utilities = "8.4.1"
 beautifulsoup4 = ">=4.4.0"
 empty-files = ">=0.0.3"
+mock = ">=5.1.0"
 mrjob = ">=0.7.4"
 pyperclip = ">=1.5.29"
 pytest = ">=4.0.0"
+testfixtures = ">=7.1.0"
 typing-extensions = ">=3.6.2"
 
 [[package]]
@@ -542,6 +544,22 @@ files = [
 ]
 
 [[package]]
+name = "mock"
+version = "5.1.0"
+description = "Rolling backport of unittest.mock for all Pythons"
+optional = false
+python-versions = ">=3.6"
+files = [
+    {file = "mock-5.1.0-py3-none-any.whl", hash = "sha256:18c694e5ae8a208cdb3d2c20a993ca1a7b0efa258c247a1e565150f477f83744"},
+    {file = "mock-5.1.0.tar.gz", hash = "sha256:5e96aad5ccda4718e0a229ed94b2024df75cc2d55575ba5762d31f5767b8767d"},
+]
+
+[package.extras]
+build = ["blurb", "twine", "wheel"]
+docs = ["sphinx"]
+test = ["pytest", "pytest-cov"]
+
+[[package]]
 name = "mrjob"
 version = "0.7.4"
 description = "Python MapReduce framework"
@@ -1001,6 +1019,22 @@ files = [
     {file = "soupsieve-2.3.2.post1-py3-none-any.whl", hash = "sha256:3b2503d3c7084a42b1ebd08116e5f81aadfaea95863628c80a3b774a11b7c759"},
     {file = "soupsieve-2.3.2.post1.tar.gz", hash = "sha256:fc53893b3da2c33de295667a0e19f078c14bf86544af307354de5fcf12a3f30d"},
 ]
+
+[[package]]
+name = "testfixtures"
+version = "7.1.0"
+description = "A collection of helpers and mock objects for unit tests and doc tests."
+optional = false
+python-versions = ">=3.6"
+files = [
+    {file = "testfixtures-7.1.0-py3-none-any.whl", hash = "sha256:d37d8f4ccc7755ab614cc8fb54b2e8b9fe522ab5dcf11b9d141f9be633c200f5"},
+    {file = "testfixtures-7.1.0.tar.gz", hash = "sha256:456ce4f393160f27cd6840a5370ecf4a70f1721737f5e67a2af79e6c817804a4"},
+]
+
+[package.extras]
+build = ["setuptools-git", "twine", "wheel"]
+docs = ["django", "furo", "sphinx", "sybil (>=3)", "twisted", "zope.component"]
+test = ["django", "mypy", "pytest (>=3.6)", "pytest-cov", "pytest-django", "sybil (>=3)", "twisted", "zope.component"]
 
 [[package]]
 name = "tomli"
