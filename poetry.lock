@@ -924,13 +924,13 @@ typer = ["typer (>=0.4)"]
 
 [[package]]
 name = "robotframework"
-version = "6.0.2"
+version = "6.1.1"
 description = "Generic automation framework for acceptance testing and robotic process automation (RPA)"
 optional = false
 python-versions = ">=3.6"
 files = [
-    {file = "robotframework-6.0.2-py3-none-any.whl", hash = "sha256:634cd6f9fdc21142eadd9aacdddbfe7d3e2a757532b71d866dbb404cd0e66dac"},
-    {file = "robotframework-6.0.2.zip", hash = "sha256:6a9c06deb220099990f190c6e4e772675f625e4d5d84640fca6f0ad46ff538d0"},
+    {file = "robotframework-6.1.1-py3-none-any.whl", hash = "sha256:ee0d512d557e72ed760dd075525f6226baaab309010a48f9c9bf1f416ca434f7"},
+    {file = "robotframework-6.1.1.zip", hash = "sha256:3fa18f2596a4df2418c4b59abf43248327c15ed38ad8665f6a9a9c75c95d7789"},
 ]
 
 [[package]]
