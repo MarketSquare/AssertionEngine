@@ -16,10 +16,15 @@ def _apply_to_expected(value: str) -> str:
     return value
 
 
+def _case_insensitive(value: str) -> str:
+    return value.lower()
+
+
 FormatRules = {
     "normalize spaces": _normalize_spaces,
     "strip": _strip,
     "apply to expected": _apply_to_expected,
+    "case insensitive": _case_insensitive,
 }
 
 
