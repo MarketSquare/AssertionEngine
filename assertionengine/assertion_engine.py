@@ -75,6 +75,7 @@ AssertionOperator.__doc__ = """
     |     = Formatter =     |                      = Description =                       |
     |  ``normalize spaces`` | Substitutes multiple spaces to single space from the value |
     |       ``strip``       | Removes spaces from the beginning and end of the value     |
+    | ``case insensitive``  | Converts value to lower case before comparing              |
     | ``apply to expected`` | Applies rules also for the expected value                  |
 
     Formatters are applied to the value before assertion is performed and keywords returns a value where rule is
