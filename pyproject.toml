@@ -27,31 +27,31 @@ include = ["assertionengine/py.typed"]
 
 
 [tool.poetry.dependencies]
-python = "^3.7"
+python = ">=3.8.1,<4.0"
 robotframework = "^5.0.1 || ^6.0.0"
 robotframework-pythonlibcore = "^3.0.0 || ^4.0.0"
 
 
 [tool.poetry.group.dev.dependencies]
-black = "^23.1.0"
-pytest = "^7.2.1"
-approvaltests = "^8.1.0"
-mypy = ">=0.991,<1.5"
-flake8 = "^5.0.4"
-isort = "^5.11.5"
-pytest-approvaltests = "^0.2.3"
-invoke = "^2.0.0"
-robotstatuschecker = "^3.0.0"
-pre-commit = "^2.21.0"
-empty-files = "^0.0.3"
-robotframework-tidy = ">=3.3.3,<5.0.0"
+black = "^23.7.0"
+pytest = "^7.4.0"
+approvaltests = "^8.4.1"
+mypy = ">=1.5.1"
+flake8 = "^6.0.0"
+isort = "^5.11.0"
+pytest-approvaltests = "^0.2.4"
+invoke = "^2.2.0"
+robotstatuschecker = "^3.0.1"
+pre-commit = "^3.3.0"
+empty-files = "^0.0.9"
+robotframework-tidy = "^4.4.0"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.black]
-target-version = ['py37']
+target-version = ['py38']
 exclude = '''
 /(
     \.eggs
