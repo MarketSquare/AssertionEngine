@@ -51,6 +51,17 @@ Values Are Equal With Formatter
     Is Equal    ${SPACE}${SPACE}1${SPACE}${SPACE}1${SPACE}1${SPACE}${SPACE}    equal
     ...    1${SPACE}1${SPACE}1
 
+Values Are Equal With Case Insensitive Formatter
+    Set Assertion Formatters    {"Is Equal": ["case insensitive"]}
+    Is Equal    FOOBAR    equal    foobar
+    TRY
+        Is Equal    FOOBAR    equal    foobaR
+    EXCEPT    Prefix message 'foobar' (str) should be 'foobaR' (str)
+        Log    Error Message Correct
+    END
+    Set Assertion Formatters    {"Is Equal": ["case insensitive", "apply to expected"]}
+    Is Equal    FOOBAR    equal    foobaR
+
 Values Are Equal With Formatter For Expected
     Set Assertion Formatters    {"Is Equal": ["strip", "apply to expected"]}
     Is Equal    1${SPACE}1${SPACE}1    equal
