@@ -45,6 +45,7 @@ Setting Assertion Formatters For Not Existing Formatter Should Fail
 Values Are Equal
     Is Equal    1    ==    1
     Is Equal As Number    1    ==    ${1}
+    Is Equal    One    Equals    One
 
 Values Are Equal With Formatter
     Set Assertion Formatters    {"Is Equal": ["strip", "normalize spaces"]}

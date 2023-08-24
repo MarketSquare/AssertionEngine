@@ -1,5 +1,6 @@
 <enum 'AssertionOperator'>
 equal::::AssertionOperator.equal
+equals::::AssertionOperator.equal
 ==::::AssertionOperator.equal
 should be::::AssertionOperator.equal
 inequal::::AssertionOperator.inequal
