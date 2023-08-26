@@ -3,7 +3,13 @@
 
 name: CI
 
-on: [push, pull_request]
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  schedule:
+    - cron: 42 5 * * 3
 
 jobs:
   build:
