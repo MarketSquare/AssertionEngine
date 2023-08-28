@@ -18,7 +18,7 @@ Currently supported assertion operators are:
 +----------+---------------------------+------------------------------------------------------------------------------------+----------------------------------+
 | Operator | Alternative Operators     | Description                                                                        | Validate Equivalent              |
 +==========+===========================+====================================================================================+==================================+
-| ==       | equal, should be          | Checks if returned value is equal to expected value.                               | value == expected                |
+| ==       | equal, equals, should be  | Checks if returned value is equal to expected value.                               | value == expected                |
 +----------+---------------------------+------------------------------------------------------------------------------------+----------------------------------+
 | !=       | inequal, should not be    | Checks if returned value is not equal to expected value.                           | value != expected                |
 +----------+---------------------------+------------------------------------------------------------------------------------+----------------------------------+
