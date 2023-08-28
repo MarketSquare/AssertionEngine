@@ -16,29 +16,29 @@ test = ["pytest (>=6.0.1)", "pytest-md-report (>=0.3)"]
 
 [[package]]
 name = "approval-utilities"
-version = "8.4.1"
+version = "9.0.0"
 description = "Utilities for your production code that work well with approvaltests"
 optional = false
-python-versions = ">=3.7"
+python-versions = ">=3.8"
 files = [
-    {file = "approval_utilities-8.4.1-py3-none-any.whl", hash = "sha256:981449edc9e16d178ee11d8dc4df430b4ac93af9932747d4e3d1408d625d83cd"},
-    {file = "approval_utilities-8.4.1.tar.gz", hash = "sha256:b26fde41b6de2b87c169a1df8def14ccf4509f9e1fa117ef5725a8e10dd7557f"},
+    {file = "approval_utilities-9.0.0-py3-none-any.whl", hash = "sha256:411bd53f364f2e3031e23507eae26890df800d3d56062f3ec4ec8ce40a3abf42"},
+    {file = "approval_utilities-9.0.0.tar.gz", hash = "sha256:648bbaa136620d7b88a23cdfad5a645fe6aa1b077a4f0524f22f9e1ef13081e5"},
 ]
 
 [[package]]
 name = "approvaltests"
-version = "8.4.1"
+version = "9.0.0"
 description = "Assertion/verification library to aid testing"
 optional = false
-python-versions = ">=3.7"
+python-versions = ">=3.8"
 files = [
-    {file = "approvaltests-8.4.1-py3-none-any.whl", hash = "sha256:2a0080ce13906ab51e60caf7036ee229282214d73e38cbbfa31ac300e1da89bc"},
-    {file = "approvaltests-8.4.1.tar.gz", hash = "sha256:8884948a5a989b54faedf95ec91f89f52b2cec6e93a3d2e4b5195c5a28d92e60"},
+    {file = "approvaltests-9.0.0-py3-none-any.whl", hash = "sha256:da21a76396d465ec09b64e9b30d38b6d0d63577821ac8e82ff023732762c6bd0"},
+    {file = "approvaltests-9.0.0.tar.gz", hash = "sha256:5b6601fc07dcce3397b98f29ec71cc061401fa2bfdfbcc3740f2316a0fda91b2"},
 ]
 
 [package.dependencies]
 allpairspy = ">=2.1.0"
-approval-utilities = "8.4.1"
+approval-utilities = "9.0.0"
 beautifulsoup4 = ">=4.4.0"
 empty-files = ">=0.0.3"
 mock = ">=5.1.0"
@@ -1032,4 +1032,4 @@ test = ["covdefaults (>=2.3)", "coverage (>=7.2.7)", "coverage-enable-subprocess
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.8.1,<4.0"
-content-hash = "9cf569d400f5c37633fadb3ee5141fe00c02e4fdbc4167183c71de65caac63c0"
+content-hash = "0777130b674f6fcc19b7d7db7129f774603046e184cf56e5848cf96dc842ac6b"
