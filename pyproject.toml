@@ -64,10 +64,6 @@ exclude = '''
 )/
 '''
 
-[tool.isort]
-profile = "black"
-src_paths="./assertionengine"
-
 [tool.ruff]
 unfixable = []
 exclude = [
