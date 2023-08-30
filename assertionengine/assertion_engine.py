@@ -248,17 +248,25 @@ def eval_flag(expected, value) -> Any:
 
 
 def raise_error(custom_message, expected, filler, message, text, value):
+    type_value, type_expected = type_converter(value), type_converter(expected)
+    value_quotes, expected_quotes = "'", "'"
+    if isinstance(value, str):
+        value = repr(value)
+        value_quotes = ""
+    if isinstance(expected, str):
+        expected = repr(expected)
+        expected_quotes = ""
     if not custom_message:
         error_msg = (
-            f"{message}{filler}'{value}' ({type_converter(value)}) "
-            f"{text} '{expected}' ({type_converter(expected)})"
+            f"{message}{filler}{value_quotes}{value}{value_quotes} ({type_value}) "
+            f"{text} {expected_quotes}{expected}{expected_quotes} ({type_expected})"
         )
     else:
         error_msg = custom_message.format(
             value=value,
-            value_type=type_converter(value),
+            value_type=type_value,
             expected=expected,
-            expected_type=type_converter(expected),
+            expected_type=type_expected,
         )
     raise AssertionError(error_msg)
 

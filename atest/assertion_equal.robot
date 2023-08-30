@@ -83,6 +83,13 @@ Values Are Equal Fails
         Log    Error Message Correct
     END
 
+Values Are Equal Fails Witn Different Spaces
+    TRY
+        Is Equal    1　1 1    ==    2❤️🥳😀
+    EXCEPT    Prefix message '1\\u30001\\u200a1' (str) should be '2❤️🥳😀' (str)
+        Log    Error Message Is Correct
+    END
+
 Values Are Equal Fails With Formatter
     Set Assertion Formatters    {"Is Equal": ["strip", "normalize spaces"]}
     TRY

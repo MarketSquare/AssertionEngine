@@ -47,6 +47,17 @@ def test_equals():
         _validate_operator(AssertionOperator["=="], 1, "1"),
         _validate_operator(AssertionOperator["=="], 1, "1", formatters=[_strip]),
         _validate_operator(AssertionOperator["=="], "  1  ", "1", formatters=[_strip]),
+        _validate_operator(
+            AssertionOperator["=="],
+            "1 😀a for 🥳❤️",
+            "1 😀a for 🥳❤️",
+        ),
+        _validate_operator(
+            AssertionOperator["=="],
+            "1​👽 　🥳〿❤️ÄÖÅ",
+            "1 😀a for 🥳❤️",
+            message="Other"
+        ),
     ]
     verify_all("Test equals", results)
 
