@@ -15,3 +15,6 @@ lsp
 dist
 build
 tmp
+
+.ruff_cache
+.pytest_cache
