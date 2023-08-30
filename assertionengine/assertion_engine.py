@@ -221,7 +221,7 @@ def flag_verify_assertion(
                 value,
             )
     else:
-        value_set = set([flag.name for flag in type(value) if flag in value])
+        value_set = {flag.name for flag in type(value) if flag in value}
         expected_set = set(expected)
         handler = set_handlers.get(operator)
         if handler is None:
@@ -280,7 +280,7 @@ def float_str_verify_assertion(
 ):
     if operator is None:
         return value
-    elif operator in NumericalOperators:
+    if operator in NumericalOperators:
         expected = float(expected)
     elif operator in [
         AssertionOperator["validate"],
@@ -312,10 +312,9 @@ def bool_verify_assertion(
 def map_list(selected: List):
     if not selected or len(selected) == 0:
         return None
-    elif len(selected) == 1:
+    if len(selected) == 1:
         return selected[0]
-    else:
-        return selected
+    return selected
 
 
 def list_verify_assertion(
@@ -373,8 +372,7 @@ def dict_verify_assertion(
             f"Operator '{operator.name}' is not allowed in this Keyword."
             f"Allowed operators are: {SequenceOperators}"
         )
-    else:
-        return verify_assertion(value, operator, expected, message, custom_message)
+    return verify_assertion(value, operator, expected, message, custom_message)
 
 
 def int_dict_verify_assertion(
@@ -386,7 +384,7 @@ def int_dict_verify_assertion(
 ):
     if not operator:
         return value
-    elif operator in SequenceOperators:
+    if operator in SequenceOperators:
         if operator not in EvaluationOperators and isinstance(expected, str):
             evaluated_expected = ast.literal_eval(expected)
         else:

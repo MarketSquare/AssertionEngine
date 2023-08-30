@@ -72,7 +72,7 @@ class Formatter:
         self.keyword_formatters = formatters_with_methods
 
     def _are_library_keywords(self, formatters: dict) -> bool:
-        return all([self._library_keyword(item) for item in formatters])
+        return all(self._library_keyword(item) for item in formatters)
 
     def _library_keyword(self, name: str) -> bool:
         name = self._normalize_keyword(name)
@@ -86,6 +86,7 @@ class Formatter:
             kw_normalized = self._normalize_keyword(kw)
             if kw_normalized == name:
                 return self.keywords[kw]
+        return None
 
     def _normalize_keyword(self, name: str):
         return name.lower().replace(" ", "_")

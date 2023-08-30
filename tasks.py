@@ -95,14 +95,15 @@ def lint(ctx, error=False):
     """Lint Robot Framework test data and Python code."""
     print("Lint python")
     black_command = "black --config ./pyproject.toml assertionengine/ tasks.py atest/"
-    isort_command = "isort assertionengine/"
+    ruff_command = "ruff assertionengine"
+
     if error:
         black_command = f"{black_command} --check"
-        isort_command = f"{isort_command} --check-only"
+    else:
+        ruff_command = f"{ruff_command} --fix"
     ctx.run("mypy --config-file ./mypy.ini assertionengine/ utest/")
     ctx.run(black_command)
-    ctx.run(isort_command)
-    ctx.run("flake8 --config ./.flake8 assertionengine/ utest/")
+    ctx.run(ruff_command)
 
 
 @task
