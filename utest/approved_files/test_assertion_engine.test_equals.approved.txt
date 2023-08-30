@@ -5,3 +5,5 @@ Test equals
 2) '1' (int) should be '1' (str)
 3) 'int' object has no attribute 'strip'
 4) 1
+5) 1 😀a for 🥳❤️
+6) Other '1\u200b👽\u200a\u3000🥳〿❤️ÄÖÅ' (str) should be '1 😀a for 🥳❤️' (str)
