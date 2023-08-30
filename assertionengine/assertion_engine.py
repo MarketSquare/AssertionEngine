@@ -392,13 +392,12 @@ def int_dict_verify_assertion(
         return verify_assertion(
             value, operator, evaluated_expected, message, custom_message
         )
-    elif expected and operator in NumericalOperators:
+    if expected and operator in NumericalOperators:
         for k, v in value.items():
             exp = expected[k]
             verify_assertion(v, operator, exp, message, custom_message)
         return value
-    else:
-        raise AttributeError(
-            f"Operator '{operator.name}' is not allowed in this Keyword."
-            f"Allowed operators are: {NumericalOperators} and {SequenceOperators}"
-        )
+    raise AttributeError(
+        f"Operator '{operator.name}' is not allowed in this Keyword."
+        f"Allowed operators are: {NumericalOperators} and {SequenceOperators}"
+    )
