@@ -72,7 +72,7 @@ class TestLibrary(DynamicCore):
 
     @keyword
     def get_keyword_formatters(self) -> dict:
-        LOG.info(self.lib_formatter)
+        LOG.info(self.lib_formatter.keyword_formatters)
         return self.lib_formatter.keyword_formatters
 
     @keyword
