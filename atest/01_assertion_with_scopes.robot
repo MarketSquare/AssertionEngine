@@ -53,3 +53,8 @@ Test Scope Should Be Emptry
 
 Correct Formatter Is Appied
     Is Equal Scope    A${SPACE*2}B    equal    A B
+    TRY
+        Is Equal Scope    A${SPACE*2}B    equal    A${SPACE*4}B
+    EXCEPT    Prefix message 'A B' (str) should be 'A${SPACE*4}B' (str)
+        Log    Correct error
+    END

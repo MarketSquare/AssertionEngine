@@ -40,6 +40,12 @@ class LibFormatter(Formatter):
             return self.keyword_formatters[Scope.Suite].get(kw_str)
         return self.keyword_formatters[Scope.Global].get(kw_str)
 
+    def end_test(self, name, attributes):
+        self.keyword_formatters[Scope.Test] = {}
+
+    def end_suite(self, name, attributes):
+        self.keyword_formatters[Scope.Suite] = {}
+
 
 class TestLibraryWithScopes(DynamicCore):
     lib_formatter = LibFormatter()
@@ -85,6 +91,3 @@ class TestLibraryWithScopes(DynamicCore):
     ):
         kw_str = self.lib_formatter.normalize_keyword(keyword)
         self.lib_formatter.set_formatter(kw_str, scope, *formatters)
-
-    def end_test(self, name, attributes):
-        self.lib_formatter.keyword_formatters[Scope.Test] = {}
