@@ -1,11 +1,18 @@
 from approvaltests import verify  # type: ignore
 
 from assertionengine import AssertionOperator
-from assertionengine.assertion_engine import NumericalOperators, SequenceOperators, EvaluationOperators, handlers
+from assertionengine.assertion_engine import (
+    NumericalOperators,
+    SequenceOperators,
+    EvaluationOperators,
+    handlers,
+)
 
 
 def test_assertion_operator():
-    results = [f"{name}::::{member}" for name, member in AssertionOperator.__members__.items()]
+    results = [
+        f"{name}::::{member}" for name, member in AssertionOperator.__members__.items()
+    ]
     results.insert(0, str(AssertionOperator))
     verify("\n".join(results))
 
