@@ -1,6 +1,6 @@
 import logging
 from enum import Enum, auto
-from typing import Optional, Any, Callable
+from typing import Optional, Any
 
 from robot.api.deco import keyword
 from robotlibcore import DynamicCore
