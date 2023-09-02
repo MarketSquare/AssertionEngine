@@ -1,5 +1,5 @@
 import logging
-from typing import Optional, Any, Callable
+from typing import Optional, Any
 
 from robot.api.deco import keyword
 from robotlibcore import DynamicCore
@@ -15,11 +15,11 @@ class LibFormatter(Formatter):
     def __init__(self):
         self.keyword_formatters = {}
 
-    def set_formatter(self, keyword: Callable, *formatter: str):
+    def set_formatter(self, keyword: str, *formatter: str):
         formatter = self.formatters_to_method(list(formatter))
-        self.keyword_formatters[keyword] = list(formatter)
+        self.keyword_formatters[keyword] = formatter
 
-    def get_formatter(self, keyword: Callable):
+    def get_formatter(self, keyword: str):
         LOG.info(self.keyword_formatters.get(keyword))
         return self.keyword_formatters.get(keyword)
 
@@ -40,7 +40,7 @@ class TestLibrary(DynamicCore):
         assertion_expected: Any = None,
         message: str = None,
     ):
-        formatter = self.lib_formatter.get_formatter(self.is_equal)
+        formatter = self.lib_formatter.get_formatter(self.is_equal.__name__)
         LOG.info(formatter)
         return verify_assertion(
             value,
@@ -60,7 +60,7 @@ class TestLibrary(DynamicCore):
         message: str = None,
     ):
         LOG.info(f"integer: '{integer}' and type: {type(integer)}")
-        formatter = self.lib_formatter.get_formatter(self.is_equal_as_number)
+        formatter = self.lib_formatter.get_formatter(self.is_equal_as_number.__name__)
         return verify_assertion(
             integer,
             assertion_operator,
@@ -77,5 +77,5 @@ class TestLibrary(DynamicCore):
 
     @keyword
     def set_assertion_formatter(self, keyword: str, *formatters: str):
-        kw_method = self.keywords.get(self.lib_formatter.normalize_keyword(keyword))
-        self.lib_formatter.set_formatter(kw_method, *formatters)
+        kw_str = self.lib_formatter.normalize_keyword(keyword)
+        self.lib_formatter.set_formatter(kw_str, *formatters)
