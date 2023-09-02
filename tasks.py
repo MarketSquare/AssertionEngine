@@ -93,7 +93,6 @@ def lint_robot(ctx):
 @task(lint_robot)
 def lint(ctx, error=False):
     """Lint Robot Framework test data and Python code."""
-    print("Lint python")
     black_command = (
         "black --config ./pyproject.toml assertionengine/ tasks.py atest/ utest/"
     )
@@ -103,8 +102,11 @@ def lint(ctx, error=False):
         black_command = f"{black_command} --check"
     else:
         ruff_command = f"{ruff_command} --fix"
+    print("Run mypy")
     ctx.run("mypy --config-file ./pyproject.toml assertionengine/ utest/")
+    print("Run Black")
     ctx.run(black_command)
+    print("Run Ruff")
     ctx.run(ruff_command)
 
 
