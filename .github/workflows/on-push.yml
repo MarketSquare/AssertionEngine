@@ -20,7 +20,7 @@ jobs:
         python-version: [3.8, 3.11.4]
         rf-version: [5.0.1, 6.0.0]
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
     - name: Set up Python ${{ matrix.python-version }} with Robot Framework ${{ matrix.rf-version }}
       uses: actions/setup-python@v2
       with:
