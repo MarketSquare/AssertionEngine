@@ -50,7 +50,7 @@ jobs:
       run: |
         poetry env use ${{ matrix.python-version }}
         poetry run inv atest -z True
-    - uses: actions/upload-artifact@v2
+    - uses: actions/upload-artifact@v3
       if: ${{ always() }}
       with:
         name: Test results
