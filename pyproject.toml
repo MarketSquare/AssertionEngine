@@ -43,7 +43,7 @@ robotstatuschecker = "^3.0.1"
 pre-commit = "^3.3.0"
 empty-files = "^0.0.9"
 robotframework-tidy = "^4.4.0"
-ruff = ">=0.0.286,<0.0.288"
+ruff = ">=0.0.286,<0.0.290"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
