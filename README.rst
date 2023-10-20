@@ -61,8 +61,37 @@ Supported formatters:
 
 Usage
 -----
-When keywords needs to do an assertion
+When library developers wants to do an assertion inline with the keyword call, then AssertionEngine provides
+automatic validation within single keyword call. Keyword method should get value, example from page, database
+or from anything which the library interacts and then use `verify_assertion` method from AssertionEngine to
+perform the validation. The `verify_assertion` methods needs three things to perform the assertion:
+`value` from the system, `assertion_operator` how  the validation is performed and `assertion_expected` which
+represent the expected value. It is also possible to provide custom error message and prefix the default error
+message.
 
+Example library can contain keyword::
+
+    def keyword(
+        arg_to_get_value: str,
+        assertion_operator: Optional[AssertionOperator] = None,
+        assertion_expected: Any = None,
+        message: str = None,
+    ):
+        value = method_to_get_value(arg_to_get_value)
+        return verify_assertion(
+            value,
+            assertion_operator,
+            assertion_expected,
+            "Prefix message",
+            message,
+        )
+
+AssertionEngine provides an interface to define scope for the formatters, but because scoping is a library
+specific implementation, it is up to the library to decide how scoping is actually implemented. AssertionEngine
+Formatter class is an `ABC <https://docs.python.org/3/library/abc.html>`_ which provides `get_formatter` and
+`set_formatter` interface methods for library developers. The AssertionEngine
+`atest <https://github.com/MarketSquare/AssertionEngine/tree/main/atest>`_ libraries has examples how interface
+can be implemented in practice.
 
 .. _Robot Framework: http://robotframework.org
 .. _Browser library: https://robotframework-browser.org/
