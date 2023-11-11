@@ -29,7 +29,7 @@ include = ["assertionengine/py.typed"]
 
 [tool.poetry.dependencies]
 python = ">=3.8.1,<4.0"
-robotframework = "^5.0.1 || ^7.0.0"
+robotframework = ">=5.0.1"
 robotframework-pythonlibcore = "^3.0.0 || ^4.0.0"
 
 

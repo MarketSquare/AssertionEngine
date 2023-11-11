@@ -816,13 +816,13 @@ dev = ["pre-commit"]
 
 [[package]]
 name = "robotframework"
-version = "5.0.1"
+version = "6.1.1"
 description = "Generic automation framework for acceptance testing and robotic process automation (RPA)"
 optional = false
 python-versions = ">=3.6"
 files = [
-    {file = "robotframework-5.0.1-py3-none-any.whl", hash = "sha256:2d2072cf9ec807e820bf27e5f71240e715e37691c9ba930a59a71d5c0fd61998"},
-    {file = "robotframework-5.0.1.zip", hash = "sha256:cf5dc59777ed9d8c3e1e91fb4403454890242867735681f22f4f22dbb2a20fc8"},
+    {file = "robotframework-6.1.1-py3-none-any.whl", hash = "sha256:ee0d512d557e72ed760dd075525f6226baaab309010a48f9c9bf1f416ca434f7"},
+    {file = "robotframework-6.1.1.zip", hash = "sha256:3fa18f2596a4df2418c4b59abf43248327c15ed38ad8665f6a9a9c75c95d7789"},
 ]
 
 [[package]]
@@ -1006,4 +1006,4 @@ test = ["covdefaults (>=2.3)", "coverage (>=7.2.7)", "coverage-enable-subprocess
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.8.1,<4.0"
-content-hash = "b74cae42d222bd02a8c759e0e52af46bb21c422394e8564a3d0a3b59f07b0b02"
+content-hash = "53f00a94f417602f4fb74def1f10709302a24a33a9cdf11e5fd9ef8d3b33b26d"
