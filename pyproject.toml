@@ -10,10 +10,11 @@ documentation = "https://github.com/MarketSquare/AssertionEngine/blob/master/REA
 classifiers = [
     "Development Status :: 3 - Alpha",
     "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.7",
     "Programming Language :: Python :: 3.8",
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
     "License :: OSI Approved :: Apache Software License",
     "Operating System :: OS Independent",
     "Topic :: Software Development :: Testing",
@@ -28,7 +29,7 @@ include = ["assertionengine/py.typed"]
 
 [tool.poetry.dependencies]
 python = ">=3.8.1,<4.0"
-robotframework = "^5.0.1 || ^6.0.0"
+robotframework = "^5.0.1 || ^7.0.0"
 robotframework-pythonlibcore = "^3.0.0 || ^4.0.0"
 
 
