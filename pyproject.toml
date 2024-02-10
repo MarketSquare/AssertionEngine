@@ -34,7 +34,7 @@ robotframework-pythonlibcore = "^3.0.0 || ^4.0.0"
 
 
 [tool.poetry.group.dev.dependencies]
-black = ">=23.10.0"
+black = ">=24.1.1"
 pytest = ">=7.4,<9.0"
 approvaltests = ">=8.4.1,<11.0.0"
 mypy = ">=1.6.1"
@@ -66,15 +66,15 @@ exclude = '''
 '''
 
 [tool.ruff]
-unfixable = []
+lint.unfixable = []
 exclude = [
   "__pycache__",
 ]
-ignore = [
+lint.ignore = [
   "E501",  # line too long
 ]
 target-version = "py38"
-select = [
+lint.select = [
   "E",
   "F",
   "W",
@@ -102,7 +102,7 @@ select = [
   "RUF"
 ]
 
-[tool.ruff.pylint]
+[tool.ruff.lint.pylint]
 max-args = 6
 
 [tool.mypy]

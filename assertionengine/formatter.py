@@ -29,12 +29,10 @@ FormatRules = {
 
 class Formatter(ABC):
     @abstractmethod
-    def get_formatter(self, keyword):
-        ...
+    def get_formatter(self, keyword): ...
 
     @abstractmethod
-    def set_formatter(self, keyword, formatter):
-        ...
+    def set_formatter(self, keyword, formatter): ...
 
     def normalize_keyword(self, name: str):
         return name.lower().replace(" ", "_")
