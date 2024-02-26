@@ -16,29 +16,29 @@ test = ["pytest (>=6.0.1)", "pytest-md-report (>=0.3)"]
 
 [[package]]
 name = "approval-utilities"
-version = "10.4.0"
+version = "11.0.0"
 description = "Utilities for your production code that work well with approvaltests"
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "approval_utilities-10.4.0-py3-none-any.whl", hash = "sha256:27385fa64ad1de00375e19b02fa7ed367959bf0dd3050c2191fd847c7cb3e96b"},
-    {file = "approval_utilities-10.4.0.tar.gz", hash = "sha256:ee533ca2117e2ee77f557937c14105c1040bcc1b0e3a3c01d3f108a50f4aaa77"},
+    {file = "approval_utilities-11.0.0-py3-none-any.whl", hash = "sha256:dd9f7f0cb92c983f4f2e2d337feb031cbc6655f0772ca441e368af86d7ad10fc"},
+    {file = "approval_utilities-11.0.0.tar.gz", hash = "sha256:ae42e5b4088e5d8755ae71a2f0f703dbc2e3b741a4f5fb7e86aa56735ffa0c29"},
 ]
 
 [[package]]
 name = "approvaltests"
-version = "10.4.0"
+version = "11.0.0"
 description = "Assertion/verification library to aid testing"
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "approvaltests-10.4.0-py3-none-any.whl", hash = "sha256:88c3854ec2d6d3e03fe0af62adefd367dd75d3b55234649dbf36f70aede28854"},
-    {file = "approvaltests-10.4.0.tar.gz", hash = "sha256:27c95ef910b07bfc2e5db8e48d5c3bbe9c64c9aaf2dfe3379c8bc4f32f9ccb6d"},
+    {file = "approvaltests-11.0.0-py3-none-any.whl", hash = "sha256:9c3ab0630193593c3a8f1387b156ae3e833cabb708269b3f7a1476ba76ad31f3"},
+    {file = "approvaltests-11.0.0.tar.gz", hash = "sha256:f8a40967eaf4569b372103f8521f3b898e0b4d25de348c2d1016e34ac5031eaa"},
 ]
 
 [package.dependencies]
 allpairspy = ">=2.1.0"
-approval-utilities = "10.4.0"
+approval-utilities = "11.0.0"
 beautifulsoup4 = ">=4.4.0"
 empty-files = ">=0.0.3"
 mock = ">=5.1.0"
@@ -1031,4 +1031,4 @@ test = ["covdefaults (>=2.3)", "coverage (>=7.2.7)", "coverage-enable-subprocess
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.8.1,<4.0"
-content-hash = "d64cdef9a09611a2811ecc7634f7e5b7ecc199d718039f0bb951f7fd30d51dd4"
+content-hash = "18eff916e91901bc270e2c94a56bae8b13c1ddac0f105b105e42cef708c393d9"
