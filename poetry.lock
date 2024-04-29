@@ -16,29 +16,29 @@ test = ["pytest (>=6.0.1)", "pytest-md-report (>=0.3)"]
 
 [[package]]
 name = "approval-utilities"
-version = "11.2.1"
+version = "12.0.0"
 description = "Utilities for your production code that work well with approvaltests"
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "approval_utilities-11.2.1-py3-none-any.whl", hash = "sha256:892916ce07694fbc95611310b6b478fbe5ce740acce6b75ed374daedd860a886"},
-    {file = "approval_utilities-11.2.1.tar.gz", hash = "sha256:e5beee1882102ce7dccc0261d66a72fac426f78523578f51df92ff260a36857d"},
+    {file = "approval_utilities-12.0.0-py3-none-any.whl", hash = "sha256:0e0cc217a8182e4c05d4520060b0d06909dac189f0a233b9e956e803f828cbed"},
+    {file = "approval_utilities-12.0.0.tar.gz", hash = "sha256:7df6cc6d1c527fdb7843ea5b75c376629992e3e7d93cf0e63c8b8949a57ad1d3"},
 ]
 
 [[package]]
 name = "approvaltests"
-version = "11.2.1"
+version = "12.0.0"
 description = "Assertion/verification library to aid testing"
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "approvaltests-11.2.1-py3-none-any.whl", hash = "sha256:822a8d77bad82597c34ee19ddebd7db3b0edcac71ec1dae0fc06c26bcb79d6c3"},
-    {file = "approvaltests-11.2.1.tar.gz", hash = "sha256:9d9fc766cd5e024f4d03e6863231100e7b4bea2bcaff590c54eb358dd5cd6c57"},
+    {file = "approvaltests-12.0.0-py3-none-any.whl", hash = "sha256:2769c981b2dd6388253441a83799bbc4cd7a77eed55b6c71d713d0d47dd21621"},
+    {file = "approvaltests-12.0.0.tar.gz", hash = "sha256:390466cd444af20342cdef9301b5b00d19d29d16704a6c3a421b57c2d39cf7f6"},
 ]
 
 [package.dependencies]
 allpairspy = ">=2.1.0"
-approval-utilities = "11.2.1"
+approval-utilities = "12.0.0"
 beautifulsoup4 = ">=4.4.0"
 empty-files = ">=0.0.3"
 mock = ">=5.1.0"
@@ -1031,4 +1031,4 @@ test = ["covdefaults (>=2.3)", "coverage (>=7.2.7)", "coverage-enable-subprocess
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.8.1,<4.0"
-content-hash = "18eff916e91901bc270e2c94a56bae8b13c1ddac0f105b105e42cef708c393d9"
+content-hash = "bdb408bd689efee6c27a550230531ae1f0264b3e51547abebc1644ffdcdd660c"
