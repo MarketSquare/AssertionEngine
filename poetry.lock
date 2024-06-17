@@ -841,13 +841,13 @@ dev = ["pre-commit"]
 
 [[package]]
 name = "robotframework"
-version = "6.1.1"
+version = "7.0.1"
 description = "Generic automation framework for acceptance testing and robotic process automation (RPA)"
 optional = false
-python-versions = ">=3.6"
+python-versions = ">=3.8"
 files = [
-    {file = "robotframework-6.1.1-py3-none-any.whl", hash = "sha256:ee0d512d557e72ed760dd075525f6226baaab309010a48f9c9bf1f416ca434f7"},
-    {file = "robotframework-6.1.1.zip", hash = "sha256:3fa18f2596a4df2418c4b59abf43248327c15ed38ad8665f6a9a9c75c95d7789"},
+    {file = "robotframework-7.0.1-py3-none-any.whl", hash = "sha256:7f4691492311f10e3be69d8ca2f2cae6b6490030d59683d23cd7909088c286d8"},
+    {file = "robotframework-7.0.1.zip", hash = "sha256:58d01b84cd7eccea69f2dbe13cbcbff1299e551168d3b88c25617b0c9d6ddc75"},
 ]
 
 [[package]]
