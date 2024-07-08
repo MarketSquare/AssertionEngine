@@ -16,29 +16,29 @@ test = ["pytest (>=6.0.1)", "pytest-md-report (>=0.3)"]
 
 [[package]]
 name = "approval-utilities"
-version = "12.2.1"
+version = "14.0.0"
 description = "Utilities for your production code that work well with approvaltests"
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "approval_utilities-12.2.1-py3-none-any.whl", hash = "sha256:9543f98a978f70e9250aae2373df420178375bc4735f3bb92e747eda12e846c4"},
-    {file = "approval_utilities-12.2.1.tar.gz", hash = "sha256:b69772f813f892cee0cf8652df8e0f24faa2adbf5ce493c1adbccafe2464650b"},
+    {file = "approval_utilities-14.0.0-py3-none-any.whl", hash = "sha256:fa343eff02a0a16cb9e0c24c5e83905eedb36e09fbc0a64680dde01f0ebaf415"},
+    {file = "approval_utilities-14.0.0.tar.gz", hash = "sha256:75131a15353f3154b370dc6d3c1f23ef481f4d6565763459bfbc143226b66cf9"},
 ]
 
 [[package]]
 name = "approvaltests"
-version = "12.2.1"
+version = "14.0.0"
 description = "Assertion/verification library to aid testing"
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "approvaltests-12.2.1-py3-none-any.whl", hash = "sha256:a284561de839daff34ed329a42e26f118bd3441991eaf5786fff4c350a9f1558"},
-    {file = "approvaltests-12.2.1.tar.gz", hash = "sha256:3648a7cec689fbd59bb290ad6a963498ecc8fe02f33de7435aae4b537cac5c98"},
+    {file = "approvaltests-14.0.0-py3-none-any.whl", hash = "sha256:787dd7869f80b0c1f5c8be6d39ff64d6f2db5ece1d2620a637ef91e191f1a5e3"},
+    {file = "approvaltests-14.0.0.tar.gz", hash = "sha256:47c2d90a78de720764da33fe2cb9bbf680e7d0607cebfbd3dae3c9b0085b3031"},
 ]
 
 [package.dependencies]
 allpairspy = ">=2.1.0"
-approval-utilities = "12.2.1"
+approval-utilities = "14.0.0"
 beautifulsoup4 = ">=4.4.0"
 empty-files = ">=0.0.3"
 mock = ">=5.1.0"
@@ -1031,4 +1031,4 @@ test = ["covdefaults (>=2.3)", "coverage (>=7.2.7)", "coverage-enable-subprocess
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.8.1,<4.0"
-content-hash = "bdb408bd689efee6c27a550230531ae1f0264b3e51547abebc1644ffdcdd660c"
+content-hash = "02c17d118e32871bc80a71a29feb718790f1a1154a4e0036d92e162375e225d1"
