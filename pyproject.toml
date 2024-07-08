@@ -36,7 +36,7 @@ robotframework-pythonlibcore = "^3.0.0 || ^4.0.0"
 [tool.poetry.group.dev.dependencies]
 black = ">=24.1.1"
 pytest = ">=7.4,<9.0"
-approvaltests = ">=8.4.1,<13.0.0"
+approvaltests = ">=14.0.0,<15.0.0"
 mypy = ">=1.6.1"
 pytest-approvaltests = "^0.2.4"
 invoke = "^2.2.0"
