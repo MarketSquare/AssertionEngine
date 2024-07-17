@@ -96,7 +96,7 @@ def lint(ctx, error=False):
     black_command = (
         "black --config ./pyproject.toml assertionengine/ tasks.py atest/ utest/"
     )
-    ruff_command = "ruff assertionengine"
+    ruff_command = "ruff check assertionengine"
 
     if error:
         black_command = f"{black_command} --check"
