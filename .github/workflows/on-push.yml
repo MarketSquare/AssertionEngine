@@ -17,8 +17,8 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [3.8, 3.11.4]
-        rf-version: [5.0.1, 7.0.0]
+        python-version: [3.9, 3.11.4]
+        rf-version: [5.0.1, 7.1.1]
     steps:
     - uses: actions/checkout@v4
     - name: Set up Python ${{ matrix.python-version }} with Robot Framework ${{ matrix.rf-version }}
