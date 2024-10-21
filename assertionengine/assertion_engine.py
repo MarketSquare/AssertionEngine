@@ -221,7 +221,7 @@ def flag_verify_assertion(
                 value,
             )
     else:
-        value_set = {flag.name for flag in type(value) if flag in value}
+        value_set = {flag.name for flag in type(value) if flag in value}  # type: ignore
         expected_set = set(expected)
         handler = set_handlers.get(operator)
         if handler is None:
