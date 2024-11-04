@@ -16,29 +16,29 @@ test = ["pytest (>=6.0.1)", "pytest-md-report (>=0.3)"]
 
 [[package]]
 name = "approval-utilities"
-version = "14.0.0"
+version = "14.1.0"
 description = "Utilities for your production code that work well with approvaltests"
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "approval_utilities-14.0.0-py3-none-any.whl", hash = "sha256:fa343eff02a0a16cb9e0c24c5e83905eedb36e09fbc0a64680dde01f0ebaf415"},
-    {file = "approval_utilities-14.0.0.tar.gz", hash = "sha256:75131a15353f3154b370dc6d3c1f23ef481f4d6565763459bfbc143226b66cf9"},
+    {file = "approval_utilities-14.1.0-py3-none-any.whl", hash = "sha256:218089d47e849b3cd9a2a41d4609efaf1ddaf0005dba7a0e84aa3bbcef1f758e"},
+    {file = "approval_utilities-14.1.0.tar.gz", hash = "sha256:9da9ff0e4b76c2484efc0e3076a297c309ab6e8a82eda23d035a6beba736b582"},
 ]
 
 [[package]]
 name = "approvaltests"
-version = "14.0.0"
+version = "14.1.0"
 description = "Assertion/verification library to aid testing"
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "approvaltests-14.0.0-py3-none-any.whl", hash = "sha256:787dd7869f80b0c1f5c8be6d39ff64d6f2db5ece1d2620a637ef91e191f1a5e3"},
-    {file = "approvaltests-14.0.0.tar.gz", hash = "sha256:47c2d90a78de720764da33fe2cb9bbf680e7d0607cebfbd3dae3c9b0085b3031"},
+    {file = "approvaltests-14.1.0-py3-none-any.whl", hash = "sha256:90f47e3e3ca3dfe49d6e9af6b6087c14a6a82dfc38db69c1c6b3a99cb1563572"},
+    {file = "approvaltests-14.1.0.tar.gz", hash = "sha256:487ad718adf58790dcf72742b714222f3d25c086b1dfd78a2151391b402120af"},
 ]
 
 [package.dependencies]
 allpairspy = ">=2.1.0"
-approval-utilities = "14.0.0"
+approval-utilities = "14.1.0"
 beautifulsoup4 = ">=4.4.0"
 empty-files = ">=0.0.3"
 mock = ">=5.1.0"
