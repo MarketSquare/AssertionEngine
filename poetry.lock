@@ -877,13 +877,13 @@ docs = ["markdown-include", "mkdocs", "mkdocs-glightbox", "mkdocs-material-exten
 
 [[package]]
 name = "robotframework"
-version = "7.1.1"
+version = "7.2"
 description = "Generic automation framework for acceptance testing and robotic process automation (RPA)"
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "robotframework-7.1.1-py3-none-any.whl", hash = "sha256:0461360be00dfb8ce1ab3f42370fa6eea3779e41c0b8d79a1f8ddcd2ec8e3679"},
-    {file = "robotframework-7.1.1.zip", hash = "sha256:f85919c68c4d0837006e5f09dde1ef689f082eba2e7e64d5758753f9ee8bfea9"},
+    {file = "robotframework-7.2-py3-none-any.whl", hash = "sha256:0b1caeb40be3d8c5fd4eb9303b221e384aa98f87f665bd66e6de8d7170d8a3c7"},
+    {file = "robotframework-7.2.tar.gz", hash = "sha256:9fc77d40283c26690bbc1563fb7fcadac789afe8695d332ced3fa4696df39eb9"},
 ]
 
 [[package]]
