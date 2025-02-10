@@ -924,17 +924,17 @@ generate-config = ["tomli_w (>=1.0,<1.2)"]
 
 [[package]]
 name = "robotstatuschecker"
-version = "3.0.1"
+version = "4.1.1"
 description = "A tool for checking that Robot Framework test cases have expected statuses and log messages."
 optional = false
-python-versions = ">=3.6,<4.0"
+python-versions = "<4.0,>=3.8"
 files = [
-    {file = "robotstatuschecker-3.0.1-py2.py3-none-any.whl", hash = "sha256:eeebc1bde9638076d97a47e69832ca6fbfc0c1d5502993172fe1203f506beacd"},
-    {file = "robotstatuschecker-3.0.1.tar.gz", hash = "sha256:4a761a0d59c0a764d479364855f045aba371ecf94a69a43e6f378bd0592a9112"},
+    {file = "robotstatuschecker-4.1.1-py3-none-any.whl", hash = "sha256:9da538486c05e99a8a03333f8d6dd7d91238700cdc3fca44fa27d31a700a721a"},
+    {file = "robotstatuschecker-4.1.1.tar.gz", hash = "sha256:5ebe9454beb6fde8aca299161a12389642b074c234deb1f860b6f699a8608e84"},
 ]
 
 [package.dependencies]
-robotframework = "*"
+robotframework = ">=6.1.1"
 
 [[package]]
 name = "ruff"
@@ -1052,4 +1052,4 @@ test = ["covdefaults (>=2.3)", "coverage (>=7.2.7)", "coverage-enable-subprocess
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.9.5,<4.0"
-content-hash = "1317e2c17f8759d303dcdf279883df6db716dbc78b186ad6cf356fb5150c4f4e"
+content-hash = "7e65b1c96c04bbe02f560862ddb2103826543ffd977c217550cbb1e6af829d0b"
