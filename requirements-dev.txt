@@ -1,0 +1,10 @@
+pytest >= 7.4
+approvaltests >= 14.0.0
+mypy >= 1.12.1
+pytest-approvaltests >= 0.2.4
+invoke >= 2.2.0
+robotstatuschecker >= 3.0.1
+pre-commit >= 3.3
+empty-files >= 0.0.9
+robotframework-tidy >=4.14.0
+ruff >= 0.9.7
