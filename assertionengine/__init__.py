@@ -22,7 +22,7 @@ from .assertion_engine import (
     list_verify_assertion,
     verify_assertion,
 )
-from .formatter import Formatter
+from .assertion_formatter import Formatter
 
 __all__ = [
     "AssertionOperator",

@@ -1,12 +1,15 @@
-[tool.poetry]
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
 name = "robotframework-assertion-engine"
 version = "3.0.3"
 description = "Generic way to create meaningful and easy to use assertions for the Robot Framework libraries."
-authors = ["Tatu Aalto <aalto.tatu@gmail.com>"]
-license = "Apache License 2.0"
+authors = [{ name="Tatu Aalto", email="aalto.tatu@gmail.com" }]
+license = {file = "LICENSE"}
 readme = "README.rst"
-homepage = "https://github.com/MarketSquare/AssertionEngine"
-documentation = "https://github.com/MarketSquare/AssertionEngine/blob/master/README.rst"
+
 classifiers = [
     "Development Status :: 3 - Alpha",
     "Programming Language :: Python :: 3",
@@ -21,49 +24,18 @@ classifiers = [
     "Framework :: Robot Framework",
     "Framework :: Robot Framework :: Tool",
 ]
-packages = [
-    { include = "assertionengine", from="."}
-]
-include = ["assertionengine/py.typed"]
+keywords = ["Robot Framework", "Libraries", "Assertions"]
 
+requires-python = ">=3.9,<4.0"
+dependencies = ["robotframework >= 5.0.1", "robotframework-pythonlibcore>=3.0.0"]
 
-[tool.poetry.dependencies]
-python = ">=3.9.5,<4.0"
-robotframework = ">=5.0.1"
-robotframework-pythonlibcore = "^3.0.0 || ^4.0.0"
+[project.urls]
+Homepage = "https://github.com/MarketSquare/AssertionEngine"
+Issues = "https://github.com/MarketSquare/AssertionEngine/issues"
+Changelog = "https://github.com/MarketSquare/AssertionEngine/releases"
 
-
-[tool.poetry.group.dev.dependencies]
-black = ">=24.10.0"
-pytest = ">=7.4,<9.0"
-approvaltests = ">=14.0.0,<15.0.0"
-mypy = ">=1.12.1"
-pytest-approvaltests = "^0.2.4"
-invoke = "^2.2.0"
-robotstatuschecker = "^3.0.1"
-pre-commit = ">=3.3,<5.0"
-empty-files = "^0.0.9"
-robotframework-tidy = ">=4.14.0"
-ruff = ">=0.7.0"
-
-[build-system]
-requires = ["poetry-core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"
-
-[tool.black]
-target-version = ['py38']
-exclude = '''
-/(
-    \.eggs
-  | \.git
-  | \.mypy_cache
-  | \.venv
-  | _build
-  | buck-out
-  | build
-  | dist
-)/
-'''
+[tool.setuptools]
+packages = ["assertionengine"]
 
 [tool.ruff]
 lint.unfixable = []
@@ -107,7 +79,7 @@ max-args = 6
 
 [tool.mypy]
 [mypy]
-python_version = 3.8
+python_version = 3.9
 warn_unused_ignores = true
 no_implicit_optional = true
 

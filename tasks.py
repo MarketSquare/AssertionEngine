@@ -29,13 +29,9 @@ ASSERTION_ENGINE = ROOT_DIR / "assertionengine" / "assertion_engine.py"
 
 @task
 def deps(ctx):
-    """Install dependencies to develop and test project.
-
-    Make sure that Python3 and poetry are installed for you operating system.
-    - https://www.python.org/downloads/
-    - https://python-poetry.org/docs/#installation
-    """
-    ctx.run("poetry install")
+    """Install dependencies to develop and test project."""
+    ctx.run("pip install .")
+    ctx.run("pip install -r requirements-dev.txt")
     ctx.run("pre-commit install -f -t pre-commit")
     ctx.run("pre-commit install -f -t pre-push")
     ctx.run("pre-commit install -f -t pre-merge-commit")
@@ -93,21 +89,19 @@ def lint_robot(ctx):
 @task(lint_robot)
 def lint(ctx, error=False):
     """Lint Robot Framework test data and Python code."""
-    black_command = (
-        "black --config ./pyproject.toml assertionengine/ tasks.py atest/ utest/"
-    )
-    ruff_command = "ruff check assertionengine"
-
+    ruff_format_command = ["ruff", "format", "assertionengine", "utest", "tasks.py"]
+    ruff_check_command = ["ruff", "check", "assertionengine"]
     if error:
-        black_command = f"{black_command} --check"
+        ruff_format_command.insert(2, "--check")
     else:
-        ruff_command = f"{ruff_command} --fix"
+        ruff_check_command.insert(2, "--fix")
+    print(f"Run ruff format: {ruff_format_command}")
+    ctx.run(" ".join(ruff_format_command))
+
+    print(f"Run Ruff: {ruff_check_command}")
+    ctx.run(" ".join(ruff_check_command))
     print("Run mypy")
     ctx.run("mypy --config-file ./pyproject.toml assertionengine/ utest/")
-    print("Run Black")
-    ctx.run(black_command)
-    print("Run Ruff")
-    ctx.run(ruff_command)
 
 
 @task
@@ -150,7 +144,7 @@ def atest(ctx, zip=None):
     ctx.run(" ".join(args))
     output_xml = str(ATEST_OUTPUT / "output.xml")
     print(f"Check: {output_xml}")
-    robotstatuschecker.process_output(output_xml, verbose=False)
+    robotstatuschecker.process_output(output_xml)
     print("Generate report and log files.")
     rebot_exit = False if zip else True
     rc = rebot_cli(["--outputdir", str(ATEST_OUTPUT), output_xml], exit=False)

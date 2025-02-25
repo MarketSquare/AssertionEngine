@@ -3,7 +3,7 @@ from unittest.mock import MagicMock
 import pytest
 
 from assertionengine import Formatter
-from assertionengine.formatter import FormatRules
+from assertionengine.assertion_formatter import FormatRules
 
 
 class MyFormatter(Formatter):
