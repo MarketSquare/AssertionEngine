@@ -25,31 +25,23 @@ jobs:
       uses: actions/setup-python@v5
       with:
         python-version: ${{ matrix.python-version }}
-    - name: Install poetry
-      run: |
-        pip3 install poetry
     - name: Install dependencies
       run: |
-        poetry env use ${{ matrix.python-version }}
-        poetry install
-        poetry env info
-        poetry run inv deps
+        python -m pip install --upgrade pip
+        pip install uv
+        uv pip install -r requirements-dev.txt --python ${{ matrix.python-version }} --system
     - name: Install RF
       run: |
-        poetry env use ${{ matrix.python-version }}
-        poetry update robotframework==${{ matrix.rf-version }}
+        uv pip install robotframework==${{ matrix.rf-version }} --python ${{ matrix.python-version }} --system
     - name: Lint files
       run: |
-        poetry env use ${{ matrix.python-version }}
-        poetry run inv lint -e
+        inv lint -e
     - name: Run unit tests
       run: |
-        poetry env use ${{ matrix.python-version }}
-        poetry run inv utest
+        inv utest
     - name: Run acceptance tests
       run: |
-        poetry env use ${{ matrix.python-version }}
-        poetry run inv atest -z True
+        inv atest -z True
     - uses: actions/upload-artifact@v4
       if: ${{ always() }}
       with:
