@@ -30,6 +30,7 @@ jobs:
         python -m pip install --upgrade pip
         pip install uv
         uv pip install -r requirements-dev.txt --python ${{ matrix.python-version }} --system
+        uv pip install . --python ${{ matrix.python-version }} --system
     - name: Install RF
       run: |
         uv pip install robotframework==${{ matrix.rf-version }} --python ${{ matrix.python-version }} --system
