@@ -38,7 +38,7 @@ Currently supported assertion operators are:
 +----------+---------------------------+------------------------------------------------------------------------------------+----------------------------------+
 | $=       | should end with, ends     | Checks if returned value ends with expected value.                                 | re.search(f"{expected}$", value) |
 +----------+---------------------------+------------------------------------------------------------------------------------+----------------------------------+
-| matches  |                           | Checks if given RegEx matches minimum once in returned value.                      | re.search(expected, value)       |
+| matches  |                           | Checks if given RegEx matches minimum once in returned value (supports Python [Regex inline flags](https://docs.python.org/3/library/re.html)). | re.search(expected, value)       |
 +----------+---------------------------+------------------------------------------------------------------------------------+----------------------------------+
 | validate |                           | Checks if given Python expression evaluates to True.                               |                                  |
 +----------+---------------------------+------------------------------------------------------------------------------------+----------------------------------+
