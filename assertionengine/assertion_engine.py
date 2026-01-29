@@ -361,7 +361,7 @@ def list_verify_assertion(
             value.sort()
         elif operator == AssertionOperator["contains"]:
             if not BuiltIn().evaluate(
-                "all(item in value for item in expected)",
+                "all(item in value for item in expected)",  # type: ignore[arg-type]
                 namespace={"value": value, "expected": expected},
             ):
                 raise_error(
