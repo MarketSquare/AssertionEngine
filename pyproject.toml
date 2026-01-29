@@ -1,33 +1,14 @@
-[build-system]
-requires = ["setuptools>=61.0"]
-build-backend = "setuptools.build_meta"
-
 [project]
 name = "robotframework-assertion-engine"
 version = "3.1.0"
 description = "Generic way to create meaningful and easy to use assertions for the Robot Framework libraries."
 authors = [{ name="Tatu Aalto", email="aalto.tatu@gmail.com" }]
-license = {file = "LICENSE"}
+license = "Apache-2.0"
 readme = "README.rst"
-
-classifiers = [
-    "Development Status :: 3 - Alpha",
-    "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.8",
-    "Programming Language :: Python :: 3.9",
-    "Programming Language :: Python :: 3.10",
-    "Programming Language :: Python :: 3.11",
-    "Programming Language :: Python :: 3.12",
-    "License :: OSI Approved :: Apache Software License",
-    "Operating System :: OS Independent",
-    "Topic :: Software Development :: Testing",
-    "Framework :: Robot Framework",
-    "Framework :: Robot Framework :: Tool",
-]
 keywords = ["Robot Framework", "Libraries", "Assertions"]
 
-requires-python = ">=3.9,<4.0"
-dependencies = ["robotframework >= 5.0.1", "robotframework-pythonlibcore>=3.0.0"]
+requires-python = ">=3.10,<4.0"
+dependencies = ["robotframework >= 6.1.1", "robotframework-pythonlibcore>=3.0.0"]
 
 [project.urls]
 Homepage = "https://github.com/MarketSquare/AssertionEngine"
@@ -78,8 +59,7 @@ lint.select = [
 max-args = 6
 
 [tool.mypy]
-[mypy]
-python_version = 3.9
+python_version = "3.10"
 warn_unused_ignores = true
 no_implicit_optional = true
 
