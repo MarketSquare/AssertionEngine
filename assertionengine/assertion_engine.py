@@ -292,6 +292,27 @@ def float_str_verify_assertion(
     return verify_assertion(value, operator, expected, message, custom_message)
 
 
+def int_str_verify_assertion(
+    value: T,
+    operator: Optional[AssertionOperator],
+    expected: Any,
+    message="",
+    custom_message="",
+):
+    if operator is None:
+        return value
+    if operator in NumericalOperators:
+        expected = int(float(expected))
+    elif operator in [
+        AssertionOperator["validate"],
+        AssertionOperator["then"],
+    ]:
+        expected = str(expected)
+    else:
+        raise ValueError(f"Operator '{operator.name}' is not allowed.")
+    return verify_assertion(value, operator, expected, message, custom_message)
+
+
 def bool_verify_assertion(
     value: T,
     operator: Optional[AssertionOperator],
