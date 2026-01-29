@@ -5,7 +5,7 @@ Release is done with `uv` and `invoke`:
 ```bash
 set VERSION 0.3.0
 uv run inv version $VERSION
-git add assertionengine/assertion_engine.py pyproject.toml
+git add src/assertionengine/assertion_engine.py pyproject.toml
 git commit -m "Set version $VERSION"
 git tag -a v$VERSION -m "Release $VERSION"
 git push --tags
