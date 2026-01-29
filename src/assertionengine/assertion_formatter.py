@@ -1,6 +1,5 @@
 import re
 from abc import ABC, abstractmethod
-from typing import List
 
 
 def _strip(value: str) -> str:
@@ -37,5 +36,5 @@ class Formatter(ABC):
     def normalize_keyword(self, name: str):
         return name.lower().replace(" ", "_")
 
-    def formatters_to_method(self, kw_formatter: List) -> List:
+    def formatters_to_method(self, kw_formatter: list) -> list:
         return [FormatRules[formatter.lower()] for formatter in kw_formatter]

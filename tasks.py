@@ -89,8 +89,8 @@ def lint_robot(ctx):
 @task(lint_robot)
 def lint(ctx, error=False):
     """Lint Robot Framework test data and Python code."""
-    ruff_format_command = ["ruff", "format", "assertionengine", "utest", "tasks.py"]
-    ruff_check_command = ["ruff", "check", "assertionengine"]
+    ruff_format_command = ["ruff", "format", "src/assertionengine", "utest", "tasks.py"]
+    ruff_check_command = ["ruff", "check", "src/assertionengine"]
     if error:
         ruff_format_command.insert(2, "--check")
     else:
@@ -101,7 +101,7 @@ def lint(ctx, error=False):
     print(f"Run Ruff: {ruff_check_command}")
     ctx.run(" ".join(ruff_check_command))
     print("Run mypy")
-    ctx.run("mypy --config-file ./pyproject.toml assertionengine/")
+    ctx.run("mypy --config-file ./pyproject.toml src/assertionengine/")
 
 
 @task

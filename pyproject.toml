@@ -5,9 +5,12 @@ description = "Generic way to create meaningful and easy to use assertions for t
 authors = [{ name="Tatu Aalto", email="aalto.tatu@gmail.com" }]
 license = "Apache-2.0"
 readme = "README.md"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
 keywords = ["Robot Framework", "Libraries", "Assertions"]
-
-requires-python = ">=3.10,<4.0"
+requires-python = ">=3.10"
 dependencies = ["robotframework >= 6.1.1", "robotframework-pythonlibcore>=3.0.0"]
 
 [project.urls]
@@ -15,18 +18,14 @@ Homepage = "https://github.com/MarketSquare/AssertionEngine"
 Issues = "https://github.com/MarketSquare/AssertionEngine/issues"
 Changelog = "https://github.com/MarketSquare/AssertionEngine/releases"
 
-[tool.setuptools]
-packages = ["assertionengine"]
-
 [tool.ruff]
-lint.unfixable = []
 exclude = [
   "__pycache__",
 ]
 lint.ignore = [
   "E501",  # line too long
 ]
-target-version = "py38"
+target-version = "py310"
 lint.select = [
   "E",
   "F",

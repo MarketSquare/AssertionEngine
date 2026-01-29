@@ -16,5 +16,7 @@ dist
 build
 tmp
 
+src/robotframework_assertion_engine.egg-info
+
 .ruff_cache
 .pytest_cache

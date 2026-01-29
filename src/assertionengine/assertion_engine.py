@@ -14,8 +14,9 @@
 
 import ast
 import re
+from collections.abc import Callable
 from enum import Enum, Flag, IntFlag
-from typing import Any, Callable, Dict, List, Optional, Tuple, TypeVar, Union, cast
+from typing import Any, TypeVar, cast
 
 from robot.libraries.BuiltIn import BuiltIn
 
@@ -107,7 +108,7 @@ EvaluationOperators = [
     AssertionOperator["then"],
 ]
 
-handlers: Dict[AssertionOperator, Tuple[Callable, str]] = {
+handlers: dict[AssertionOperator, tuple[Callable, str]] = {
     AssertionOperator["=="]: (lambda a, b: a == b, "should be"),
     AssertionOperator["!="]: (lambda a, b: a != b, "should not be"),
     AssertionOperator["<"]: (lambda a, b: a < b, "should be less than"),
@@ -132,7 +133,7 @@ handlers: Dict[AssertionOperator, Tuple[Callable, str]] = {
 }
 
 
-set_handlers: Dict[AssertionOperator, Tuple[Callable, str]] = {
+set_handlers: dict[AssertionOperator, tuple[Callable, str]] = {
     AssertionOperator["=="]: (lambda a, b: a == b, "should be"),
     AssertionOperator["!="]: (lambda a, b: a != b, "should not be"),
     AssertionOperator["*="]: (lambda a, b: b.issubset(a), "should contain"),
@@ -145,7 +146,7 @@ set_handlers: Dict[AssertionOperator, Tuple[Callable, str]] = {
 T = TypeVar("T")
 
 
-def apply_formatters(value: T, formatters: Optional[List[Any]]) -> Any:
+def apply_formatters(value: T, formatters: list[Any] | None) -> Any:
     if not formatters:
         return value
     for formatter in formatters:
@@ -153,7 +154,7 @@ def apply_formatters(value: T, formatters: Optional[List[Any]]) -> Any:
     return value
 
 
-def apply_to_expected(expected: Any, formatters: Optional[List[Any]]) -> Any:
+def apply_to_expected(expected: Any, formatters: list[Any] | None) -> Any:
     if not formatters:
         return expected
     for formatter in formatters:
@@ -164,11 +165,11 @@ def apply_to_expected(expected: Any, formatters: Optional[List[Any]]) -> Any:
 
 def verify_assertion(
     value: T,
-    operator: Optional[AssertionOperator],
+    operator: AssertionOperator | None,
     expected: Any,
     message: str = "",
-    custom_message: Optional[str] = None,
-    formatters: Optional[list] = None,
+    custom_message: str | None = None,
+    formatters: list | None = None,
 ) -> Any:
     if operator is None and expected:
         raise ValueError(
@@ -193,11 +194,11 @@ def verify_assertion(
 
 
 def flag_verify_assertion(
-    value: Union[IntFlag, Flag],
-    operator: Optional[AssertionOperator],
+    value: IntFlag | Flag,
+    operator: AssertionOperator | None,
     expected: Any,
     message: str = "",
-    custom_message: Optional[str] = None,
+    custom_message: str | None = None,
 ) -> Any:
     if not isinstance(value, Flag):
         raise TypeError(f"Verified value was not of type Flag. It was {type(value)}")
@@ -273,7 +274,7 @@ def raise_error(custom_message, expected, filler, message, text, value):
 
 def float_str_verify_assertion(
     value: T,
-    operator: Optional[AssertionOperator],
+    operator: AssertionOperator | None,
     expected: Any,
     message="",
     custom_message="",
@@ -294,7 +295,7 @@ def float_str_verify_assertion(
 
 def int_str_verify_assertion(
     value: T,
-    operator: Optional[AssertionOperator],
+    operator: AssertionOperator | None,
     expected: Any,
     message="",
     custom_message="",
@@ -315,7 +316,7 @@ def int_str_verify_assertion(
 
 def bool_verify_assertion(
     value: T,
-    operator: Optional[AssertionOperator],
+    operator: AssertionOperator | None,
     expected: Any,
     message="",
     custom_message="",
@@ -330,7 +331,7 @@ def bool_verify_assertion(
     return verify_assertion(value, operator, expected_bool, message, custom_message)
 
 
-def map_list(selected: List):
+def map_list(selected: list):
     if not selected or len(selected) == 0:
         return None
     if len(selected) == 1:
@@ -339,9 +340,9 @@ def map_list(selected: List):
 
 
 def list_verify_assertion(
-    value: List,
-    operator: Optional[AssertionOperator],
-    expected: List,
+    value: list,
+    operator: AssertionOperator | None,
+    expected: list,
     message="",
     custom_message="",
 ):
@@ -382,9 +383,9 @@ def list_verify_assertion(
 
 
 def dict_verify_assertion(
-    value: Dict,
-    operator: Optional[AssertionOperator],
-    expected: Optional[Dict],
+    value: dict,
+    operator: AssertionOperator | None,
+    expected: dict | None,
     message="",
     custom_message="",
 ):
@@ -397,9 +398,9 @@ def dict_verify_assertion(
 
 
 def int_dict_verify_assertion(
-    value: Dict[str, int],
-    operator: Optional[AssertionOperator],
-    expected: Optional[Dict[str, int]],
+    value: dict[str, int],
+    operator: AssertionOperator | None,
+    expected: dict[str, int] | None,
     message="",
     custom_message="",
 ):
