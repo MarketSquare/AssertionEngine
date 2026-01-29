@@ -19,6 +19,7 @@ from .assertion_engine import (
     flag_verify_assertion,
     float_str_verify_assertion,
     int_dict_verify_assertion,
+    int_str_verify_assertion,
     list_verify_assertion,
     verify_assertion,
 )
@@ -32,6 +33,7 @@ __all__ = [
     "flag_verify_assertion",
     "float_str_verify_assertion",
     "int_dict_verify_assertion",
+    "int_str_verify_assertion",
     "list_verify_assertion",
     "verify_assertion",
 ]
