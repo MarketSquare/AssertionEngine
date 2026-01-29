@@ -17,14 +17,14 @@ from invoke import task, Exit
 
 
 ROOT_DIR = Path(".").parent.resolve()
-SRC_DIR = ROOT_DIR / "assertionengine"
+SRC_DIR = ROOT_DIR / "src" / "assertionengine"
 
 ROOT_DIR = Path(os.path.dirname(__file__))
 ATEST = ROOT_DIR / "atest"
 ATEST_OUTPUT = ATEST / "output"
 ZIP_DIR = ROOT_DIR / "zip_results"
 DIST = ROOT_DIR / "dist"
-ASSERTION_ENGINE = ROOT_DIR / "assertionengine" / "assertion_engine.py"
+ASSERTION_ENGINE = SRC_DIR / "assertion_engine.py"
 
 
 @task
