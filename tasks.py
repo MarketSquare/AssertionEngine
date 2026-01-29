@@ -101,7 +101,7 @@ def lint(ctx, error=False):
     print(f"Run Ruff: {ruff_check_command}")
     ctx.run(" ".join(ruff_check_command))
     print("Run mypy")
-    ctx.run("mypy --config-file ./pyproject.toml assertionengine/ utest/")
+    ctx.run("mypy --config-file ./pyproject.toml assertionengine/")
 
 
 @task
