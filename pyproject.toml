@@ -60,9 +60,3 @@ max-args = 6
 
 [tool.mypy]
 python_version = "3.10"
-warn_unused_ignores = true
-no_implicit_optional = true
-
-[[tool.mypy.overrides]]
-module = "mypy-pytest.*"
-ignore_missing_imports = true

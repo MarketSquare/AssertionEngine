@@ -17,7 +17,7 @@ import re
 from enum import Enum, Flag, IntFlag
 from typing import Any, Callable, Dict, List, Optional, Tuple, TypeVar, Union, cast
 
-from robot.libraries.BuiltIn import BuiltIn  # type: ignore
+from robot.libraries.BuiltIn import BuiltIn
 
 from .type_converter import is_truthy, type_converter
 
