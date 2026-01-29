@@ -4,7 +4,7 @@ version = "3.1.1"
 description = "Generic way to create meaningful and easy to use assertions for the Robot Framework libraries."
 authors = [{ name="Tatu Aalto", email="aalto.tatu@gmail.com" }]
 license = "Apache-2.0"
-readme = "README.rst"
+readme = "README.md"
 keywords = ["Robot Framework", "Libraries", "Assertions"]
 
 requires-python = ">=3.10,<4.0"
