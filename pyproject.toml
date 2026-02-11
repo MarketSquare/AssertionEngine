@@ -1,6 +1,6 @@
 [project]
 name = "robotframework-assertion-engine"
-version = "3.5.0"
+version = "4.0.0"
 description = "Generic way to create meaningful and easy to use assertions for the Robot Framework libraries."
 authors = [{ name="Tatu Aalto", email="aalto.tatu@gmail.com" }]
 license = "Apache-2.0"
