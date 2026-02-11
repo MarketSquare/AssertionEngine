@@ -22,7 +22,7 @@ from robot.libraries.BuiltIn import BuiltIn
 
 from .type_converter import is_truthy, type_converter
 
-__version__ = "3.2.0"
+__version__ = "3.5.0"
 
 AssertionOperator = Enum(
     "AssertionOperator",
