@@ -16,15 +16,13 @@ except ModuleNotFoundError:
 from invoke import task, Exit
 
 
-ROOT_DIR = Path(".").parent.resolve()
-SRC_DIR = ROOT_DIR / "src" / "assertionengine"
-
 ROOT_DIR = Path(os.path.dirname(__file__))
+SRC_DIR = ROOT_DIR / "src"
 ATEST = ROOT_DIR / "atest"
 ATEST_OUTPUT = ATEST / "output"
 ZIP_DIR = ROOT_DIR / "zip_results"
 DIST = ROOT_DIR / "dist"
-ASSERTION_ENGINE = SRC_DIR / "assertion_engine.py"
+ASSERTION_ENGINE = SRC_DIR / "assertionengine" / "assertion_engine.py"
 
 
 @task
@@ -52,16 +50,21 @@ def utest(ctx, reporter=None, suite=None):
     """
     args = [
         "--showlocals",
-        "--log-format=%(asctime)s %(levelname)s %(message)s",
-        "--log-date-format=%Y-%m-%d %H:%M:%S",
+        '"--log-format=%(asctime)s %(levelname)s %(message)s"',
+        '"--log-date-format=%Y-%m-%d %H:%M:%S"',
         "--log-level=INFO",
     ]
     if reporter:
         args.append(f"--approvaltests-add-reporter={reporter}")
     if suite:
         args.append(suite)
-    status = pytest.main(args)
-    raise Exit(status)
+    env = os.environ.copy()
+    if "PYTHONPATH" in env:
+        env["PYTHONPATH"] = f"{SRC_DIR}{os.pathsep}{env['PYTHONPATH']}"
+    else:
+        env["PYTHONPATH"] = str(SRC_DIR)
+
+    ctx.run(" ".join(["pytest"] + args + ["."]), env=env)
 
 
 @task
@@ -130,7 +133,7 @@ def atest(ctx, zip=None):
         "--exitonerror",
         "--nostatusrc",
         "--pythonpath",
-        ".",
+        "./src",
         "--loglevel",
         "TRACE",
         "--report",
