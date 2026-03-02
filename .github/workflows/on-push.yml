@@ -44,7 +44,7 @@ jobs:
     - name: Run acceptance tests
       run: |
         inv atest -z True
-    - uses: actions/upload-artifact@v6
+    - uses: actions/upload-artifact@v7
       if: ${{ always() }}
       with:
         name: Test_results_${{ matrix.python-version }}_${{ matrix.rf-version }}
