@@ -1,5 +1,5 @@
 pytest >= 7.4
-approvaltests >= 14.0.0
+approvaltests >= 18.0.1
 mypy >= 1.12.1
 pytest-approvaltests >= 0.2.4
 invoke >= 3.0.3
