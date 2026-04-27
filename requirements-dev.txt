@@ -7,4 +7,4 @@ robotstatuschecker >= 3.0.1
 pre-commit >= 3.3
 empty-files >= 0.0.9
 robotframework-tidy >=4.18.0
-ruff >= 0.9.7
+ruff >= 0.15.12
