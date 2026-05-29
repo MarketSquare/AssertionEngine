@@ -256,15 +256,6 @@ def _validate_operator(
         return error
 
 
-def _method_validator(method, arg=None):
-    try:
-        if arg is None:
-            return method()
-        return method(arg)
-    except Exception as error:
-        return error
-
-
 def _strip(value):
     return value.strip()
 
