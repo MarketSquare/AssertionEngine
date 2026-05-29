@@ -1,7 +1,5 @@
 import pytest
 
-import ast
-
 from assertionengine.assertion_engine import (
     float_str_verify_assertion,
     int_str_verify_assertion,
@@ -10,7 +8,6 @@ from assertionengine.assertion_engine import (
     int_dict_verify_assertion,
     AssertionOperator,
 )
-from robot.libraries.BuiltIn import BuiltIn
 
 
 def test_float_returns_value_when_operator_none():
