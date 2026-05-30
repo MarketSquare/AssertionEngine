@@ -142,6 +142,47 @@ def test_match():
     results = [
         _validate_operator(AssertionOperator["matches"], "Actual", "(?i)actual"),
         _validate_operator(AssertionOperator["matches"], "Actual", "/(\\d)+/"),
+        _validate_operator(
+            AssertionOperator["matches"], "Order Number: 123456.", r"Order Number: .*\."
+        ),
+        _validate_operator(
+            AssertionOperator["matches"],
+            "Order Number: 123456.",
+            r"Order Number: (.*)\.",
+        ),
+        _validate_operator(
+            AssertionOperator["matches"],
+            "Total Price 38.734 €",
+            r"Total Price (?P<price>.*?) (?P<currency>.)$",
+        ),
+        _validate_operator(
+            AssertionOperator["matches"],
+            "Total Price 38.734 €",
+            r"Total Price (?P<price>.*?) (.)$",
+        ),
+        _validate_operator(
+            AssertionOperator["matches"],
+            "Not here: 123456.",
+            r"Order Number: (.*)\.",
+        ),
+        _validate_operator(
+            AssertionOperator["matches"],
+            "Not here 38.734 €",
+            r"Total Price (?P<price>.*?) (?P<currency>.)$",
+        ),
+        _validate_operator(
+            AssertionOperator["matches"],
+            "Not here 38.734 €",
+            r"Total Price (?P<price>.*?) (?P<currency>.)$",
+            "This is message",
+            "Custom message with value {value} and expected {expected}",
+        ),
+        _validate_operator(
+            AssertionOperator["matches"],
+            "Not here 38.734 €",
+            r"Total Price (?P<price>.*?) (?P<currency>.)$",
+            "This is message",
+        ),
         _validate_operator(AssertionOperator["matches"], "Actual", "^Act"),
         _validate_operator(AssertionOperator["matches"], "Actual", "/(\\d)+/"),
         _validate_operator(AssertionOperator["matches"], "Actual", "ual$"),
@@ -156,6 +197,14 @@ def test_match():
         ),
     ]
     verify_all("match", results)
+
+
+def test_no_operator():
+    results = [
+        _validate_operator(None, "actual", "expected"),
+        _validate_operator(None, "actual", "expected", "message"),
+    ]
+    verify_all("No operator", results)
 
 
 @pytest.fixture()

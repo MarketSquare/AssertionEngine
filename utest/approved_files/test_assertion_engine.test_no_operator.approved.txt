@@ -1,0 +1,4 @@
+No operator
+
+0) Invalid validation parameters. Assertion operator is mandatory when specifying expected value.
+1) Invalid validation parameters. Assertion operator is mandatory when specifying expected value.

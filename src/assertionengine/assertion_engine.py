@@ -108,6 +108,19 @@ EvaluationOperators = [
     AssertionOperator["then"],
 ]
 
+
+def _matches(value, expected) -> tuple[str, ...] | dict[str, str] | None:
+    comp = re.compile(expected)
+    matches = comp.search(value)
+    if not matches:
+        return matches
+    if comp.groups == 0:
+        return matches.string
+    if len(comp.groupindex) == comp.groups:
+        return matches.groupdict()
+    return matches.groups()
+
+
 handlers: dict[AssertionOperator, tuple[Callable, str]] = {
     AssertionOperator["=="]: (lambda a, b: a == b, "should be"),
     AssertionOperator["!="]: (lambda a, b: a != b, "should not be"),
@@ -117,7 +130,7 @@ handlers: dict[AssertionOperator, tuple[Callable, str]] = {
     AssertionOperator[">="]: (lambda a, b: a >= b, "should be greater than or equal"),
     AssertionOperator["*="]: (lambda a, b: b in a, "should contain"),
     AssertionOperator["not contains"]: (lambda a, b: b not in a, "should not contain"),
-    AssertionOperator["matches"]: (lambda a, b: re.search(b, a), "should match"),
+    AssertionOperator["matches"]: (_matches, "should match"),
     AssertionOperator["^="]: (
         lambda a, b: re.search(f"^{re.escape(b)}", a),
         "should start with",
@@ -188,6 +201,10 @@ def verify_assertion(
             f"{message}{filler}`{operator}` is not a valid assertion operator"
         )
     validator, text = handler
+    if operator is AssertionOperator["matches"]:
+        if not (matches := validator(value, expected)):
+            raise_error(custom_message, expected, filler, message, text, value)
+        return matches
     if not validator(value, expected):
         raise_error(custom_message, expected, filler, message, text, value)
     return value

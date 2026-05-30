@@ -2,10 +2,18 @@ match
 
 0) Actual
 1) 'Actual' (str) should match '/(\\d)+/' (str)
-2) Actual
-3) 'Actual' (str) should match '/(\\d)+/' (str)
-4) Actual
-5) Actual
+2) Order Number: 123456.
+3) ('123456',)
+4) {'price': '38.734', 'currency': '€'}
+5) ('38.734', '€')
+6) 'Not here: 123456.' (str) should match 'Order Number: (.*)\\.' (str)
+7) 'Not here 38.734 €' (str) should match 'Total Price (?P<price>.*?) (?P<currency>.)$' (str)
+8) Custom message with value 'Not here 38.734 €' and expected 'Total Price (?P<price>.*?) (?P<currency>.)$'
+9) This is message 'Not here 38.734 €' (str) should match 'Total Price (?P<price>.*?) (?P<currency>.)$' (str)
+10) Actual
+11) 'Actual' (str) should match '/(\\d)+/' (str)
+12) Actual
+13) Actual
 multiline
-6) 'Actual\nmultiline' (str) should match '/(\\d)+/' (str)
-7) Actual
+14) 'Actual\nmultiline' (str) should match '/(\\d)+/' (str)
+15) Actual
