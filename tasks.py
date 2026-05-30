@@ -58,13 +58,7 @@ def utest(ctx, reporter=None, suite=None):
         args.append(f"--approvaltests-add-reporter={reporter}")
     if suite:
         args.append(suite)
-    env = os.environ.copy()
-    if "PYTHONPATH" in env:
-        env["PYTHONPATH"] = f"{SRC_DIR}{os.pathsep}{env['PYTHONPATH']}"
-    else:
-        env["PYTHONPATH"] = str(SRC_DIR)
-
-    ctx.run(" ".join(["pytest"] + args + ["."]), env=env)
+    ctx.run(" ".join(["pytest"] + args + ["."]))
 
 
 @task
