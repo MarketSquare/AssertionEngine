@@ -17,8 +17,8 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [3.10.19, 3.14.0]
-        rf-version: [6.1.1, 7.4.1]
+        python-version: ["3.10", "3.14"]
+        rf-version: [6.1.1, 7.4.2]
     steps:
     - uses: actions/checkout@v6
     - name: Set up Python ${{ matrix.python-version }} with Robot Framework ${{ matrix.rf-version }}
@@ -41,6 +41,7 @@ jobs:
     - name: Run unit tests
       run: |
         inv utest
+        inv coverage
     - name: Run acceptance tests
       run: |
         inv atest -z True
