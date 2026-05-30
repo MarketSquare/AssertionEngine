@@ -58,7 +58,15 @@ def utest(ctx, reporter=None, suite=None):
         args.append(f"--approvaltests-add-reporter={reporter}")
     if suite:
         args.append(suite)
-    ctx.run(" ".join(["pytest"] + args + ["."]))
+    ctx.run(" ".join(["coverage", "run", "-m", "pytest"] + args + ["."]))
+
+
+@task
+def coverage(ctx):
+    """Run coverage report."""
+    ctx.run("coverage report -m")
+    ctx.run("coverage html --include=src/assertionengine/*")
+    print("Coverage report generated in htmlcov/index.html")
 
 
 @task
