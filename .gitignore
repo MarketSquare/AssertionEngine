@@ -20,3 +20,6 @@ src/robotframework_assertion_engine.egg-info
 
 .ruff_cache
 .pytest_cache
+
+.coverage
+.DS_Store

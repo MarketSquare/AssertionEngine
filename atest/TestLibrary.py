@@ -36,9 +36,9 @@ class TestLibrary(DynamicCore):
     def is_equal(
         self,
         value: str,
-        assertion_operator: Optional[AssertionOperator] = None,
+        assertion_operator: AssertionOperator | None = None,
         assertion_expected: Any = None,
-        message: str = None,
+        message: str | None = None,
     ):
         formatter = self.lib_formatter.get_formatter(self.is_equal.__name__)
         LOG.info(formatter)
@@ -55,9 +55,9 @@ class TestLibrary(DynamicCore):
     def is_equal_as_number(
         self,
         integer: int,
-        assertion_operator: Optional[AssertionOperator] = None,
+        assertion_operator: AssertionOperator | None = None,
         assertion_expected: Any = None,
-        message: str = None,
+        message: str | None = None,
     ):
         LOG.info(f"integer: '{integer}' and type: {type(integer)}")
         formatter = self.lib_formatter.get_formatter(self.is_equal_as_number.__name__)
