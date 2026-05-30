@@ -131,6 +131,10 @@ def clean(ctx):
 def atest(ctx, zip=None):
     """Runs Robot Framework acceptance tests."""
     args = [
+        "coverage",
+        "run",
+        "--append",
+        "-m",
         "robot",
         "--exitonerror",
         "--nostatusrc",

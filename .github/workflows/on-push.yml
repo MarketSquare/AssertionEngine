@@ -45,6 +45,7 @@ jobs:
     - name: Run acceptance tests
       run: |
         inv atest -z True
+        inv coverage
     - uses: actions/upload-artifact@v7
       if: ${{ always() }}
       with:
