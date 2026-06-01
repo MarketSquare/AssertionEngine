@@ -25,6 +25,54 @@ Currently supported assertion operators are:
 | `validate` |  | Checks if given Python expression evaluates to `True`. |  |
 | `evaluate` / `then` |  | When using this operator, the keyword returns the evaluated Python expression. |  |
 
+### Assertion operator matches return value
+There are three different possibilities what keyword returns when `matches` operator is used:
+[string](https://docs.python.org/3/library/string.html#module-string),
+[tuple](https://docs.python.org/3/tutorial/datastructures.html#tuples-and-sequences) or
+[dictionary](https://docs.python.org/3/tutorial/datastructures.html#dictionaries). What
+keyword returns depends on how the [RegEx](https://docs.python.org/3/library/re.html) formed.
+If RegEx does not contain group(s), then keyword will return the string
+without modifications.
+If RegEx contains [groups](https://docs.python.org/3/library/re.html#re.Match.group),
+meaning `(...)`, then keyword will return a tuple. Each tuple item contains the text which
+is matched by the group. If there is group and group has a name, `(?P<name>...)` syntax,
+then keyword returns a dictionary. In this case dictionary key is the group name and value
+contains the matched text. If there mix of groups and groups with names, then tuple is
+returned.
+
+Example assume that text returned by the system under test is: "Your order number is 123456 and total price is 98.76€."
+
+```robotframework
+*** Test Cases ***
+No Group String As Return Value
+    ${result} =    Keyword    ${selector}    matches    order number is
+    Should Be Equal    ${result}    Your order number is 123456 and total price is 98.76€.
+
+Single Group Tuple As Return Value
+    ${result} =    Keyword    ${selector}    matches    order number is (\\d+)
+    Length Should Be    ${result}    1
+    Should Be Equal    ${result}[0]    123456
+
+Multiple Groups Tuple As Return Value
+    ${result} =    Keyword    ${selector}    matches    (\\d+) .* (\\d+\\.\\d+)
+    Length Should Be    ${result}    2
+    Should Be Equal    ${result}[0]    123456
+    Should Be Equal    ${result}[1]    98.76
+
+Groups With Names Dictionary As Return Value
+    ${result} =    Keyword    ${selector}    matches    (?P<order_number>\\d+) .* (?P<total_price>\\d+\\.\\d+)
+    Length Should Be    ${result}    2
+    Should Be Equal    ${result['order_number']}    123456
+    Should Be Equal    ${result['total_price']}    98.76
+
+Mixed With Group And Group Names
+    ${result} =    Keyword    ${selector}    matches    (\\d+) .* (?P<total_price>\\d+\\.\\d+)
+    Length Should Be    ${result}    2
+    Should Be Equal    ${result}[0]    123456
+    Should Be Equal    ${result}[1]    98.76
+
+```
+
 ## Supported formatters
 
 | Formatter | Description |

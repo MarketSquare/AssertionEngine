@@ -74,6 +74,15 @@ AssertionOperator.__doc__ = """
     | ``validate``        |                                      | Checks if given Python expression evaluates to ``True``.                           |                                      |
     | ``evaluate``        |  ``then``                            | When using this operator, the keyword does return the evaluated Python expression. |                                      |
 
+    There are three different possibilities what keyword returns when `matches` operator is used:
+    string, tuple or dictionary. What keyword returns depends on how the RegEx is formed. If RegEx
+    does not contain group(s), then keyword will return the string without modifications.
+    If RegEx contains groups, meaning (...), then keyword will return a tuple. Each tuple item
+    contains the text which is matched by the group. If there is group and group has a name,
+    (?P<name>...) syntax, then keyword returns a dictionary. In this case dictionary key is the
+    group name and value contains the matched text. If there mix of groups and groups with names,
+    then tuple is returned.
+
     Currently supported formatters for assertions are:
     |     = Formatter =     |                      = Description =                       |
     |  ``normalize spaces`` | Substitutes multiple spaces to single space from the value |
