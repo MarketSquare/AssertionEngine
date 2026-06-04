@@ -64,6 +64,13 @@ def test_bool_ne_operator_passes_and_returns_value():
     assert res is False
 
 
+def test_bool_operator_with_notchecked():
+    false_strings = {"FALSE", "NO", "OFF", "0", "UNCHECKED", "NONE", ""}
+    for false_str in false_strings:
+        res = bool_verify_assertion(False, AssertionOperator["=="], false_str)
+        assert res is False
+
+
 def test_bool_invalid_operator_raises_value_error():
     with pytest.raises(ValueError):
         bool_verify_assertion(True, AssertionOperator["<"], "yes")
