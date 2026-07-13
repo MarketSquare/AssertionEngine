@@ -1,6 +1,6 @@
 pytest >= 9.1.1
 approvaltests >= 19.0.0
-mypy >= 2.1.0
+mypy >= 2.2.0
 pytest-approvaltests >= 0.2.4
 invoke >= 3.0.3
 robotstatuschecker >= 3.0.1
